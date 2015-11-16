@@ -31,15 +31,7 @@
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
     [super viewWillAppear:animated];
     
-    NSLog(@"commit from YHTest1111");
-    
-
-    
-    
-    
-    
-    
-    
+    NSLog(@"commit from YHTest1111");    
     NSLog(@"commit from iOSTest4444");
 
 }
