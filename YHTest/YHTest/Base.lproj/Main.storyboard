@@ -50,6 +50,11 @@
                                 <animations/>
                                 <state key="normal" title="Button2"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tba-6e-BTs">
+                                <rect key="frame" x="355" y="550" width="55" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button3"/>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
