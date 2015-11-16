@@ -32,10 +32,16 @@
     [super viewWillAppear:animated];
     
     NSLog(@"commit from YHTest1111");
+    
+    NSLog(@"commit from YHTest2222");
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    
+    NSLog(@"commit from YHTest3333");
+    
     // Dispose of any resources that can be recreated.
 }
 
