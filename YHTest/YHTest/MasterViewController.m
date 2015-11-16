@@ -53,6 +53,7 @@
 }
 
 - (void)insertNewObject:(id)sender {
+    NSLog(@"commit from iOSTest5555");
     if (!self.objects) {
         self.objects = [[NSMutableArray alloc] init];
     }
