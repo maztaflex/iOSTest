@@ -29,6 +29,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
     [super viewWillAppear:animated];
+    
+    NSLog(@"commit from YHTest1");
 }
 
 - (void)didReceiveMemoryWarning {
