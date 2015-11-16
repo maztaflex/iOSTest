@@ -20,7 +20,6 @@
     [super viewDidLoad];
     NSLog(@"commit from YHTest");
     NSLog(@"commit 002");
-    NSLog(@"commit 003");
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
