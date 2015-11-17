@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0EEC1239B248785A5ED0A60A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD90CE53F09A388AD4EE6176 /* libPods.a */; };
+		1E6E09951BFB91B80078153D /* FLKPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6E09901BFB91B80078153D /* FLKPhoto.m */; };
+		1E6E09961BFB91B80078153D /* FLKPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6E09921BFB91B80078153D /* FLKPhotos.m */; };
+		1E6E09971BFB91B80078153D /* FLKRecentPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6E09941BFB91B80078153D /* FLKRecentPhotos.m */; };
 		ACE555CF1BFB4407009549D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555CE1BFB4407009549D7 /* main.m */; };
 		ACE555D21BFB4407009549D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555D11BFB4407009549D7 /* AppDelegate.m */; };
 		ACE555D51BFB4407009549D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555D41BFB4407009549D7 /* ViewController.m */; };
@@ -70,6 +73,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E6E098E1BFB91B80078153D /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		1E6E098F1BFB91B80078153D /* FLKPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKPhoto.h; sourceTree = "<group>"; };
+		1E6E09901BFB91B80078153D /* FLKPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKPhoto.m; sourceTree = "<group>"; };
+		1E6E09911BFB91B80078153D /* FLKPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKPhotos.h; sourceTree = "<group>"; };
+		1E6E09921BFB91B80078153D /* FLKPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKPhotos.m; sourceTree = "<group>"; };
+		1E6E09931BFB91B80078153D /* FLKRecentPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKRecentPhotos.h; sourceTree = "<group>"; };
+		1E6E09941BFB91B80078153D /* FLKRecentPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKRecentPhotos.m; sourceTree = "<group>"; };
 		ACE555CA1BFB4407009549D7 /* AsyncImageList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncImageList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE555CE1BFB4407009549D7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ACE555D01BFB4407009549D7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -197,6 +207,13 @@
 		ACE555CC1BFB4407009549D7 /* AsyncImageList */ = {
 			isa = PBXGroup;
 			children = (
+				1E6E098E1BFB91B80078153D /* DataModels.h */,
+				1E6E098F1BFB91B80078153D /* FLKPhoto.h */,
+				1E6E09901BFB91B80078153D /* FLKPhoto.m */,
+				1E6E09911BFB91B80078153D /* FLKPhotos.h */,
+				1E6E09921BFB91B80078153D /* FLKPhotos.m */,
+				1E6E09931BFB91B80078153D /* FLKRecentPhotos.h */,
+				1E6E09941BFB91B80078153D /* FLKRecentPhotos.m */,
 				ACE555D01BFB4407009549D7 /* AppDelegate.h */,
 				ACE555D11BFB4407009549D7 /* AppDelegate.m */,
 				ACE555D31BFB4407009549D7 /* ViewController.h */,
@@ -487,12 +504,15 @@
 				ACE556A21BFB4699009549D7 /* YHSnsModel.m in Sources */,
 				ACE556921BFB4699009549D7 /* YHCustomActivity.m in Sources */,
 				ACE5569C1BFB4699009549D7 /* YHModel.m in Sources */,
+				1E6E09961BFB91B80078153D /* FLKPhotos.m in Sources */,
 				ACE556AA1BFB4699009549D7 /* YHVariableObject.m in Sources */,
 				ACE555D21BFB4407009549D7 /* AppDelegate.m in Sources */,
 				ACE5569E1BFB4699009549D7 /* YHNetwork.m in Sources */,
+				1E6E09971BFB91B80078153D /* FLKRecentPhotos.m in Sources */,
 				ACE556901BFB4699009549D7 /* ProgressHUD.m in Sources */,
 				ACE555CF1BFB4407009549D7 /* main.m in Sources */,
 				ACE556AC1BFB4699009549D7 /* YHView.m in Sources */,
+				1E6E09951BFB91B80078153D /* FLKPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

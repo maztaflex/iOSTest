@@ -9,7 +9,7 @@
 #define YHConfig_h
 
 // Network
-#define REQ_BASE_URL                @""
+#define REQ_BASE_URL                @"https://api.flickr.com"
 
 // Google Analytics
 #if DEBUG
