@@ -1,0 +1,7 @@
+platform :ios, "7.1"
+
+pod "pop"
+
+target :TestFacebookPopTests, :exclusive => true do
+  # pod 'Kiwi'
+end
