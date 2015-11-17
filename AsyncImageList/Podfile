@@ -11,7 +11,6 @@ pod 'Fabric'
 pod 'TwitterKit'
 pod 'TwitterCore'
 pod 'SDWebImage'
-pod 'FBLikeLayout'
 pod 'MarqueeLabel'
 pod 'CHTCollectionViewWaterfallLayout'
 

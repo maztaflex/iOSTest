@@ -7,9 +7,9 @@
 //
 
 #import "ViewController.h"
-#import <FBLikeLayout.h>
+#import "CHTCollectionViewWaterfallLayout.h"
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface ViewController () <UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *clMain;
 
@@ -24,22 +24,6 @@
 
 - (void)confirgureLayout
 {
-    FBLikeLayout *layout = [FBLikeLayout new];
-    
-    //in this case we want 3 cells per row, maximum. This is also the default value if you do not customize the layout.singleCellWidth property
-    CGFloat cellWidth = (MIN(self.clMain.bounds.size.width, self.clMain.bounds.size.height)-self.clMain.contentInset.left-self.clMain.contentInset.right-8)/3.0;
-    
-    layout.minimumInteritemSpacing = 4;
-    layout.singleCellWidth = cellWidth;
-    layout.maxCellSpace = 3; //for full size cells, this parameter determines the max cell space
-    
-    //if you want the items size to be forced in order to have the minimumInteritemSpacing always respected. Otherwise the interitem spacing will be adapted in order to cover the complete row with cells
-    layout.forceCellWidthForMinimumInteritemSpacing = YES;
-    layout.fullImagePercentageOfOccurrency = 50; //this percent value determines how many times randomly the item will be full size.
-    
-    self.clMain.collectionViewLayout = layout;
-    
-    self.clMain.contentInset = UIEdgeInsetsMake(4, 4, 4, 4);
 }
 
 
