@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EEC1239B248785A5ED0A60A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD90CE53F09A388AD4EE6176 /* libPods.a */; };
 		ACE555CF1BFB4407009549D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555CE1BFB4407009549D7 /* main.m */; };
 		ACE555D21BFB4407009549D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555D11BFB4407009549D7 /* AppDelegate.m */; };
 		ACE555D51BFB4407009549D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555D41BFB4407009549D7 /* ViewController.m */; };
@@ -15,6 +16,40 @@
 		ACE555DD1BFB4407009549D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACE555DB1BFB4407009549D7 /* LaunchScreen.storyboard */; };
 		ACE555E81BFB4407009549D7 /* AsyncImageListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555E71BFB4407009549D7 /* AsyncImageListTests.m */; };
 		ACE555F31BFB4407009549D7 /* AsyncImageListUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555F21BFB4407009549D7 /* AsyncImageListUITests.m */; };
+		ACE5568E1BFB4699009549D7 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACE556691BFB4699009549D7 /* ProgressHUD.bundle */; };
+		ACE5568F1BFB4699009549D7 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACE556691BFB4699009549D7 /* ProgressHUD.bundle */; };
+		ACE556901BFB4699009549D7 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5566B1BFB4699009549D7 /* ProgressHUD.m */; };
+		ACE556911BFB4699009549D7 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5566B1BFB4699009549D7 /* ProgressHUD.m */; };
+		ACE556921BFB4699009549D7 /* YHCustomActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5566E1BFB4699009549D7 /* YHCustomActivity.m */; };
+		ACE556931BFB4699009549D7 /* YHCustomActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5566E1BFB4699009549D7 /* YHCustomActivity.m */; };
+		ACE556941BFB4699009549D7 /* YHFacebookActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556721BFB4699009549D7 /* YHFacebookActivity.m */; };
+		ACE556951BFB4699009549D7 /* YHFacebookActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556721BFB4699009549D7 /* YHFacebookActivity.m */; };
+		ACE556961BFB4699009549D7 /* YHGoogleLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556751BFB4699009549D7 /* YHGoogleLoginViewController.m */; };
+		ACE556971BFB4699009549D7 /* YHGoogleLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556751BFB4699009549D7 /* YHGoogleLoginViewController.m */; };
+		ACE556981BFB4699009549D7 /* YHGoogleLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE556761BFB4699009549D7 /* YHGoogleLoginViewController.xib */; };
+		ACE556991BFB4699009549D7 /* YHGoogleLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE556761BFB4699009549D7 /* YHGoogleLoginViewController.xib */; };
+		ACE5569A1BFB4699009549D7 /* YHGooglePlusActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556781BFB4699009549D7 /* YHGooglePlusActivity.m */; };
+		ACE5569B1BFB4699009549D7 /* YHGooglePlusActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556781BFB4699009549D7 /* YHGooglePlusActivity.m */; };
+		ACE5569C1BFB4699009549D7 /* YHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5567B1BFB4699009549D7 /* YHModel.m */; };
+		ACE5569D1BFB4699009549D7 /* YHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5567B1BFB4699009549D7 /* YHModel.m */; };
+		ACE5569E1BFB4699009549D7 /* YHNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5567D1BFB4699009549D7 /* YHNetwork.m */; };
+		ACE5569F1BFB4699009549D7 /* YHNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5567D1BFB4699009549D7 /* YHNetwork.m */; };
+		ACE556A01BFB4699009549D7 /* YHPushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5567F1BFB4699009549D7 /* YHPushModel.m */; };
+		ACE556A11BFB4699009549D7 /* YHPushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5567F1BFB4699009549D7 /* YHPushModel.m */; };
+		ACE556A21BFB4699009549D7 /* YHSnsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556811BFB4699009549D7 /* YHSnsModel.m */; };
+		ACE556A31BFB4699009549D7 /* YHSnsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556811BFB4699009549D7 /* YHSnsModel.m */; };
+		ACE556A41BFB4699009549D7 /* YHTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556831BFB4699009549D7 /* YHTableViewCell.m */; };
+		ACE556A51BFB4699009549D7 /* YHTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556831BFB4699009549D7 /* YHTableViewCell.m */; };
+		ACE556A61BFB4699009549D7 /* YHTools.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556851BFB4699009549D7 /* YHTools.m */; };
+		ACE556A71BFB4699009549D7 /* YHTools.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556851BFB4699009549D7 /* YHTools.m */; };
+		ACE556A81BFB4699009549D7 /* YHTwitterActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556871BFB4699009549D7 /* YHTwitterActivity.m */; };
+		ACE556A91BFB4699009549D7 /* YHTwitterActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556871BFB4699009549D7 /* YHTwitterActivity.m */; };
+		ACE556AA1BFB4699009549D7 /* YHVariableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556891BFB4699009549D7 /* YHVariableObject.m */; };
+		ACE556AB1BFB4699009549D7 /* YHVariableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE556891BFB4699009549D7 /* YHVariableObject.m */; };
+		ACE556AC1BFB4699009549D7 /* YHView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5568B1BFB4699009549D7 /* YHView.m */; };
+		ACE556AD1BFB4699009549D7 /* YHView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5568B1BFB4699009549D7 /* YHView.m */; };
+		ACE556AE1BFB4699009549D7 /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5568D1BFB4699009549D7 /* YHViewController.m */; };
+		ACE556AF1BFB4699009549D7 /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5568D1BFB4699009549D7 /* YHViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +86,47 @@
 		ACE555EE1BFB4407009549D7 /* AsyncImageListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsyncImageListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE555F21BFB4407009549D7 /* AsyncImageListUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsyncImageListUITests.m; sourceTree = "<group>"; };
 		ACE555F41BFB4407009549D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACE556691BFB4699009549D7 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		ACE5566A1BFB4699009549D7 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		ACE5566B1BFB4699009549D7 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		ACE5566C1BFB4699009549D7 /* YHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHConfig.h; sourceTree = "<group>"; };
+		ACE5566D1BFB4699009549D7 /* YHCustomActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHCustomActivity.h; sourceTree = "<group>"; };
+		ACE5566E1BFB4699009549D7 /* YHCustomActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCustomActivity.m; sourceTree = "<group>"; };
+		ACE5566F1BFB4699009549D7 /* YHDebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHDebugLog.h; sourceTree = "<group>"; };
+		ACE556701BFB4699009549D7 /* YHDevTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHDevTools.h; sourceTree = "<group>"; };
+		ACE556711BFB4699009549D7 /* YHFacebookActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHFacebookActivity.h; sourceTree = "<group>"; };
+		ACE556721BFB4699009549D7 /* YHFacebookActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHFacebookActivity.m; sourceTree = "<group>"; };
+		ACE556731BFB4699009549D7 /* YHGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHGlobal.h; sourceTree = "<group>"; };
+		ACE556741BFB4699009549D7 /* YHGoogleLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHGoogleLoginViewController.h; sourceTree = "<group>"; };
+		ACE556751BFB4699009549D7 /* YHGoogleLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHGoogleLoginViewController.m; sourceTree = "<group>"; };
+		ACE556761BFB4699009549D7 /* YHGoogleLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHGoogleLoginViewController.xib; sourceTree = "<group>"; };
+		ACE556771BFB4699009549D7 /* YHGooglePlusActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHGooglePlusActivity.h; sourceTree = "<group>"; };
+		ACE556781BFB4699009549D7 /* YHGooglePlusActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHGooglePlusActivity.m; sourceTree = "<group>"; };
+		ACE556791BFB4699009549D7 /* YHLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHLayout.h; sourceTree = "<group>"; };
+		ACE5567A1BFB4699009549D7 /* YHModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHModel.h; sourceTree = "<group>"; };
+		ACE5567B1BFB4699009549D7 /* YHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHModel.m; sourceTree = "<group>"; };
+		ACE5567C1BFB4699009549D7 /* YHNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHNetwork.h; sourceTree = "<group>"; };
+		ACE5567D1BFB4699009549D7 /* YHNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHNetwork.m; sourceTree = "<group>"; };
+		ACE5567E1BFB4699009549D7 /* YHPushModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPushModel.h; sourceTree = "<group>"; };
+		ACE5567F1BFB4699009549D7 /* YHPushModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPushModel.m; sourceTree = "<group>"; };
+		ACE556801BFB4699009549D7 /* YHSnsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSnsModel.h; sourceTree = "<group>"; };
+		ACE556811BFB4699009549D7 /* YHSnsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHSnsModel.m; sourceTree = "<group>"; };
+		ACE556821BFB4699009549D7 /* YHTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHTableViewCell.h; sourceTree = "<group>"; };
+		ACE556831BFB4699009549D7 /* YHTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHTableViewCell.m; sourceTree = "<group>"; };
+		ACE556841BFB4699009549D7 /* YHTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHTools.h; sourceTree = "<group>"; };
+		ACE556851BFB4699009549D7 /* YHTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHTools.m; sourceTree = "<group>"; };
+		ACE556861BFB4699009549D7 /* YHTwitterActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHTwitterActivity.h; sourceTree = "<group>"; };
+		ACE556871BFB4699009549D7 /* YHTwitterActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHTwitterActivity.m; sourceTree = "<group>"; };
+		ACE556881BFB4699009549D7 /* YHVariableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHVariableObject.h; sourceTree = "<group>"; };
+		ACE556891BFB4699009549D7 /* YHVariableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHVariableObject.m; sourceTree = "<group>"; };
+		ACE5568A1BFB4699009549D7 /* YHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHView.h; sourceTree = "<group>"; };
+		ACE5568B1BFB4699009549D7 /* YHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHView.m; sourceTree = "<group>"; };
+		ACE5568C1BFB4699009549D7 /* YHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHViewController.h; sourceTree = "<group>"; };
+		ACE5568D1BFB4699009549D7 /* YHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHViewController.m; sourceTree = "<group>"; };
+		ACE556B01BFB46DF009549D7 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		BD90CE53F09A388AD4EE6176 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4993BBDFCA468910DA7347D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EDCF53445D398A6030564F40 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EEC1239B248785A5ED0A60A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +155,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56DFE84CA1AAF17ADEDBF71A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD90CE53F09A388AD4EE6176 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B7914097DC1B4A22AD51192 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4993BBDFCA468910DA7347D /* Pods.debug.xcconfig */,
+				EDCF53445D398A6030564F40 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		ACE555C11BFB4407009549D7 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +179,8 @@
 				ACE555E61BFB4407009549D7 /* AsyncImageListTests */,
 				ACE555F11BFB4407009549D7 /* AsyncImageListUITests */,
 				ACE555CB1BFB4407009549D7 /* Products */,
+				7B7914097DC1B4A22AD51192 /* Pods */,
+				56DFE84CA1AAF17ADEDBF71A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +205,7 @@
 				ACE555D91BFB4407009549D7 /* Assets.xcassets */,
 				ACE555DB1BFB4407009549D7 /* LaunchScreen.storyboard */,
 				ACE555DE1BFB4407009549D7 /* Info.plist */,
+				ACE556671BFB4699009549D7 /* Common */,
 				ACE555CD1BFB4407009549D7 /* Supporting Files */,
 			);
 			path = AsyncImageList;
@@ -118,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE555CE1BFB4407009549D7 /* main.m */,
+				ACE556B01BFB46DF009549D7 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -140,6 +238,58 @@
 			path = AsyncImageListUITests;
 			sourceTree = "<group>";
 		};
+		ACE556671BFB4699009549D7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ACE556681BFB4699009549D7 /* ProgressHUD */,
+				ACE5566C1BFB4699009549D7 /* YHConfig.h */,
+				ACE5566D1BFB4699009549D7 /* YHCustomActivity.h */,
+				ACE5566E1BFB4699009549D7 /* YHCustomActivity.m */,
+				ACE5566F1BFB4699009549D7 /* YHDebugLog.h */,
+				ACE556701BFB4699009549D7 /* YHDevTools.h */,
+				ACE556711BFB4699009549D7 /* YHFacebookActivity.h */,
+				ACE556721BFB4699009549D7 /* YHFacebookActivity.m */,
+				ACE556731BFB4699009549D7 /* YHGlobal.h */,
+				ACE556741BFB4699009549D7 /* YHGoogleLoginViewController.h */,
+				ACE556751BFB4699009549D7 /* YHGoogleLoginViewController.m */,
+				ACE556761BFB4699009549D7 /* YHGoogleLoginViewController.xib */,
+				ACE556771BFB4699009549D7 /* YHGooglePlusActivity.h */,
+				ACE556781BFB4699009549D7 /* YHGooglePlusActivity.m */,
+				ACE556791BFB4699009549D7 /* YHLayout.h */,
+				ACE5567A1BFB4699009549D7 /* YHModel.h */,
+				ACE5567B1BFB4699009549D7 /* YHModel.m */,
+				ACE5567C1BFB4699009549D7 /* YHNetwork.h */,
+				ACE5567D1BFB4699009549D7 /* YHNetwork.m */,
+				ACE5567E1BFB4699009549D7 /* YHPushModel.h */,
+				ACE5567F1BFB4699009549D7 /* YHPushModel.m */,
+				ACE556801BFB4699009549D7 /* YHSnsModel.h */,
+				ACE556811BFB4699009549D7 /* YHSnsModel.m */,
+				ACE556821BFB4699009549D7 /* YHTableViewCell.h */,
+				ACE556831BFB4699009549D7 /* YHTableViewCell.m */,
+				ACE556841BFB4699009549D7 /* YHTools.h */,
+				ACE556851BFB4699009549D7 /* YHTools.m */,
+				ACE556861BFB4699009549D7 /* YHTwitterActivity.h */,
+				ACE556871BFB4699009549D7 /* YHTwitterActivity.m */,
+				ACE556881BFB4699009549D7 /* YHVariableObject.h */,
+				ACE556891BFB4699009549D7 /* YHVariableObject.m */,
+				ACE5568A1BFB4699009549D7 /* YHView.h */,
+				ACE5568B1BFB4699009549D7 /* YHView.m */,
+				ACE5568C1BFB4699009549D7 /* YHViewController.h */,
+				ACE5568D1BFB4699009549D7 /* YHViewController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ACE556681BFB4699009549D7 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				ACE556691BFB4699009549D7 /* ProgressHUD.bundle */,
+				ACE5566A1BFB4699009549D7 /* ProgressHUD.h */,
+				ACE5566B1BFB4699009549D7 /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +297,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACE555F71BFB4407009549D7 /* Build configuration list for PBXNativeTarget "AsyncImageList" */;
 			buildPhases = (
+				8B876D9150FADBDC7F2B5512 /* Check Pods Manifest.lock */,
 				ACE555C61BFB4407009549D7 /* Sources */,
 				ACE555C71BFB4407009549D7 /* Frameworks */,
 				ACE555C81BFB4407009549D7 /* Resources */,
+				D73035015A45960711041E81 /* Embed Pods Frameworks */,
+				EE36EA4EE024F28F7797A40E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,6 +396,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE556981BFB4699009549D7 /* YHGoogleLoginViewController.xib in Resources */,
+				ACE5568E1BFB4699009549D7 /* ProgressHUD.bundle in Resources */,
 				ACE555DD1BFB4407009549D7 /* LaunchScreen.storyboard in Resources */,
 				ACE555DA1BFB4407009549D7 /* Assets.xcassets in Resources */,
 				ACE555D81BFB4407009549D7 /* Main.storyboard in Resources */,
@@ -253,6 +408,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE556991BFB4699009549D7 /* YHGoogleLoginViewController.xib in Resources */,
+				ACE5568F1BFB4699009549D7 /* ProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,14 +422,77 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8B876D9150FADBDC7F2B5512 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D73035015A45960711041E81 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE36EA4EE024F28F7797A40E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ACE555C61BFB4407009549D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE556A61BFB4699009549D7 /* YHTools.m in Sources */,
+				ACE556AE1BFB4699009549D7 /* YHViewController.m in Sources */,
+				ACE5569A1BFB4699009549D7 /* YHGooglePlusActivity.m in Sources */,
+				ACE556A01BFB4699009549D7 /* YHPushModel.m in Sources */,
+				ACE556A81BFB4699009549D7 /* YHTwitterActivity.m in Sources */,
+				ACE556A41BFB4699009549D7 /* YHTableViewCell.m in Sources */,
 				ACE555D51BFB4407009549D7 /* ViewController.m in Sources */,
+				ACE556941BFB4699009549D7 /* YHFacebookActivity.m in Sources */,
+				ACE556961BFB4699009549D7 /* YHGoogleLoginViewController.m in Sources */,
+				ACE556A21BFB4699009549D7 /* YHSnsModel.m in Sources */,
+				ACE556921BFB4699009549D7 /* YHCustomActivity.m in Sources */,
+				ACE5569C1BFB4699009549D7 /* YHModel.m in Sources */,
+				ACE556AA1BFB4699009549D7 /* YHVariableObject.m in Sources */,
 				ACE555D21BFB4407009549D7 /* AppDelegate.m in Sources */,
+				ACE5569E1BFB4699009549D7 /* YHNetwork.m in Sources */,
+				ACE556901BFB4699009549D7 /* ProgressHUD.m in Sources */,
 				ACE555CF1BFB4407009549D7 /* main.m in Sources */,
+				ACE556AC1BFB4699009549D7 /* YHView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +500,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE556971BFB4699009549D7 /* YHGoogleLoginViewController.m in Sources */,
+				ACE5569F1BFB4699009549D7 /* YHNetwork.m in Sources */,
+				ACE556A71BFB4699009549D7 /* YHTools.m in Sources */,
+				ACE556911BFB4699009549D7 /* ProgressHUD.m in Sources */,
+				ACE556A31BFB4699009549D7 /* YHSnsModel.m in Sources */,
+				ACE556A91BFB4699009549D7 /* YHTwitterActivity.m in Sources */,
 				ACE555E81BFB4407009549D7 /* AsyncImageListTests.m in Sources */,
+				ACE556AB1BFB4699009549D7 /* YHVariableObject.m in Sources */,
+				ACE556A51BFB4699009549D7 /* YHTableViewCell.m in Sources */,
+				ACE556931BFB4699009549D7 /* YHCustomActivity.m in Sources */,
+				ACE5569B1BFB4699009549D7 /* YHGooglePlusActivity.m in Sources */,
+				ACE5569D1BFB4699009549D7 /* YHModel.m in Sources */,
+				ACE556951BFB4699009549D7 /* YHFacebookActivity.m in Sources */,
+				ACE556AF1BFB4699009549D7 /* YHViewController.m in Sources */,
+				ACE556A11BFB4699009549D7 /* YHPushModel.m in Sources */,
+				ACE556AD1BFB4699009549D7 /* YHView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,9 +644,13 @@
 		};
 		ACE555F81BFB4407009549D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4993BBDFCA468910DA7347D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = AsyncImageList/PrefixHeader.pch;
 				INFOPLIST_FILE = AsyncImageList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.AsyncImageList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -420,9 +659,13 @@
 		};
 		ACE555F91BFB4407009549D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDCF53445D398A6030564F40 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = AsyncImageList/PrefixHeader.pch;
 				INFOPLIST_FILE = AsyncImageList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.AsyncImageList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -496,6 +739,7 @@
 				ACE555F91BFB4407009549D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACE555FA1BFB4407009549D7 /* Build configuration list for PBXNativeTarget "AsyncImageListTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +748,7 @@
 				ACE555FC1BFB4407009549D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACE555FD1BFB4407009549D7 /* Build configuration list for PBXNativeTarget "AsyncImageListUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +757,7 @@
 				ACE555FF1BFB4407009549D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
