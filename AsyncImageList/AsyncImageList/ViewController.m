@@ -70,7 +70,7 @@
     CGFloat redValue = (arc4random() % 100) / 255.0f;
     CGFloat greenValue = (arc4random() % 150) / 255.0f;
     CGFloat blueValue = (arc4random() % 250) / 255.0f;
-    thumbnailPhoto.backgroundColor = [UIColor colorWithRed:redValue green:greenValue blue:blueValue alpha:1];
+    thumbnailPhoto.backgroundColor = [UIColor colorWithRed:redValue green:greenValue blue:blueValue alpha:0.7];
     
     [self.tools setImageToImageView:thumbnailPhoto placeholderImage:nil imageURLString:[self.flkRecentPhotos getThumbnailURLStringAtIndexPath:indexPath] isOnlyMemoryCache:NO completion:nil];
     
