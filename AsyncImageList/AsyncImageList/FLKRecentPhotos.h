@@ -21,6 +21,8 @@
 - (void)reqRecentPhotosWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+- (void)setRecentList:(NSArray *)list;
+- (NSArray *)getRecentList;
 - (NSString *)getThumbnailURLStringAtIndexPath:(NSIndexPath *)indexPath;
 - (CGSize)getSizeOfThumbnailPhotoAtIndexPath:(NSIndexPath *)indexPath;
 

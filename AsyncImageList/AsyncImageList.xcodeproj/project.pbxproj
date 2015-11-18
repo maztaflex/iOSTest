@@ -56,6 +56,12 @@
 		ACED00261BFC20EE00D620AD /* EKOriginImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED00211BFC20EE00D620AD /* EKOriginImage.m */; };
 		ACED00271BFC20EE00D620AD /* EKRecentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED00231BFC20EE00D620AD /* EKRecentModel.m */; };
 		ACED00281BFC20EE00D620AD /* EKThumbnailImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED00251BFC20EE00D620AD /* EKThumbnailImage.m */; };
+		ACED002B1BFC429C00D620AD /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED002A1BFC429C00D620AD /* SplashViewController.m */; };
+		ACED002C1BFC429C00D620AD /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED002A1BFC429C00D620AD /* SplashViewController.m */; };
+		ACED002F1BFC44F900D620AD /* FlickrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED002E1BFC44F900D620AD /* FlickrViewController.m */; };
+		ACED00301BFC44F900D620AD /* FlickrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED002E1BFC44F900D620AD /* FlickrViewController.m */; };
+		ACED00331BFC496300D620AD /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED00321BFC496300D620AD /* DataManager.m */; };
+		ACED00341BFC496300D620AD /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED00321BFC496300D620AD /* DataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +149,12 @@
 		ACED00231BFC20EE00D620AD /* EKRecentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRecentModel.m; sourceTree = "<group>"; };
 		ACED00241BFC20EE00D620AD /* EKThumbnailImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKThumbnailImage.h; sourceTree = "<group>"; };
 		ACED00251BFC20EE00D620AD /* EKThumbnailImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKThumbnailImage.m; sourceTree = "<group>"; };
+		ACED00291BFC429C00D620AD /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		ACED002A1BFC429C00D620AD /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		ACED002D1BFC44F900D620AD /* FlickrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrViewController.h; sourceTree = "<group>"; };
+		ACED002E1BFC44F900D620AD /* FlickrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrViewController.m; sourceTree = "<group>"; };
+		ACED00311BFC496300D620AD /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		ACED00321BFC496300D620AD /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		BD90CE53F09A388AD4EE6176 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4993BBDFCA468910DA7347D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EDCF53445D398A6030564F40 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +245,12 @@
 				ACE555D11BFB4407009549D7 /* AppDelegate.m */,
 				ACE555D31BFB4407009549D7 /* ViewController.h */,
 				ACE555D41BFB4407009549D7 /* ViewController.m */,
+				ACED00291BFC429C00D620AD /* SplashViewController.h */,
+				ACED002A1BFC429C00D620AD /* SplashViewController.m */,
+				ACED002D1BFC44F900D620AD /* FlickrViewController.h */,
+				ACED002E1BFC44F900D620AD /* FlickrViewController.m */,
+				ACED00311BFC496300D620AD /* DataManager.h */,
+				ACED00321BFC496300D620AD /* DataManager.m */,
 				ACE555D61BFB4407009549D7 /* Main.storyboard */,
 				ACE555D91BFB4407009549D7 /* Assets.xcassets */,
 				ACE555DB1BFB4407009549D7 /* LaunchScreen.storyboard */,
@@ -512,6 +530,7 @@
 				ACE5569A1BFB4699009549D7 /* YHGooglePlusActivity.m in Sources */,
 				ACE556A01BFB4699009549D7 /* YHPushModel.m in Sources */,
 				ACE556A81BFB4699009549D7 /* YHTwitterActivity.m in Sources */,
+				ACED002B1BFC429C00D620AD /* SplashViewController.m in Sources */,
 				ACE556A41BFB4699009549D7 /* YHTableViewCell.m in Sources */,
 				ACE555D51BFB4407009549D7 /* ViewController.m in Sources */,
 				ACE556941BFB4699009549D7 /* YHFacebookActivity.m in Sources */,
@@ -527,9 +546,11 @@
 				ACE5569E1BFB4699009549D7 /* YHNetwork.m in Sources */,
 				1E6E09971BFB91B80078153D /* FLKRecentPhotos.m in Sources */,
 				ACE556901BFB4699009549D7 /* ProgressHUD.m in Sources */,
+				ACED002F1BFC44F900D620AD /* FlickrViewController.m in Sources */,
 				ACED00281BFC20EE00D620AD /* EKThumbnailImage.m in Sources */,
 				ACE555CF1BFB4407009549D7 /* main.m in Sources */,
 				ACE556AC1BFB4699009549D7 /* YHView.m in Sources */,
+				ACED00331BFC496300D620AD /* DataManager.m in Sources */,
 				1E6E09951BFB91B80078153D /* FLKPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACE556971BFB4699009549D7 /* YHGoogleLoginViewController.m in Sources */,
+				ACED002C1BFC429C00D620AD /* SplashViewController.m in Sources */,
 				ACE5569F1BFB4699009549D7 /* YHNetwork.m in Sources */,
 				ACE556A71BFB4699009549D7 /* YHTools.m in Sources */,
 				ACE556911BFB4699009549D7 /* ProgressHUD.m in Sources */,
@@ -550,9 +572,11 @@
 				ACE556931BFB4699009549D7 /* YHCustomActivity.m in Sources */,
 				ACE5569B1BFB4699009549D7 /* YHGooglePlusActivity.m in Sources */,
 				ACE5569D1BFB4699009549D7 /* YHModel.m in Sources */,
+				ACED00301BFC44F900D620AD /* FlickrViewController.m in Sources */,
 				ACE556951BFB4699009549D7 /* YHFacebookActivity.m in Sources */,
 				ACE556AF1BFB4699009549D7 /* YHViewController.m in Sources */,
 				ACE556A11BFB4699009549D7 /* YHPushModel.m in Sources */,
+				ACED00341BFC496300D620AD /* DataManager.m in Sources */,
 				ACE556AD1BFB4699009549D7 /* YHView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

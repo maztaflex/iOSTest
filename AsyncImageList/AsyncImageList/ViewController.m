@@ -10,11 +10,13 @@
 #import "CHTCollectionViewWaterfallLayout.h"
 #import "DataModels.h"
 #import "EKRecentModel.h"
+#import "DataManager.h"
 
 @interface ViewController () <UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *clMain;
 
+@property (weak, nonatomic) DataManager *dataManager;
 @property (strong, nonatomic) FLKRecentPhotos *flkRecentPhotos;
 @property (strong, nonatomic) EKRecentModel *ekRecentModel;
 
@@ -28,18 +30,17 @@
 {
     [super awakeFromNib];
     
-    self.flkRecentPhotos = [[FLKRecentPhotos alloc] init];
+    self.dataManager = [DataManager sharedInstance];
     
-    self.ekRecentList = [NSArray array];
+    self.ekRecentList = self.dataManager.ekRecentList;
     
     self.ekRecentModel = [[EKRecentModel alloc] init];
-    
-    [self reqEkRecent];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"EK Recent Photos";
 }
 
 - (void)confirgureLayout
@@ -51,23 +52,13 @@
     layout.footerHeight = 10;
     layout.minimumColumnSpacing = 1;
     layout.minimumInteritemSpacing = 1;
+    layout.footerHeight = 0.0f;
+    layout.headerHeight = 0.0f;
     
     self.clMain.collectionViewLayout = layout;
 }
 
 #pragma mark - Request
-- (void)reqFlickrRecent
-{
-    [self.flkRecentPhotos reqRecentPhotosWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.flkRecentPhotos = [FLKRecentPhotos modelObjectWithDictionary:responseObject];
-        
-        [self.clMain reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        LogRed(@"error : %@",error);
-    }];
-}
-
 - (void)reqEkRecent
 {
     [self.ekRecentModel requestRecentPhotosWithLastKey:nil Success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -79,6 +70,8 @@
         }
         
         self.ekRecentList = mappedList;
+        
+        self.dataManager.ekRecentList = self.ekRecentList;
         
         [self.clMain reloadData];
         
@@ -92,7 +85,6 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-//    return 100;
     return self.ekRecentList.count;
 }
 
@@ -114,7 +106,7 @@
     [self.tools setImageToImageView:thumbnailPhoto
                    placeholderImage:nil
                      imageURLString:[ekModel getThumbnailURLString]
-                  isOnlyMemoryCache:NO
+                  isOnlyMemoryCache:YES
                          completion:nil];
     
     return cell;

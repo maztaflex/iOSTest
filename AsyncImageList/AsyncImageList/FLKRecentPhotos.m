@@ -102,8 +102,6 @@ NSString *const kFLKRecentPhotosPhotos = @"photos";
 - (void)reqRecentPhotosWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-//    self.networkManager.requestSerializer = [AFJSONRequestSerializer serializer];
-    LogGreen(@"self.networkManager.requestSerializer : %@",self.networkManager.requestSerializer);
     NSDictionary *params = @{@"method" : @"flickr.photos.getRecent",
                              @"api_key" : @"a7b7b6ba8cc4213db5f1a773830e07a5",
                              @"format" : @"json",
@@ -111,6 +109,17 @@ NSString *const kFLKRecentPhotosPhotos = @"photos";
                              @"nojsoncallback" : @1};
     
     [self.networkManager GET:@"/services/rest" parameters:params success:success failure:failure];
+}
+- (void)setRecentList:(NSArray *)list
+{
+    self.photos.photo = @[@"1"];
+    
+    LogGreen(@"self.photos.photo : %@",self.photos.photo);
+}
+
+- (NSArray *)getRecentList
+{
+    return self.photos.photo;
 }
 
 - (NSString *)getThumbnailURLStringAtIndexPath:(NSIndexPath *)indexPath
