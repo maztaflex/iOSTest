@@ -23,6 +23,9 @@
 @property (nonatomic, assign) double isfriend;
 @property (nonatomic, strong) NSString *heightM;
 @property (nonatomic, strong) NSString *widthM;
+@property (nonatomic, strong) NSString *heightS;
+@property (nonatomic, strong) NSString *widthS;
+@property (nonatomic, strong) NSString *urlS;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

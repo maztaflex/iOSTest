@@ -9,12 +9,16 @@
 #import "ViewController.h"
 #import "CHTCollectionViewWaterfallLayout.h"
 #import "DataModels.h"
+#import "EKRecentModel.h"
 
 @interface ViewController () <UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *clMain;
 
 @property (strong, nonatomic) FLKRecentPhotos *flkRecentPhotos;
+@property (strong, nonatomic) EKRecentModel *ekRecentModel;
+
+@property (strong, nonatomic) NSArray *ekRecentList;
 
 @end
 
@@ -26,14 +30,11 @@
     
     self.flkRecentPhotos = [[FLKRecentPhotos alloc] init];
     
-    [self.flkRecentPhotos reqRecentPhotosWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.flkRecentPhotos = [FLKRecentPhotos modelObjectWithDictionary:responseObject];
-        
-        [self.clMain reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        LogRed(@"error : %@",error);
-    }];
+    self.ekRecentList = [NSArray array];
+    
+    self.ekRecentModel = [[EKRecentModel alloc] init];
+    
+    [self reqEkRecent];
 }
 
 - (void)viewDidLoad {
@@ -45,20 +46,54 @@
 {
     CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
     layout.columnCount = 3;
-    layout.sectionInset = UIEdgeInsetsMake(3, 3, 3, 3);
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     layout.headerHeight = 15;
     layout.footerHeight = 10;
-    layout.minimumColumnSpacing = 3;
-    layout.minimumInteritemSpacing = 3;
+    layout.minimumColumnSpacing = 1;
+    layout.minimumInteritemSpacing = 1;
     
     self.clMain.collectionViewLayout = layout;
+}
+
+#pragma mark - Request
+- (void)reqFlickrRecent
+{
+    [self.flkRecentPhotos reqRecentPhotosWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.flkRecentPhotos = [FLKRecentPhotos modelObjectWithDictionary:responseObject];
+        
+        [self.clMain reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        LogRed(@"error : %@",error);
+    }];
+}
+
+- (void)reqEkRecent
+{
+    [self.ekRecentModel requestRecentPhotosWithLastKey:nil Success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *list = responseObject;
+        NSMutableArray *mappedList = [NSMutableArray array];
+        for (id obj in list) {
+            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
+            [mappedList addObject:ek];
+        }
+        
+        self.ekRecentList = mappedList;
+        
+        [self.clMain reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        LogRed(@"error : %@",error);
+    }];
 }
 
 #pragma mark - UICollectionView Delegate & Datasource
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return 100;
+//    return 100;
+    return self.ekRecentList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -72,14 +107,28 @@
     CGFloat blueValue = (arc4random() % 250) / 255.0f;
     thumbnailPhoto.backgroundColor = [UIColor colorWithRed:redValue green:greenValue blue:blueValue alpha:0.7];
     
-    [self.tools setImageToImageView:thumbnailPhoto placeholderImage:nil imageURLString:[self.flkRecentPhotos getThumbnailURLStringAtIndexPath:indexPath] isOnlyMemoryCache:NO completion:nil];
+//    [self.tools setImageToImageView:thumbnailPhoto placeholderImage:nil imageURLString:[self.flkRecentPhotos getThumbnailURLStringAtIndexPath:indexPath] isOnlyMemoryCache:YES completion:nil];
+    
+    EKRecentModel *ekModel = self.ekRecentList[indexPath.row];
+    LogGreen(@"[ekModel getThumbnailURLString] : %@",[ekModel getThumbnailURLString]);
+    [self.tools setImageToImageView:thumbnailPhoto
+                   placeholderImage:nil
+                     imageURLString:[ekModel getThumbnailURLString]
+                  isOnlyMemoryCache:NO
+                         completion:nil];
     
     return cell;
 }
 
 -(CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize cellSize = [self.flkRecentPhotos getSizeOfThumbnailPhotoAtIndexPath:indexPath];
+    CGSize cellSize = CGSizeZero;
+    
+//    cellSize = [self.flkRecentPhotos getSizeOfThumbnailPhotoAtIndexPath:indexPath];
+    
+    EKRecentModel *ekModel = self.ekRecentList[indexPath.row];
+    cellSize = [ekModel getThumbnailSize];
+    
     
     LogGreen(@"cell w : %f, h : %f",cellSize.width, cellSize.height);
     

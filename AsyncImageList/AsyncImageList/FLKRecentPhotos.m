@@ -107,7 +107,7 @@ NSString *const kFLKRecentPhotosPhotos = @"photos";
     NSDictionary *params = @{@"method" : @"flickr.photos.getRecent",
                              @"api_key" : @"a7b7b6ba8cc4213db5f1a773830e07a5",
                              @"format" : @"json",
-                             @"extras" : @"url_m",
+                             @"extras" : @"url_s",
                              @"nojsoncallback" : @1};
     
     [self.networkManager GET:@"/services/rest" parameters:params success:success failure:failure];
@@ -118,14 +118,18 @@ NSString *const kFLKRecentPhotosPhotos = @"photos";
     FLKPhotos *photosObj = self.photos;
     FLKPhoto *photoObj = photosObj.photo[indexPath.row];
     
-    return photoObj.urlM;
+//    NSString *newUrlS = [photoObj.urlS stringByReplacingOccurrencesOfString:@"m.jpg" withString:@"s.jpg"];
+    
+//    LogGreen(@"newUrlS : %@",newUrlS);
+    
+    return photoObj.urlS;
 }
 
 - (CGSize)getSizeOfThumbnailPhotoAtIndexPath:(NSIndexPath *)indexPath
 {
     FLKPhotos *photosObj = self.photos;
     FLKPhoto *photoObj = photosObj.photo[indexPath.row];
-    CGSize photoSize = CGSizeMake(photoObj.widthM.floatValue, photoObj.heightM.floatValue);
+    CGSize photoSize = CGSizeMake(photoObj.widthS.floatValue, photoObj.heightS.floatValue);
     
     return photoSize;
 }

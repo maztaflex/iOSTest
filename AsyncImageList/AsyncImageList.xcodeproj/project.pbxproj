@@ -53,6 +53,9 @@
 		ACE556AD1BFB4699009549D7 /* YHView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5568B1BFB4699009549D7 /* YHView.m */; };
 		ACE556AE1BFB4699009549D7 /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5568D1BFB4699009549D7 /* YHViewController.m */; };
 		ACE556AF1BFB4699009549D7 /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE5568D1BFB4699009549D7 /* YHViewController.m */; };
+		ACED00261BFC20EE00D620AD /* EKOriginImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED00211BFC20EE00D620AD /* EKOriginImage.m */; };
+		ACED00271BFC20EE00D620AD /* EKRecentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED00231BFC20EE00D620AD /* EKRecentModel.m */; };
+		ACED00281BFC20EE00D620AD /* EKThumbnailImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED00251BFC20EE00D620AD /* EKThumbnailImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,12 @@
 		ACE5568C1BFB4699009549D7 /* YHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHViewController.h; sourceTree = "<group>"; };
 		ACE5568D1BFB4699009549D7 /* YHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHViewController.m; sourceTree = "<group>"; };
 		ACE556B01BFB46DF009549D7 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		ACED00201BFC20EE00D620AD /* EKOriginImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOriginImage.h; sourceTree = "<group>"; };
+		ACED00211BFC20EE00D620AD /* EKOriginImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOriginImage.m; sourceTree = "<group>"; };
+		ACED00221BFC20EE00D620AD /* EKRecentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRecentModel.h; sourceTree = "<group>"; };
+		ACED00231BFC20EE00D620AD /* EKRecentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRecentModel.m; sourceTree = "<group>"; };
+		ACED00241BFC20EE00D620AD /* EKThumbnailImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKThumbnailImage.h; sourceTree = "<group>"; };
+		ACED00251BFC20EE00D620AD /* EKThumbnailImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKThumbnailImage.m; sourceTree = "<group>"; };
 		BD90CE53F09A388AD4EE6176 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4993BBDFCA468910DA7347D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EDCF53445D398A6030564F40 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +216,12 @@
 		ACE555CC1BFB4407009549D7 /* AsyncImageList */ = {
 			isa = PBXGroup;
 			children = (
+				ACED00201BFC20EE00D620AD /* EKOriginImage.h */,
+				ACED00211BFC20EE00D620AD /* EKOriginImage.m */,
+				ACED00221BFC20EE00D620AD /* EKRecentModel.h */,
+				ACED00231BFC20EE00D620AD /* EKRecentModel.m */,
+				ACED00241BFC20EE00D620AD /* EKThumbnailImage.h */,
+				ACED00251BFC20EE00D620AD /* EKThumbnailImage.m */,
 				1E6E098E1BFB91B80078153D /* DataModels.h */,
 				1E6E098F1BFB91B80078153D /* FLKPhoto.h */,
 				1E6E09901BFB91B80078153D /* FLKPhoto.m */,
@@ -502,14 +517,17 @@
 				ACE556941BFB4699009549D7 /* YHFacebookActivity.m in Sources */,
 				ACE556961BFB4699009549D7 /* YHGoogleLoginViewController.m in Sources */,
 				ACE556A21BFB4699009549D7 /* YHSnsModel.m in Sources */,
+				ACED00271BFC20EE00D620AD /* EKRecentModel.m in Sources */,
 				ACE556921BFB4699009549D7 /* YHCustomActivity.m in Sources */,
 				ACE5569C1BFB4699009549D7 /* YHModel.m in Sources */,
 				1E6E09961BFB91B80078153D /* FLKPhotos.m in Sources */,
+				ACED00261BFC20EE00D620AD /* EKOriginImage.m in Sources */,
 				ACE556AA1BFB4699009549D7 /* YHVariableObject.m in Sources */,
 				ACE555D21BFB4407009549D7 /* AppDelegate.m in Sources */,
 				ACE5569E1BFB4699009549D7 /* YHNetwork.m in Sources */,
 				1E6E09971BFB91B80078153D /* FLKRecentPhotos.m in Sources */,
 				ACE556901BFB4699009549D7 /* ProgressHUD.m in Sources */,
+				ACED00281BFC20EE00D620AD /* EKThumbnailImage.m in Sources */,
 				ACE555CF1BFB4407009549D7 /* main.m in Sources */,
 				ACE556AC1BFB4699009549D7 /* YHView.m in Sources */,
 				1E6E09951BFB91B80078153D /* FLKPhoto.m in Sources */,

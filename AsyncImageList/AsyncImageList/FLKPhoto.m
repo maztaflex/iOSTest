@@ -20,6 +20,9 @@ NSString *const kFLKPhotoTitle = @"title";
 NSString *const kFLKPhotoIsfriend = @"isfriend";
 NSString *const kFLKPhotoHeightM = @"height_m";
 NSString *const kFLKPhotoWidthM = @"width_m";
+NSString *const kFLKPhotoHeightS = @"height_s";
+NSString *const kFLKPhotoWidthS = @"width_s";
+NSString *const kFLKPhotoUrlS = @"url_s";
 
 
 @interface FLKPhoto ()
@@ -42,6 +45,9 @@ NSString *const kFLKPhotoWidthM = @"width_m";
 @synthesize isfriend = _isfriend;
 @synthesize heightM = _heightM;
 @synthesize widthM = _widthM;
+@synthesize heightS = _heightS;
+@synthesize widthS = _widthS;
+@synthesize urlS = _urlS;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -68,7 +74,9 @@ NSString *const kFLKPhotoWidthM = @"width_m";
             self.isfriend = [[self objectOrNilForKey:kFLKPhotoIsfriend fromDictionary:dict] doubleValue];
             self.heightM = [self objectOrNilForKey:kFLKPhotoHeightM fromDictionary:dict];
             self.widthM = [self objectOrNilForKey:kFLKPhotoWidthM fromDictionary:dict];
-
+            self.heightS = [self objectOrNilForKey:kFLKPhotoHeightS fromDictionary:dict];
+            self.widthS = [self objectOrNilForKey:kFLKPhotoWidthS fromDictionary:dict];
+            self.urlS = [self objectOrNilForKey:kFLKPhotoUrlS fromDictionary:dict];
     }
     
     return self;
@@ -90,6 +98,9 @@ NSString *const kFLKPhotoWidthM = @"width_m";
     [mutableDict setValue:[NSNumber numberWithDouble:self.isfriend] forKey:kFLKPhotoIsfriend];
     [mutableDict setValue:self.heightM forKey:kFLKPhotoHeightM];
     [mutableDict setValue:self.widthM forKey:kFLKPhotoWidthM];
+    [mutableDict setValue:self.urlS forKey:kFLKPhotoUrlS];
+    [mutableDict setValue:self.heightS forKey:kFLKPhotoHeightS];
+    [mutableDict setValue:self.widthS forKey:kFLKPhotoWidthS];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -125,6 +136,10 @@ NSString *const kFLKPhotoWidthM = @"width_m";
     self.isfriend = [aDecoder decodeDoubleForKey:kFLKPhotoIsfriend];
     self.heightM = [aDecoder decodeObjectForKey:kFLKPhotoHeightM];
     self.widthM = [aDecoder decodeObjectForKey:kFLKPhotoWidthM];
+    self.heightS = [aDecoder decodeObjectForKey:kFLKPhotoHeightS];
+    self.widthS = [aDecoder decodeObjectForKey:kFLKPhotoWidthS];
+    self.urlS = [aDecoder decodeObjectForKey:kFLKPhotoUrlS];
+    
     return self;
 }
 
@@ -143,6 +158,9 @@ NSString *const kFLKPhotoWidthM = @"width_m";
     [aCoder encodeDouble:_isfriend forKey:kFLKPhotoIsfriend];
     [aCoder encodeObject:_heightM forKey:kFLKPhotoHeightM];
     [aCoder encodeObject:_widthM forKey:kFLKPhotoWidthM];
+    [aCoder encodeObject:_widthS forKey:kFLKPhotoWidthS];
+    [aCoder encodeObject:_heightS forKey:kFLKPhotoHeightS];
+    [aCoder encodeObject:_urlS forKey:kFLKPhotoUrlS];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -163,6 +181,9 @@ NSString *const kFLKPhotoWidthM = @"width_m";
         copy.isfriend = self.isfriend;
         copy.heightM = [self.heightM copyWithZone:zone];
         copy.widthM = [self.widthM copyWithZone:zone];
+        copy.urlS = [self.urlS copyWithZone:zone];
+        copy.widthS = [self.widthS copyWithZone:zone];
+        copy.heightS = [self.heightS copyWithZone:zone];
     }
     
     return copy;
