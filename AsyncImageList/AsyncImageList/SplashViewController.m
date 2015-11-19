@@ -20,6 +20,7 @@
 @property (weak, nonatomic) DataManager *dataManager;
 
 @property (assign, nonatomic) NSInteger completeTaskCount;
+@property (weak, nonatomic) IBOutlet UIImageView *ivTemp;
 
 @end
 
@@ -39,6 +40,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSString *fileUrl = @"http://dev1mobile.smtown.com/projects/sumproject/ios/123132 11.12.png";
+    fileUrl = [fileUrl stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    [self.tools setImageToImageView:self.ivTemp
+                   placeholderImage:nil
+                     imageURLString:fileUrl
+                  isOnlyMemoryCache:NO completion:nil];
     
     [self disableUIWithUsingProgressHud];
 }

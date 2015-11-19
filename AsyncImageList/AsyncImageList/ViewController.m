@@ -20,6 +20,10 @@
 @property (strong, nonatomic) FLKRecentPhotos *flkRecentPhotos;
 @property (strong, nonatomic) EKRecentModel *ekRecentModel;
 
+@property (strong, nonatomic) UIRefreshControl *refreshCtrl;
+@property (assign, nonatomic) BOOL isRefreshingList;
+
+
 @property (strong, nonatomic) NSArray *ekRecentList;
 
 @end
@@ -56,6 +60,100 @@
     layout.headerHeight = 0.0f;
     
     self.clMain.collectionViewLayout = layout;
+    
+    [self addRefreshCtrlToTargetView:self.clMain];
+}
+
+#pragma mark - Refresh Control View
+- (void)addRefreshCtrlToTargetView:(UIView *)targetView
+{
+    self.refreshCtrl = [[UIRefreshControl alloc] init];
+    [self.refreshCtrl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [targetView insertSubview:self.refreshCtrl atIndex:0];
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
+    if (self.isRefreshingList == YES) {
+        LogYellow(@"Now Refreshing!!");
+        return;
+    }
+    
+    self.isRefreshingList = YES;
+    
+    [self disableUIWithUsingProgressHud];
+    
+    [self.ekRecentModel requestRecentPhotosWithLastKey:nil
+                                               Success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                   NSArray *list = responseObject;
+                                                   NSMutableArray *mappedList = [NSMutableArray array];
+                                                   for (id obj in list) {
+                                                       EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
+                                                       [mappedList addObject:ek];
+                                                   }
+                                                   
+                                                   self.ekRecentList = mappedList;
+                                                   self.dataManager.ekRecentList = self.ekRecentList;
+                                                   [self.refreshCtrl endRefreshing];
+                                                   [self.clMain reloadData];
+                                                   [self enableUIWithUsingProgressHud];
+                                                   self.isRefreshingList = NO;
+                                                   
+                                               } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                   
+                                                   LogRed(@"error : %@", error);
+                                               }];
+    
+}
+
+- (void)reqLoadMore
+{
+    EKRecentModel *lastModel = [self.ekRecentList lastObject];
+    NSString *lastKey = lastModel.key;
+    LogGreen(@"lastKey : %@",lastKey);
+    [self.ekRecentModel requestRecentPhotosWithLastKey:lastKey
+                                               Success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                   NSArray *list = responseObject;
+                                                   NSMutableArray *mappedList = [NSMutableArray array];
+                                                   for (id obj in list) {
+                                                       EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
+                                                       [mappedList addObject:ek];
+                                                   }
+                                                   
+                                                   [self insertNewObjects:mappedList];
+                                                   
+                                                   self.dataManager.ekRecentList = self.ekRecentList;
+                                                   [self.refreshCtrl endRefreshing];
+                                                   [self.clMain reloadData];
+                                                   [self enableUIWithUsingProgressHud];
+                                                   self.isRefreshingList = NO;
+                                                   
+                                               } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                   
+                                                   LogRed(@"error : %@", error);
+                                               }];
+}
+
+#pragma mark - Load More
+- (void)insertNewObjects:(NSArray *)objs {
+
+    NSMutableArray *muOpenList = [[NSMutableArray alloc] initWithArray:self.ekRecentList];
+    
+    [muOpenList addObjectsFromArray:objs];
+    NSInteger lastRow = self.ekRecentList.count - 1;
+    
+    NSMutableArray *arrIndexPath = [NSMutableArray array];
+    for (NSInteger i = 1; i <= objs.count; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow+i inSection:0];
+        
+        [arrIndexPath addObject:indexPath];
+    }
+    
+    self.ekRecentList = muOpenList;
+    
+    [self.clMain performBatchUpdates:^{
+        [self.clMain insertItemsAtIndexPaths:arrIndexPath];
+    } completion:nil];
 }
 
 #pragma mark - Request
@@ -99,10 +197,8 @@
     CGFloat blueValue = (arc4random() % 250) / 255.0f;
     thumbnailPhoto.backgroundColor = [UIColor colorWithRed:redValue green:greenValue blue:blueValue alpha:0.7];
     
-//    [self.tools setImageToImageView:thumbnailPhoto placeholderImage:nil imageURLString:[self.flkRecentPhotos getThumbnailURLStringAtIndexPath:indexPath] isOnlyMemoryCache:YES completion:nil];
-    
     EKRecentModel *ekModel = self.ekRecentList[indexPath.row];
-    LogGreen(@"[ekModel getThumbnailURLString] : %@",[ekModel getThumbnailURLString]);
+
     [self.tools setImageToImageView:thumbnailPhoto
                    placeholderImage:nil
                      imageURLString:[ekModel getThumbnailURLString]
@@ -116,16 +212,34 @@
 {
     CGSize cellSize = CGSizeZero;
     
-//    cellSize = [self.flkRecentPhotos getSizeOfThumbnailPhotoAtIndexPath:indexPath];
-    
     EKRecentModel *ekModel = self.ekRecentList[indexPath.row];
     cellSize = [ekModel getThumbnailSize];
     
-    
-    LogGreen(@"cell w : %f, h : %f",cellSize.width, cellSize.height);
-    
     return cellSize;
 }
+
+#pragma mark - UIScrollView Delegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView
+{
+    NSInteger y = scrollView.contentOffset.y;
+    NSInteger contentHeight = scrollView.contentSize.height;
+    NSInteger clMainHeight = CGRectGetHeight(self.clMain.frame);
+    
+    LogGreen(@"- (void)scrollViewDidEndDecelerating : %zd, %zd, %zd",y,contentHeight, clMainHeight);
+    NSInteger compareValue = (contentHeight - y);
+    LogGreen(@"compareValue : %zd",compareValue);
+    
+    if (clMainHeight >= compareValue - 5 && clMainHeight <= compareValue + 5)
+    {
+        LogGreen(@"마지막이다!!");
+        [self reqLoadMore];
+    }
+    else
+    {
+        LogGreen(@"아직 마지막이 아니다!!");
+    }
+}
+
 
 #pragma mark - Memory Warning
 - (void)didReceiveMemoryWarning

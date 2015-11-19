@@ -58,22 +58,35 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="sgSplashToEkRecent" id="Dh8-Y0-zhi"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qdu-om-td2" userLabel="Temp">
+                                <rect key="frame" x="67" y="227" width="240" height="163"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="163" id="A3X-9a-MDV"/>
+                                    <constraint firstAttribute="width" constant="240" id="JYS-jj-3w9"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qdu-om-td2" firstAttribute="centerX" secondItem="toE-rd-7qX" secondAttribute="centerX" id="7OD-XE-Bjw"/>
                             <constraint firstItem="F21-Bt-FsM" firstAttribute="leading" secondItem="mLd-mn-8Mg" secondAttribute="leading" id="Glg-72-LAK"/>
                             <constraint firstItem="mLd-mn-8Mg" firstAttribute="leading" secondItem="toE-rd-7qX" secondAttribute="leading" constant="10" id="T6v-HL-QY3"/>
                             <constraint firstItem="F21-Bt-FsM" firstAttribute="top" secondItem="mLd-mn-8Mg" secondAttribute="bottom" constant="10" id="bsF-EP-D7Q"/>
                             <constraint firstItem="F21-Bt-FsM" firstAttribute="centerX" secondItem="mLd-mn-8Mg" secondAttribute="centerX" id="djt-zm-QyR"/>
                             <constraint firstItem="F21-Bt-FsM" firstAttribute="trailing" secondItem="mLd-mn-8Mg" secondAttribute="trailing" id="gCI-C6-NQH"/>
                             <constraint firstAttribute="trailing" secondItem="mLd-mn-8Mg" secondAttribute="trailing" constant="10" id="ig3-UC-olt"/>
+                            <constraint firstItem="qdu-om-td2" firstAttribute="top" secondItem="F21-Bt-FsM" secondAttribute="bottom" constant="45" id="lpD-XS-Urh"/>
                             <constraint firstItem="mLd-mn-8Mg" firstAttribute="centerX" secondItem="toE-rd-7qX" secondAttribute="centerX" id="mQK-KV-oqe"/>
                             <constraint firstItem="F21-Bt-FsM" firstAttribute="height" secondItem="mLd-mn-8Mg" secondAttribute="height" id="nxM-yl-hRN"/>
                             <constraint firstItem="mLd-mn-8Mg" firstAttribute="top" secondItem="b6f-Yy-8Dc" secondAttribute="bottom" constant="10" id="ybl-Gy-O0p"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XHc-aB-nwS"/>
+                    <connections>
+                        <outlet property="ivTemp" destination="qdu-om-td2" id="QUJ-ba-r1n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X5n-of-nrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
