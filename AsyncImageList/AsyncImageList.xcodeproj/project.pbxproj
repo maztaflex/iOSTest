@@ -11,6 +11,20 @@
 		1E6E09951BFB91B80078153D /* FLKPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6E09901BFB91B80078153D /* FLKPhoto.m */; };
 		1E6E09961BFB91B80078153D /* FLKPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6E09921BFB91B80078153D /* FLKPhotos.m */; };
 		1E6E09971BFB91B80078153D /* FLKRecentPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6E09941BFB91B80078153D /* FLKRecentPhotos.m */; };
+		ACCE8B3A1BFDD0C4009F1729 /* TESTPholarztapiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B2B1BFDD0C4009F1729 /* TESTPholarztapiClient.m */; };
+		ACCE8B3B1BFDD0C4009F1729 /* TESTPholarztapiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B2B1BFDD0C4009F1729 /* TESTPholarztapiClient.m */; };
+		ACCE8B3C1BFDD0C4009F1729 /* TESTPholarztImagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B2D1BFDD0C4009F1729 /* TESTPholarztImagesRequest.m */; };
+		ACCE8B3D1BFDD0C4009F1729 /* TESTPholarztImagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B2D1BFDD0C4009F1729 /* TESTPholarztImagesRequest.m */; };
+		ACCE8B3E1BFDD0C4009F1729 /* TESTPholarztImagesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B2F1BFDD0C4009F1729 /* TESTPholarztImagesResponse.m */; };
+		ACCE8B3F1BFDD0C4009F1729 /* TESTPholarztImagesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B2F1BFDD0C4009F1729 /* TESTPholarztImagesResponse.m */; };
+		ACCE8B401BFDD0C4009F1729 /* TESTPholarztImagesResponse_item.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B311BFDD0C4009F1729 /* TESTPholarztImagesResponse_item.m */; };
+		ACCE8B411BFDD0C4009F1729 /* TESTPholarztImagesResponse_item.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B311BFDD0C4009F1729 /* TESTPholarztImagesResponse_item.m */; };
+		ACCE8B421BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_originImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B331BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_originImage.m */; };
+		ACCE8B431BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_originImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B331BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_originImage.m */; };
+		ACCE8B441BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_thumbnailImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B351BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_thumbnailImage.m */; };
+		ACCE8B451BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_thumbnailImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B351BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_thumbnailImage.m */; };
+		ACCE8B501BFDD267009F1729 /* APIGatewayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B4F1BFDD267009F1729 /* APIGatewayViewController.m */; };
+		ACCE8B511BFDD267009F1729 /* APIGatewayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE8B4F1BFDD267009F1729 /* APIGatewayViewController.m */; };
 		ACE555CF1BFB4407009549D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555CE1BFB4407009549D7 /* main.m */; };
 		ACE555D21BFB4407009549D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555D11BFB4407009549D7 /* AppDelegate.m */; };
 		ACE555D51BFB4407009549D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE555D41BFB4407009549D7 /* ViewController.m */; };
@@ -89,6 +103,20 @@
 		1E6E09921BFB91B80078153D /* FLKPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKPhotos.m; sourceTree = "<group>"; };
 		1E6E09931BFB91B80078153D /* FLKRecentPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKRecentPhotos.h; sourceTree = "<group>"; };
 		1E6E09941BFB91B80078153D /* FLKRecentPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKRecentPhotos.m; sourceTree = "<group>"; };
+		ACCE8B2A1BFDD0C4009F1729 /* TESTPholarztapiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESTPholarztapiClient.h; sourceTree = "<group>"; };
+		ACCE8B2B1BFDD0C4009F1729 /* TESTPholarztapiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESTPholarztapiClient.m; sourceTree = "<group>"; };
+		ACCE8B2C1BFDD0C4009F1729 /* TESTPholarztImagesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESTPholarztImagesRequest.h; sourceTree = "<group>"; };
+		ACCE8B2D1BFDD0C4009F1729 /* TESTPholarztImagesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESTPholarztImagesRequest.m; sourceTree = "<group>"; };
+		ACCE8B2E1BFDD0C4009F1729 /* TESTPholarztImagesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESTPholarztImagesResponse.h; sourceTree = "<group>"; };
+		ACCE8B2F1BFDD0C4009F1729 /* TESTPholarztImagesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESTPholarztImagesResponse.m; sourceTree = "<group>"; };
+		ACCE8B301BFDD0C4009F1729 /* TESTPholarztImagesResponse_item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESTPholarztImagesResponse_item.h; sourceTree = "<group>"; };
+		ACCE8B311BFDD0C4009F1729 /* TESTPholarztImagesResponse_item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESTPholarztImagesResponse_item.m; sourceTree = "<group>"; };
+		ACCE8B321BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_originImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESTPholarztImagesResponse_item_originImage.h; sourceTree = "<group>"; };
+		ACCE8B331BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_originImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESTPholarztImagesResponse_item_originImage.m; sourceTree = "<group>"; };
+		ACCE8B341BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_thumbnailImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESTPholarztImagesResponse_item_thumbnailImage.h; sourceTree = "<group>"; };
+		ACCE8B351BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_thumbnailImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESTPholarztImagesResponse_item_thumbnailImage.m; sourceTree = "<group>"; };
+		ACCE8B4E1BFDD267009F1729 /* APIGatewayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIGatewayViewController.h; sourceTree = "<group>"; };
+		ACCE8B4F1BFDD267009F1729 /* APIGatewayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIGatewayViewController.m; sourceTree = "<group>"; };
 		ACE555CA1BFB4407009549D7 /* AsyncImageList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncImageList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE555CE1BFB4407009549D7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ACE555D01BFB4407009549D7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -203,6 +231,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		ACCE8B281BFDD0C4009F1729 /* aws-apigateway-ios */ = {
+			isa = PBXGroup;
+			children = (
+				ACCE8B291BFDD0C4009F1729 /* generated-src */,
+			);
+			path = "aws-apigateway-ios";
+			sourceTree = "<group>";
+		};
+		ACCE8B291BFDD0C4009F1729 /* generated-src */ = {
+			isa = PBXGroup;
+			children = (
+				ACCE8B2A1BFDD0C4009F1729 /* TESTPholarztapiClient.h */,
+				ACCE8B2B1BFDD0C4009F1729 /* TESTPholarztapiClient.m */,
+				ACCE8B2C1BFDD0C4009F1729 /* TESTPholarztImagesRequest.h */,
+				ACCE8B2D1BFDD0C4009F1729 /* TESTPholarztImagesRequest.m */,
+				ACCE8B2E1BFDD0C4009F1729 /* TESTPholarztImagesResponse.h */,
+				ACCE8B2F1BFDD0C4009F1729 /* TESTPholarztImagesResponse.m */,
+				ACCE8B301BFDD0C4009F1729 /* TESTPholarztImagesResponse_item.h */,
+				ACCE8B311BFDD0C4009F1729 /* TESTPholarztImagesResponse_item.m */,
+				ACCE8B321BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_originImage.h */,
+				ACCE8B331BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_originImage.m */,
+				ACCE8B341BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_thumbnailImage.h */,
+				ACCE8B351BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_thumbnailImage.m */,
+			);
+			path = "generated-src";
+			sourceTree = "<group>";
+		};
 		ACE555C11BFB4407009549D7 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +283,7 @@
 		ACE555CC1BFB4407009549D7 /* AsyncImageList */ = {
 			isa = PBXGroup;
 			children = (
+				ACCE8B281BFDD0C4009F1729 /* aws-apigateway-ios */,
 				ACED00201BFC20EE00D620AD /* EKOriginImage.h */,
 				ACED00211BFC20EE00D620AD /* EKOriginImage.m */,
 				ACED00221BFC20EE00D620AD /* EKRecentModel.h */,
@@ -249,6 +305,8 @@
 				ACED002A1BFC429C00D620AD /* SplashViewController.m */,
 				ACED002D1BFC44F900D620AD /* FlickrViewController.h */,
 				ACED002E1BFC44F900D620AD /* FlickrViewController.m */,
+				ACCE8B4E1BFDD267009F1729 /* APIGatewayViewController.h */,
+				ACCE8B4F1BFDD267009F1729 /* APIGatewayViewController.m */,
 				ACED00311BFC496300D620AD /* DataManager.h */,
 				ACED00321BFC496300D620AD /* DataManager.m */,
 				ACE555D61BFB4407009549D7 /* Main.storyboard */,
@@ -527,6 +585,7 @@
 			files = (
 				ACE556A61BFB4699009549D7 /* YHTools.m in Sources */,
 				ACE556AE1BFB4699009549D7 /* YHViewController.m in Sources */,
+				ACCE8B501BFDD267009F1729 /* APIGatewayViewController.m in Sources */,
 				ACE5569A1BFB4699009549D7 /* YHGooglePlusActivity.m in Sources */,
 				ACE556A01BFB4699009549D7 /* YHPushModel.m in Sources */,
 				ACE556A81BFB4699009549D7 /* YHTwitterActivity.m in Sources */,
@@ -538,16 +597,22 @@
 				ACE556A21BFB4699009549D7 /* YHSnsModel.m in Sources */,
 				ACED00271BFC20EE00D620AD /* EKRecentModel.m in Sources */,
 				ACE556921BFB4699009549D7 /* YHCustomActivity.m in Sources */,
+				ACCE8B401BFDD0C4009F1729 /* TESTPholarztImagesResponse_item.m in Sources */,
 				ACE5569C1BFB4699009549D7 /* YHModel.m in Sources */,
 				1E6E09961BFB91B80078153D /* FLKPhotos.m in Sources */,
 				ACED00261BFC20EE00D620AD /* EKOriginImage.m in Sources */,
 				ACE556AA1BFB4699009549D7 /* YHVariableObject.m in Sources */,
 				ACE555D21BFB4407009549D7 /* AppDelegate.m in Sources */,
 				ACE5569E1BFB4699009549D7 /* YHNetwork.m in Sources */,
+				ACCE8B3A1BFDD0C4009F1729 /* TESTPholarztapiClient.m in Sources */,
 				1E6E09971BFB91B80078153D /* FLKRecentPhotos.m in Sources */,
 				ACE556901BFB4699009549D7 /* ProgressHUD.m in Sources */,
+				ACCE8B3E1BFDD0C4009F1729 /* TESTPholarztImagesResponse.m in Sources */,
 				ACED002F1BFC44F900D620AD /* FlickrViewController.m in Sources */,
+				ACCE8B441BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_thumbnailImage.m in Sources */,
+				ACCE8B421BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_originImage.m in Sources */,
 				ACED00281BFC20EE00D620AD /* EKThumbnailImage.m in Sources */,
+				ACCE8B3C1BFDD0C4009F1729 /* TESTPholarztImagesRequest.m in Sources */,
 				ACE555CF1BFB4407009549D7 /* main.m in Sources */,
 				ACE556AC1BFB4699009549D7 /* YHView.m in Sources */,
 				ACED00331BFC496300D620AD /* DataManager.m in Sources */,
@@ -560,16 +625,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACE556971BFB4699009549D7 /* YHGoogleLoginViewController.m in Sources */,
+				ACCE8B451BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_thumbnailImage.m in Sources */,
+				ACCE8B431BFDD0C4009F1729 /* TESTPholarztImagesResponse_item_originImage.m in Sources */,
 				ACED002C1BFC429C00D620AD /* SplashViewController.m in Sources */,
+				ACCE8B511BFDD267009F1729 /* APIGatewayViewController.m in Sources */,
 				ACE5569F1BFB4699009549D7 /* YHNetwork.m in Sources */,
 				ACE556A71BFB4699009549D7 /* YHTools.m in Sources */,
 				ACE556911BFB4699009549D7 /* ProgressHUD.m in Sources */,
 				ACE556A31BFB4699009549D7 /* YHSnsModel.m in Sources */,
+				ACCE8B3F1BFDD0C4009F1729 /* TESTPholarztImagesResponse.m in Sources */,
+				ACCE8B3D1BFDD0C4009F1729 /* TESTPholarztImagesRequest.m in Sources */,
 				ACE556A91BFB4699009549D7 /* YHTwitterActivity.m in Sources */,
 				ACE555E81BFB4407009549D7 /* AsyncImageListTests.m in Sources */,
 				ACE556AB1BFB4699009549D7 /* YHVariableObject.m in Sources */,
 				ACE556A51BFB4699009549D7 /* YHTableViewCell.m in Sources */,
 				ACE556931BFB4699009549D7 /* YHCustomActivity.m in Sources */,
+				ACCE8B411BFDD0C4009F1729 /* TESTPholarztImagesResponse_item.m in Sources */,
 				ACE5569B1BFB4699009549D7 /* YHGooglePlusActivity.m in Sources */,
 				ACE5569D1BFB4699009549D7 /* YHModel.m in Sources */,
 				ACED00301BFC44F900D620AD /* FlickrViewController.m in Sources */,
@@ -578,6 +649,7 @@
 				ACE556A11BFB4699009549D7 /* YHPushModel.m in Sources */,
 				ACED00341BFC496300D620AD /* DataManager.m in Sources */,
 				ACE556AD1BFB4699009549D7 /* YHView.m in Sources */,
+				ACCE8B3B1BFDD0C4009F1729 /* TESTPholarztapiClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

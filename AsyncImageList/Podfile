@@ -13,6 +13,7 @@ pod 'TwitterCore'
 pod 'SDWebImage'
 pod 'MarqueeLabel'
 pod 'CHTCollectionViewWaterfallLayout'
+pod 'AWSAPIGateway'
 
 target :AsyncImageListTests, :exclusive => true do
   # pod 'Kiwi'

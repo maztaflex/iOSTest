@@ -58,26 +58,40 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="sgSplashToEkRecent" id="Dh8-Y0-zhi"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qdu-om-td2" userLabel="Temp">
-                                <rect key="frame" x="67" y="227" width="240" height="163"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qdu-om-td2" userLabel="Temp">
+                                <rect key="frame" x="67" y="249" width="240" height="163"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="163" id="A3X-9a-MDV"/>
                                     <constraint firstAttribute="width" constant="240" id="JYS-jj-3w9"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpI-z1-FPy" userLabel="AWS API Gateway">
+                                <rect key="frame" x="10" y="190" width="355" height="49"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="AWS API Gateway Test"/>
+                                <connections>
+                                    <segue destination="DYS-xs-V7u" kind="show" identifier="sgSplashToApiGateway" id="XYX-9T-weg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="RpI-z1-FPy" firstAttribute="top" secondItem="F21-Bt-FsM" secondAttribute="bottom" constant="8" id="6p3-CU-cRl"/>
                             <constraint firstItem="qdu-om-td2" firstAttribute="centerX" secondItem="toE-rd-7qX" secondAttribute="centerX" id="7OD-XE-Bjw"/>
+                            <constraint firstItem="RpI-z1-FPy" firstAttribute="centerX" secondItem="F21-Bt-FsM" secondAttribute="centerX" id="AsZ-n5-MXR"/>
+                            <constraint firstItem="RpI-z1-FPy" firstAttribute="width" secondItem="F21-Bt-FsM" secondAttribute="width" id="EUH-a2-ICy"/>
                             <constraint firstItem="F21-Bt-FsM" firstAttribute="leading" secondItem="mLd-mn-8Mg" secondAttribute="leading" id="Glg-72-LAK"/>
                             <constraint firstItem="mLd-mn-8Mg" firstAttribute="leading" secondItem="toE-rd-7qX" secondAttribute="leading" constant="10" id="T6v-HL-QY3"/>
+                            <constraint firstItem="qdu-om-td2" firstAttribute="top" secondItem="RpI-z1-FPy" secondAttribute="bottom" constant="10" id="X4e-JC-Rev"/>
                             <constraint firstItem="F21-Bt-FsM" firstAttribute="top" secondItem="mLd-mn-8Mg" secondAttribute="bottom" constant="10" id="bsF-EP-D7Q"/>
                             <constraint firstItem="F21-Bt-FsM" firstAttribute="centerX" secondItem="mLd-mn-8Mg" secondAttribute="centerX" id="djt-zm-QyR"/>
                             <constraint firstItem="F21-Bt-FsM" firstAttribute="trailing" secondItem="mLd-mn-8Mg" secondAttribute="trailing" id="gCI-C6-NQH"/>
                             <constraint firstAttribute="trailing" secondItem="mLd-mn-8Mg" secondAttribute="trailing" constant="10" id="ig3-UC-olt"/>
-                            <constraint firstItem="qdu-om-td2" firstAttribute="top" secondItem="F21-Bt-FsM" secondAttribute="bottom" constant="45" id="lpD-XS-Urh"/>
+                            <constraint firstItem="RpI-z1-FPy" firstAttribute="height" secondItem="F21-Bt-FsM" secondAttribute="height" id="j5a-j3-xe9"/>
                             <constraint firstItem="mLd-mn-8Mg" firstAttribute="centerX" secondItem="toE-rd-7qX" secondAttribute="centerX" id="mQK-KV-oqe"/>
                             <constraint firstItem="F21-Bt-FsM" firstAttribute="height" secondItem="mLd-mn-8Mg" secondAttribute="height" id="nxM-yl-hRN"/>
                             <constraint firstItem="mLd-mn-8Mg" firstAttribute="top" secondItem="b6f-Yy-8Dc" secondAttribute="bottom" constant="10" id="ybl-Gy-O0p"/>
@@ -234,6 +248,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="97.5" y="840.5"/>
+        </scene>
+        <!--Gateway View Controller-->
+        <scene sceneID="NYh-tv-6Pa">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="DYS-xs-V7u" customClass="APIGatewayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CfY-xC-A1S"/>
+                        <viewControllerLayoutGuide type="bottom" id="pqr-rE-efW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="igv-Zr-PS6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WFr-Tq-jE8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="plQ-7Y-eUJ">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="plQ-7Y-eUJ" id="12f-KF-2J8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="DYS-xs-V7u" id="UKB-Wm-ATv"/>
+                                    <outlet property="delegate" destination="DYS-xs-V7u" id="A4F-Bq-dEc"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pqr-rE-efW" firstAttribute="top" secondItem="WFr-Tq-jE8" secondAttribute="bottom" id="Enf-GG-exZ"/>
+                            <constraint firstAttribute="trailing" secondItem="WFr-Tq-jE8" secondAttribute="trailing" id="RFa-kC-yNQ"/>
+                            <constraint firstItem="WFr-Tq-jE8" firstAttribute="top" secondItem="CfY-xC-A1S" secondAttribute="bottom" id="apo-hG-Q50"/>
+                            <constraint firstItem="WFr-Tq-jE8" firstAttribute="leading" secondItem="igv-Zr-PS6" secondAttribute="leading" id="r27-AY-wFe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tvList" destination="WFr-Tq-jE8" id="lBu-6q-FsR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sj6-HJ-8Yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="97.5" y="1573.5"/>
         </scene>
     </scenes>
 </document>

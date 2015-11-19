@@ -20,6 +20,9 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AWSAPIGateway (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSCore (2.3.0)
   - Bolts (1.5.0):
     - Bolts/AppLinks (= 1.5.0)
     - Bolts/Tasks (= 1.5.0)
@@ -60,6 +63,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AWSAPIGateway
   - CHTCollectionViewWaterfallLayout
   - Fabric
   - FBSDKCoreKit
@@ -75,6 +79,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  AWSAPIGateway: 282343104e7c26bc7f4c58b85241057e0b9b0f8c
+  AWSCore: dc200c885c9799f9f5d3ab9ec38a9c4b44d680f9
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   CHTCollectionViewWaterfallLayout: 43232febcb3e4d3985cd758718cbe499b21b822f
   Fabric: d737eda3a26ac940a5430230eedb35f16b226131
