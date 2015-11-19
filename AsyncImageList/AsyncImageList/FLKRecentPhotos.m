@@ -99,11 +99,14 @@ NSString *const kFLKRecentPhotosPhotos = @"photos";
     return copy;
 }
 
-- (void)reqRecentPhotosWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (void)reqRecentPhotosWithPageNo:(NSInteger)pageNo
+                          success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSDictionary *params = @{@"method" : @"flickr.photos.getRecent",
                              @"api_key" : @"a7b7b6ba8cc4213db5f1a773830e07a5",
+                             @"per_page" : @50,
+                             @"page" : @(pageNo <= 0 ? 1 : pageNo),
                              @"format" : @"json",
                              @"extras" : @"url_s",
                              @"nojsoncallback" : @1};
@@ -112,9 +115,7 @@ NSString *const kFLKRecentPhotosPhotos = @"photos";
 }
 - (void)setRecentList:(NSArray *)list
 {
-    self.photos.photo = @[@"1"];
-    
-    LogGreen(@"self.photos.photo : %@",self.photos.photo);
+    self.photos.photo = list;
 }
 
 - (NSArray *)getRecentList

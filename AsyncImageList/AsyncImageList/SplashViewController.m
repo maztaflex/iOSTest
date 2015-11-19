@@ -68,7 +68,7 @@
 {
     __block FLKRecentPhotos *flkRecentPhotos = [[FLKRecentPhotos alloc] init];
     
-    [flkRecentPhotos reqRecentPhotosWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [flkRecentPhotos reqRecentPhotosWithPageNo:1 success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         self.dataManager.flickrRecentList = responseObject;
         

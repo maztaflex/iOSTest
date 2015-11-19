@@ -20,6 +20,8 @@
 @property (strong, nonatomic) UIRefreshControl *refreshCtrl;
 @property (assign, nonatomic) BOOL isRefreshingList;
 
+@property (assign, nonatomic) NSInteger currentPageNo;
+
 @end
 
 @implementation FlickrViewController
@@ -27,7 +29,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
+    self.currentPageNo = 1;
     NSDictionary *resObj = (NSDictionary *)[DataManager sharedInstance].flickrRecentList;
     self.flkRecentPhotos = [FLKRecentPhotos modelObjectWithDictionary:resObj];
     LogGreen(@"[DataManager sharedInstance].flickrRecentList : %@",[DataManager sharedInstance].flickrRecentList);
@@ -54,12 +56,24 @@
     layout.minimumInteritemSpacing = 1;
     layout.footerHeight = 0.0f;
     layout.headerHeight = 0.0f;
+//    layout.itemRenderDirection = CHTCollectionViewWaterfallLayoutItemRenderDirectionLeftToRight;
     
     self.clMain.collectionViewLayout = layout;
     
     [self addRefreshCtrlToTargetView:self.clMain];
 }
 
+
+
+#pragma mark - Refresh Control View
+- (void)addRefreshCtrlToTargetView:(UIView *)targetView
+{
+    self.refreshCtrl = [[UIRefreshControl alloc] init];
+    [self.refreshCtrl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [targetView insertSubview:self.refreshCtrl atIndex:0];
+}
+
+#pragma mark - Request
 - (void)refresh:(UIRefreshControl *)refreshControl
 {
     if (self.isRefreshingList == YES) {
@@ -71,7 +85,8 @@
     
     [self disableUIWithUsingProgressHud];
     
-    [self.flkRecentPhotos reqRecentPhotosWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    self.currentPageNo = 1;
+    [self.flkRecentPhotos reqRecentPhotosWithPageNo:self.currentPageNo success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         self.flkRecentPhotos = [FLKRecentPhotos modelObjectWithDictionary:responseObject];
         
@@ -90,29 +105,48 @@
     }];
 }
 
-#pragma mark - Refresh Control View
-- (void)addRefreshCtrlToTargetView:(UIView *)targetView
+- (void)reqLoadMore
 {
-    self.refreshCtrl = [[UIRefreshControl alloc] init];
-    [self.refreshCtrl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [targetView insertSubview:self.refreshCtrl atIndex:0];
-}
-
-#pragma mark - Request
-- (void)reqFlickrRecent
-{
-    [self.flkRecentPhotos reqRecentPhotosWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    self.currentPageNo +=1;
+    LogGreen(@"self.currentPageNo : %zd",self.currentPageNo);
+    [self.flkRecentPhotos reqRecentPhotosWithPageNo:self.currentPageNo success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        self.flkRecentPhotos = [FLKRecentPhotos modelObjectWithDictionary:responseObject];
+        FLKRecentPhotos *newData = [FLKRecentPhotos modelObjectWithDictionary:responseObject];
         
-        [DataManager sharedInstance].flickrRecentList = [self.flkRecentPhotos getRecentList];
+        [self insertNewObjects:[newData getRecentList]];
         
-        [self.clMain reloadData];
+        [DataManager sharedInstance].flickrRecentList = responseObject;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         LogRed(@"error : %@",error);
     }];
 }
+
+#pragma mark - Load More
+- (void)insertNewObjects:(NSArray *)objs {
+    NSArray *currentList = [self.flkRecentPhotos getRecentList];
+    NSMutableArray *muOpenList = [[NSMutableArray alloc] initWithArray:currentList];
+    
+    [muOpenList addObjectsFromArray:objs];
+    NSInteger lastRow = currentList.count - 1;
+    
+    NSMutableArray *arrIndexPath = [NSMutableArray array];
+    for (NSInteger i = 1; i <= objs.count; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow+i inSection:0];
+        
+        [arrIndexPath addObject:indexPath];
+    }
+    
+    [self.flkRecentPhotos setRecentList:muOpenList];
+    
+    NSInteger totalCount = [self.flkRecentPhotos getRecentList].count;
+    LogGreen(@"totalCount : %zd",totalCount);
+    
+    [self.clMain performBatchUpdates:^{
+        [self.clMain insertItemsAtIndexPaths:arrIndexPath];
+    } completion:nil];
+}
+
 
 #pragma mark - UICollectionView Delegate & Datasource
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -141,6 +175,8 @@
                   isOnlyMemoryCache:YES
                          completion:nil];
     
+    cell.tag = 600 + indexPath.row;
+    
     
     return cell;
 }
@@ -151,10 +187,33 @@
     
     cellSize = [self.flkRecentPhotos getSizeOfThumbnailPhotoAtIndexPath:indexPath];
     
-    LogGreen(@"cell w : %f, h : %f",cellSize.width, cellSize.height);
+//    LogGreen(@"cell w : %f, h : %f",cellSize.width, cellSize.height);
     
     return cellSize;
 }
+
+#pragma mark - UIScrollView Delegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView
+{
+    NSInteger y = scrollView.contentOffset.y;
+    NSInteger contentHeight = scrollView.contentSize.height;
+    NSInteger clMainHeight = CGRectGetHeight(self.clMain.frame);
+    
+    LogGreen(@"- (void)scrollViewDidEndDecelerating : %zd, %zd, %zd",y,contentHeight, clMainHeight);
+    NSInteger compareValue = (contentHeight - y);
+    LogGreen(@"compareValue : %zd",compareValue);
+    
+    if (clMainHeight >= compareValue - 5 && clMainHeight <= compareValue + 5)
+    {
+        LogGreen(@"마지막이다!!");
+        [self reqLoadMore];
+    }
+    else
+    {
+        LogGreen(@"아직 마지막이 아니다!!");
+    }
+}
+
 
 #pragma mark - Memory Warning
 - (void)didReceiveMemoryWarning {

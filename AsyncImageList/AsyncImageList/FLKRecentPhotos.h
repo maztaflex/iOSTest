@@ -18,8 +18,9 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;
 
-- (void)reqRecentPhotosWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)reqRecentPhotosWithPageNo:(NSInteger)pageNo
+                          success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 - (void)setRecentList:(NSArray *)list;
 - (NSArray *)getRecentList;
