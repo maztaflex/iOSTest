@@ -50,6 +50,23 @@
 		AC0F96161BFEC73E007F7F4C /* YHView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0F95F41BFEC73E007F7F4C /* YHView.m */; };
 		AC0F96171BFEC73E007F7F4C /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0F95F61BFEC73E007F7F4C /* YHViewController.m */; };
 		AC0F96181BFEC73E007F7F4C /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0F95F61BFEC73E007F7F4C /* YHViewController.m */; };
+		AC0F961C1BFEC8A8007F7F4C /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0F961B1BFEC8A8007F7F4C /* PhotoViewController.m */; };
+		ACCE9C441BFED1E400D29343 /* SMPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE9C431BFED1E400D29343 /* SMPhotoViewController.m */; };
+		ACCE9C451BFED1E400D29343 /* SMPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE9C431BFED1E400D29343 /* SMPhotoViewController.m */; };
+		ACCE9C4F1BFF176D00D29343 /* 02.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C481BFF176D00D29343 /* 02.acv */; };
+		ACCE9C501BFF176D00D29343 /* 02.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C481BFF176D00D29343 /* 02.acv */; };
+		ACCE9C511BFF176D00D29343 /* 06.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C491BFF176D00D29343 /* 06.acv */; };
+		ACCE9C521BFF176D00D29343 /* 06.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C491BFF176D00D29343 /* 06.acv */; };
+		ACCE9C531BFF176D00D29343 /* 17.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C4A1BFF176D00D29343 /* 17.acv */; };
+		ACCE9C541BFF176D00D29343 /* 17.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C4A1BFF176D00D29343 /* 17.acv */; };
+		ACCE9C551BFF176D00D29343 /* aqua.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C4B1BFF176D00D29343 /* aqua.acv */; };
+		ACCE9C561BFF176D00D29343 /* aqua.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C4B1BFF176D00D29343 /* aqua.acv */; };
+		ACCE9C571BFF176D00D29343 /* crossprocess.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C4C1BFF176D00D29343 /* crossprocess.acv */; };
+		ACCE9C581BFF176D00D29343 /* crossprocess.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C4C1BFF176D00D29343 /* crossprocess.acv */; };
+		ACCE9C591BFF176D00D29343 /* purple-green.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C4D1BFF176D00D29343 /* purple-green.acv */; };
+		ACCE9C5A1BFF176D00D29343 /* purple-green.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C4D1BFF176D00D29343 /* purple-green.acv */; };
+		ACCE9C5B1BFF176D00D29343 /* yellow-red.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C4E1BFF176D00D29343 /* yellow-red.acv */; };
+		ACCE9C5C1BFF176D00D29343 /* yellow-red.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C4E1BFF176D00D29343 /* yellow-red.acv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +143,17 @@
 		AC0F95F51BFEC73E007F7F4C /* YHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHViewController.h; sourceTree = "<group>"; };
 		AC0F95F61BFEC73E007F7F4C /* YHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHViewController.m; sourceTree = "<group>"; };
 		AC0F96191BFEC78E007F7F4C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		AC0F961A1BFEC8A8007F7F4C /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		AC0F961B1BFEC8A8007F7F4C /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		ACCE9C421BFED1E400D29343 /* SMPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPhotoViewController.h; sourceTree = "<group>"; };
+		ACCE9C431BFED1E400D29343 /* SMPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPhotoViewController.m; sourceTree = "<group>"; };
+		ACCE9C481BFF176D00D29343 /* 02.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = 02.acv; sourceTree = "<group>"; };
+		ACCE9C491BFF176D00D29343 /* 06.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = 06.acv; sourceTree = "<group>"; };
+		ACCE9C4A1BFF176D00D29343 /* 17.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = 17.acv; sourceTree = "<group>"; };
+		ACCE9C4B1BFF176D00D29343 /* aqua.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = aqua.acv; sourceTree = "<group>"; };
+		ACCE9C4C1BFF176D00D29343 /* crossprocess.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = crossprocess.acv; sourceTree = "<group>"; };
+		ACCE9C4D1BFF176D00D29343 /* purple-green.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "purple-green.acv"; sourceTree = "<group>"; };
+		ACCE9C4E1BFF176D00D29343 /* yellow-red.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "yellow-red.acv"; sourceTree = "<group>"; };
 		C8059B498D5BC653BE3CEBCE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,15 +208,20 @@
 		AC0F959C1BFEC632007F7F4C /* GPUImageFilter */ = {
 			isa = PBXGroup;
 			children = (
-				AC0F95D01BFEC73E007F7F4C /* Common */,
+				ACCE9C471BFF176D00D29343 /* Filters */,
+				AC0F961A1BFEC8A8007F7F4C /* PhotoViewController.h */,
+				AC0F961B1BFEC8A8007F7F4C /* PhotoViewController.m */,
 				AC0F95A01BFEC632007F7F4C /* AppDelegate.h */,
 				AC0F95A11BFEC632007F7F4C /* AppDelegate.m */,
 				AC0F95A31BFEC632007F7F4C /* ViewController.h */,
 				AC0F95A41BFEC632007F7F4C /* ViewController.m */,
+				ACCE9C421BFED1E400D29343 /* SMPhotoViewController.h */,
+				ACCE9C431BFED1E400D29343 /* SMPhotoViewController.m */,
 				AC0F95A61BFEC632007F7F4C /* Main.storyboard */,
 				AC0F95A91BFEC632007F7F4C /* Assets.xcassets */,
 				AC0F95AB1BFEC632007F7F4C /* LaunchScreen.storyboard */,
 				AC0F95AE1BFEC632007F7F4C /* Info.plist */,
+				AC0F95D01BFEC73E007F7F4C /* Common */,
 				AC0F959D1BFEC632007F7F4C /* Supporting Files */,
 			);
 			path = GPUImageFilter;
@@ -271,6 +304,20 @@
 				AC0F95D41BFEC73E007F7F4C /* ProgressHUD.m */,
 			);
 			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		ACCE9C471BFF176D00D29343 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				ACCE9C481BFF176D00D29343 /* 02.acv */,
+				ACCE9C491BFF176D00D29343 /* 06.acv */,
+				ACCE9C4A1BFF176D00D29343 /* 17.acv */,
+				ACCE9C4B1BFF176D00D29343 /* aqua.acv */,
+				ACCE9C4C1BFF176D00D29343 /* crossprocess.acv */,
+				ACCE9C4D1BFF176D00D29343 /* purple-green.acv */,
+				ACCE9C4E1BFF176D00D29343 /* yellow-red.acv */,
+			);
+			path = Filters;
 			sourceTree = "<group>";
 		};
 		C9269B18228F509A091DEFC6 /* Frameworks */ = {
@@ -396,10 +443,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACCE9C4F1BFF176D00D29343 /* 02.acv in Resources */,
+				ACCE9C511BFF176D00D29343 /* 06.acv in Resources */,
 				AC0F96011BFEC73E007F7F4C /* YHGoogleLoginViewController.xib in Resources */,
+				ACCE9C571BFF176D00D29343 /* crossprocess.acv in Resources */,
 				AC0F95F71BFEC73E007F7F4C /* ProgressHUD.bundle in Resources */,
 				AC0F95AD1BFEC632007F7F4C /* LaunchScreen.storyboard in Resources */,
+				ACCE9C5B1BFF176D00D29343 /* yellow-red.acv in Resources */,
+				ACCE9C591BFF176D00D29343 /* purple-green.acv in Resources */,
 				AC0F95AA1BFEC632007F7F4C /* Assets.xcassets in Resources */,
+				ACCE9C551BFF176D00D29343 /* aqua.acv in Resources */,
+				ACCE9C531BFF176D00D29343 /* 17.acv in Resources */,
 				AC0F95A81BFEC632007F7F4C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,7 +462,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACCE9C561BFF176D00D29343 /* aqua.acv in Resources */,
+				ACCE9C541BFF176D00D29343 /* 17.acv in Resources */,
+				ACCE9C581BFF176D00D29343 /* crossprocess.acv in Resources */,
+				ACCE9C5C1BFF176D00D29343 /* yellow-red.acv in Resources */,
+				ACCE9C521BFF176D00D29343 /* 06.acv in Resources */,
+				ACCE9C501BFF176D00D29343 /* 02.acv in Resources */,
 				AC0F96021BFEC73E007F7F4C /* YHGoogleLoginViewController.xib in Resources */,
+				ACCE9C5A1BFF176D00D29343 /* purple-green.acv in Resources */,
 				AC0F95F81BFEC73E007F7F4C /* ProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,7 +537,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC0F960F1BFEC73E007F7F4C /* YHTools.m in Sources */,
+				AC0F961C1BFEC8A8007F7F4C /* PhotoViewController.m in Sources */,
 				AC0F96171BFEC73E007F7F4C /* YHViewController.m in Sources */,
+				ACCE9C441BFED1E400D29343 /* SMPhotoViewController.m in Sources */,
 				AC0F96031BFEC73E007F7F4C /* YHGooglePlusActivity.m in Sources */,
 				AC0F96091BFEC73E007F7F4C /* YHPushModel.m in Sources */,
 				AC0F96111BFEC73E007F7F4C /* YHTwitterActivity.m in Sources */,
@@ -502,6 +565,7 @@
 			files = (
 				AC0F96001BFEC73E007F7F4C /* YHGoogleLoginViewController.m in Sources */,
 				AC0F96081BFEC73E007F7F4C /* YHNetwork.m in Sources */,
+				ACCE9C451BFED1E400D29343 /* SMPhotoViewController.m in Sources */,
 				AC0F96101BFEC73E007F7F4C /* YHTools.m in Sources */,
 				AC0F95FA1BFEC73E007F7F4C /* ProgressHUD.m in Sources */,
 				AC0F960C1BFEC73E007F7F4C /* YHSnsModel.m in Sources */,
