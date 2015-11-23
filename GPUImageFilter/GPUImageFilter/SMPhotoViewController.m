@@ -94,7 +94,7 @@
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize cellSize = CGSizeMake(50.0f, 50.0f);
+    CGSize cellSize = CGSizeMake(70.0f, 70.0f);
     
     return cellSize;
 }
@@ -110,21 +110,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     
     GPUImageLookupFilter *adf = nil;
     GPUImageRGBFilter *rgbFilter = nil;
+    GPUImageRGBClosingFilter *rgbClosing = nil;
     switch (selectedRow) {
         case 0:
-            
             filter = [[GPUImageGammaFilter alloc] init];
-            
             break;
         case 1:
             filter = [[GPUImageAverageLuminanceThresholdFilter alloc] init];
             break;
         case 2:
-            rgbFilter = [[GPUImageRGBFilter alloc] init];
-            rgbFilter.red = 0.8;
-            rgbFilter.blue = 0.4;
-            rgbFilter.green = 0.4;
-            filter = rgbFilter;
+            [(GPUImageSaturationFilter *)filter setSaturation:0.0f];
             break;
         case 3:
             filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"02"];

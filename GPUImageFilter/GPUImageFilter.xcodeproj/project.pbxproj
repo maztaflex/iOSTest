@@ -51,6 +51,8 @@
 		AC0F96171BFEC73E007F7F4C /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0F95F61BFEC73E007F7F4C /* YHViewController.m */; };
 		AC0F96181BFEC73E007F7F4C /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0F95F61BFEC73E007F7F4C /* YHViewController.m */; };
 		AC0F961C1BFEC8A8007F7F4C /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0F961B1BFEC8A8007F7F4C /* PhotoViewController.m */; };
+		AC9B77981C02A7C400670713 /* Lambeau.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC9B77961C02A7C400670713 /* Lambeau.jpg */; };
+		AC9B77991C02A7C400670713 /* WID-small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC9B77971C02A7C400670713 /* WID-small.jpg */; };
 		ACCE9C441BFED1E400D29343 /* SMPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE9C431BFED1E400D29343 /* SMPhotoViewController.m */; };
 		ACCE9C451BFED1E400D29343 /* SMPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE9C431BFED1E400D29343 /* SMPhotoViewController.m */; };
 		ACCE9C4F1BFF176D00D29343 /* 02.acv in Resources */ = {isa = PBXBuildFile; fileRef = ACCE9C481BFF176D00D29343 /* 02.acv */; };
@@ -145,6 +147,8 @@
 		AC0F96191BFEC78E007F7F4C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		AC0F961A1BFEC8A8007F7F4C /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		AC0F961B1BFEC8A8007F7F4C /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		AC9B77961C02A7C400670713 /* Lambeau.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Lambeau.jpg; sourceTree = "<group>"; };
+		AC9B77971C02A7C400670713 /* WID-small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "WID-small.jpg"; sourceTree = "<group>"; };
 		ACCE9C421BFED1E400D29343 /* SMPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPhotoViewController.h; sourceTree = "<group>"; };
 		ACCE9C431BFED1E400D29343 /* SMPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPhotoViewController.m; sourceTree = "<group>"; };
 		ACCE9C481BFF176D00D29343 /* 02.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = 02.acv; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 		AC0F959C1BFEC632007F7F4C /* GPUImageFilter */ = {
 			isa = PBXGroup;
 			children = (
+				AC9B77951C02A7B800670713 /* Resource */,
 				ACCE9C471BFF176D00D29343 /* Filters */,
 				AC0F961A1BFEC8A8007F7F4C /* PhotoViewController.h */,
 				AC0F961B1BFEC8A8007F7F4C /* PhotoViewController.m */,
@@ -304,6 +309,15 @@
 				AC0F95D41BFEC73E007F7F4C /* ProgressHUD.m */,
 			);
 			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		AC9B77951C02A7B800670713 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				AC9B77961C02A7C400670713 /* Lambeau.jpg */,
+				AC9B77971C02A7C400670713 /* WID-small.jpg */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 		ACCE9C471BFF176D00D29343 /* Filters */ = {
@@ -447,9 +461,11 @@
 				ACCE9C511BFF176D00D29343 /* 06.acv in Resources */,
 				AC0F96011BFEC73E007F7F4C /* YHGoogleLoginViewController.xib in Resources */,
 				ACCE9C571BFF176D00D29343 /* crossprocess.acv in Resources */,
+				AC9B77991C02A7C400670713 /* WID-small.jpg in Resources */,
 				AC0F95F71BFEC73E007F7F4C /* ProgressHUD.bundle in Resources */,
 				AC0F95AD1BFEC632007F7F4C /* LaunchScreen.storyboard in Resources */,
 				ACCE9C5B1BFF176D00D29343 /* yellow-red.acv in Resources */,
+				AC9B77981C02A7C400670713 /* Lambeau.jpg in Resources */,
 				ACCE9C591BFF176D00D29343 /* purple-green.acv in Resources */,
 				AC0F95AA1BFEC632007F7F4C /* Assets.xcassets in Resources */,
 				ACCE9C551BFF176D00D29343 /* aqua.acv in Resources */,
