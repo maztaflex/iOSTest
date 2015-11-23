@@ -43,7 +43,7 @@
     [self.player prepareToPlay];
     self.player.shouldAutoplay = YES;
     
-    // Set player view frame
+    // Set video player view frame
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     [self.player.view setFrame:CGRectMake(0, 0, screenSize.width, screenSize.height)];
     
