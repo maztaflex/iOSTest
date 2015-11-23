@@ -26,7 +26,8 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="3xB-OU-6F0"/>
                                         </constraints>
-                                        <state key="normal" title="Shot">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
+                                        <state key="normal" title="Take Picture">
                                             <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>

@@ -11,12 +11,10 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @interface SMPhotoViewController ()
-{
-    GPUImageOutput<GPUImageInput> *filter, *secondFilter, *terminalFilter;
-}
 
 @property (weak, nonatomic) IBOutlet GPUImageView *gpuImageView;
 
+@property (strong, nonatomic) GPUImageOutput<GPUImageInput> *filter;
 @property (strong, nonatomic) GPUImageStillCamera *stillCamera;
 
 
@@ -36,17 +34,10 @@
     self.stillCamera = [[GPUImageStillCamera alloc] init];
     self.stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     
-//    filter = [[GPUImageGammaFilter alloc] init];
-    
-//    filter = [[GPUImageAlphaBlendFilter alloc] init];
-    
-//    filter = [[GPUImageBulgeDistortionFilter alloc] init];
-    
-    filter = [[GPUImageClosingFilter alloc] init];
-    
-    [self.stillCamera addTarget:filter];
+    self.filter = [[GPUImageFilter alloc] init];
+    [self.stillCamera addTarget:self.filter];
     GPUImageView *filterView = self.gpuImageView;
-    [filter addTarget:filterView];
+    [self.filter addTarget:filterView];
     
     [self.stillCamera startCameraCapture];
 }
@@ -55,7 +46,7 @@
 - (IBAction)touchedShotButton:(id)sender
 {
     
-    [self.stillCamera capturePhotoAsJPEGProcessedUpToFilter:filter withCompletionHandler:^(NSData *processedJPEG, NSError *error){
+    [self.stillCamera capturePhotoAsJPEGProcessedUpToFilter:self.filter withCompletionHandler:^(NSData *processedJPEG, NSError *error){
         UIImage *takenImage = [[UIImage alloc] initWithData:processedJPEG];
         LogGreen(@"image size :%f, %f",takenImage.size.width, takenImage.size.height);
         // Save to assets library
@@ -73,7 +64,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return 25;
+    return 60;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -105,86 +96,43 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     NSInteger selectedRow = indexPath.row;
     
     LogGreen(@"selectedRow : %zd",selectedRow);
-    [filter removeTarget:self.gpuImageView];
-    [self.stillCamera removeTarget:filter];
+    [self.filter removeTarget:self.gpuImageView];
+    [self.stillCamera removeTarget:self.filter];
     
-    GPUImageLookupFilter *adf = nil;
-    GPUImageRGBFilter *rgbFilter = nil;
-    GPUImageRGBClosingFilter *rgbClosing = nil;
-    switch (selectedRow) {
-        case 0:
-            filter = [[GPUImageGammaFilter alloc] init];
-            break;
-        case 1:
-            filter = [[GPUImageAverageLuminanceThresholdFilter alloc] init];
-            break;
-        case 2:
-            [(GPUImageSaturationFilter *)filter setSaturation:0.0f];
-            break;
-        case 3:
-            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"02"];
-            break;
-        case 4:
-            filter = [[GPUImageEmbossFilter alloc] init];
-            break;
-        case 5:
-            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"06"];
-            break;
-        case 6:
-            filter = [[GPUImageLaplacianFilter alloc] init];
-            break;
-        case 7:
-            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"17"];
-            break;
-        case 8:
-            filter = [[GPUImageSepiaFilter alloc] init];
-            break;
-        case 9:
-            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"aqua"];
-            break;
-        case 10:
-            filter = [[GPUImageSketchFilter alloc] init];
-            break;
-        case 11:
-            filter = [[GPUImageSmoothToonFilter alloc] init];
-            break;
-        case 12:
-            filter = [[GPUImageSphereRefractionFilter alloc] init];
-            break;
-        case 13:
-            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"crossprocess"];
-            break;
-        case 14:
-            filter = [[GPUImageSwirlFilter alloc] init];
-            break;
-        case 15:
-            filter = [[GPUImageThresholdSketchFilter alloc] init];
-            break;
-        case 16:
-            filter = [[GPUImageToonFilter alloc] init];
-            break;
-        case 17:
-            filter = [[GPUImageVignetteFilter alloc] init];
-            break;
-        case 18:
-            filter = [[GPUImageSoftEleganceFilter alloc] init];
-            break;
-        case 19:
-            adf = [[GPUImageLookupFilter alloc] init];
-            adf.intensity = 0.5f;
-            filter = adf;
-            break;
-        case 20:
-            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"purple-green"];
-            break;
-        case 21:
-            filter = [[GPUImageToneCurveFilter alloc] initWithACV:@"yellow-red"];
-            break;
-        default:
-            break;
+    NSString *filterName = [NSString stringWithFormat:@"sample_filter_%zd",indexPath.row];
+    
+    LogGreen(@"filterName : %@",filterName);
+    
+    self.filter = [[GPUImageToneCurveFilter alloc] initWithACV:filterName];
+    
+    if (indexPath.row == 55) {
+        GPUImageEmbossFilter *emboss = [[GPUImageEmbossFilter alloc] init];
+        emboss.intensity = 2.0f;
+        self.filter = emboss;
     }
     
-    [self.stillCamera addTarget:filter];
-    [filter addTarget:self.gpuImageView];
+    if (indexPath.row == 56) {
+        GPUImageThresholdSketchFilter *sketcher = [[GPUImageThresholdSketchFilter alloc] init];
+        self.filter = sketcher;
+        
+    }
+    
+    if (indexPath.row == 57) {
+        GPUImageSketchFilter *newFileter = [[GPUImageSketchFilter alloc] init];
+        self.filter = newFileter;
+    }
+    
+    if (indexPath.row == 58) {
+        GPUImageToonFilter *newFilter = [[GPUImageToonFilter alloc] init];
+        self.filter = newFilter;
+    }
+    
+    if (indexPath.row == 59) {
+        GPUImageVignetteFilter *newFilter = [[GPUImageVignetteFilter alloc] init];
+        self.filter = newFilter;
+    }
+    
+    [self.stillCamera addTarget:self.filter];
+    [self.filter addTarget:self.gpuImageView];
 }
 @end
