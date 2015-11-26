@@ -17,6 +17,7 @@
 		AC1FDA1D1C02B55C009A8247 /* VideoPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1FDA1C1C02B55C009A8247 /* VideoPlayerUITests.m */; };
 		AC1FDA2D1C02B5B2009A8247 /* PARTY_Music Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AC1FDA2C1C02B5B2009A8247 /* PARTY_Music Video.mp4 */; };
 		AC1FDA2E1C02B5B2009A8247 /* PARTY_Music Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AC1FDA2C1C02B5B2009A8247 /* PARTY_Music Video.mp4 */; };
+		AC4C56621C03FCA80057699A /* img_001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC4C56611C03FCA80057699A /* img_001.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		AC1FDA1C1C02B55C009A8247 /* VideoPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerUITests.m; sourceTree = "<group>"; };
 		AC1FDA1E1C02B55C009A8247 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1FDA2C1C02B5B2009A8247 /* PARTY_Music Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PARTY_Music Video.mp4"; sourceTree = "<group>"; };
+		AC4C56611C03FCA80057699A /* img_001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_001.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		AC1FDA2A1C02B5B2009A8247 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				AC4C56601C03FCA80057699A /* Images */,
 				AC1FDA2B1C02B5B2009A8247 /* Video */,
 			);
 			path = Resource;
@@ -158,6 +161,14 @@
 				AC1FDA2C1C02B5B2009A8247 /* PARTY_Music Video.mp4 */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		AC4C56601C03FCA80057699A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AC4C56611C03FCA80057699A /* img_001.jpeg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +276,7 @@
 			files = (
 				AC1FDA071C02B55C009A8247 /* LaunchScreen.storyboard in Resources */,
 				AC1FDA041C02B55C009A8247 /* Assets.xcassets in Resources */,
+				AC4C56621C03FCA80057699A /* img_001.jpeg in Resources */,
 				AC1FDA021C02B55C009A8247 /* Main.storyboard in Resources */,
 				AC1FDA2D1C02B5B2009A8247 /* PARTY_Music Video.mp4 in Resources */,
 			);
@@ -522,6 +534,7 @@
 				AC1FDA231C02B55C009A8247 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC1FDA241C02B55C009A8247 /* Build configuration list for PBXNativeTarget "VideoPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +543,7 @@
 				AC1FDA261C02B55C009A8247 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC1FDA271C02B55C009A8247 /* Build configuration list for PBXNativeTarget "VideoPlayerUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +552,7 @@
 				AC1FDA291C02B55C009A8247 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

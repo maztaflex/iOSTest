@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  VideoPlayer
+//  ZFDragableModal
 //
-//  Created by DEV_TEAM1_IOS on 2015. 11. 23..
+//  Created by DEV_TEAM1_IOS on 2015. 11. 24..
 //  Copyright © 2015년 DEV_TEAM1_IOS. All rights reserved.
 //
 
@@ -16,7 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    // Override point for customization after application launch.
     return YES;
 }
 

@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A8DA1F17AAA389F9908CD5A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45B6B94ECE580ACE75EC0FDE /* libPods.a */; };
+		AC70B3D11C045FB0002EFECC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC70B3D01C045FB0002EFECC /* main.m */; };
+		AC70B3D41C045FB0002EFECC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC70B3D31C045FB0002EFECC /* AppDelegate.m */; };
+		AC70B3D71C045FB0002EFECC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC70B3D61C045FB0002EFECC /* ViewController.m */; };
+		AC70B3DA1C045FB0002EFECC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC70B3D81C045FB0002EFECC /* Main.storyboard */; };
+		AC70B3DC1C045FB0002EFECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC70B3DB1C045FB0002EFECC /* Assets.xcassets */; };
+		AC70B3DF1C045FB0002EFECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC70B3DD1C045FB0002EFECC /* LaunchScreen.storyboard */; };
+		AC70B3EA1C045FB1002EFECC /* ZFDragableModalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC70B3E91C045FB1002EFECC /* ZFDragableModalTests.m */; };
+		AC70B3F51C045FB1002EFECC /* ZFDragableModalUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC70B3F41C045FB1002EFECC /* ZFDragableModalUITests.m */; };
+		AC70B4041C04602C002EFECC /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC70B4031C04602C002EFECC /* ModalViewController.m */; };
+		AC70B4051C04602C002EFECC /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC70B4031C04602C002EFECC /* ModalViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC70B3E61C045FB1002EFECC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC70B3C41C045FB0002EFECC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC70B3CB1C045FB0002EFECC;
+			remoteInfo = ZFDragableModal;
+		};
+		AC70B3F11C045FB1002EFECC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC70B3C41C045FB0002EFECC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC70B3CB1C045FB0002EFECC;
+			remoteInfo = ZFDragableModal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		45B6B94ECE580ACE75EC0FDE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		773032A5A1620FDDEAF9099F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		AC70B3CC1C045FB0002EFECC /* ZFDragableModal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZFDragableModal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC70B3D01C045FB0002EFECC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC70B3D21C045FB0002EFECC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AC70B3D31C045FB0002EFECC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AC70B3D51C045FB0002EFECC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AC70B3D61C045FB0002EFECC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AC70B3D91C045FB0002EFECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC70B3DB1C045FB0002EFECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC70B3DE1C045FB0002EFECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC70B3E01C045FB0002EFECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC70B3E51C045FB1002EFECC /* ZFDragableModalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZFDragableModalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC70B3E91C045FB1002EFECC /* ZFDragableModalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFDragableModalTests.m; sourceTree = "<group>"; };
+		AC70B3EB1C045FB1002EFECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC70B3F01C045FB1002EFECC /* ZFDragableModalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZFDragableModalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC70B3F41C045FB1002EFECC /* ZFDragableModalUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFDragableModalUITests.m; sourceTree = "<group>"; };
+		AC70B3F61C045FB1002EFECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC70B4021C04602C002EFECC /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
+		AC70B4031C04602C002EFECC /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
+		FBD6EED8BFA05B9A08C3D38C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC70B3C91C045FB0002EFECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A8DA1F17AAA389F9908CD5A /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC70B3E21C045FB1002EFECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC70B3ED1C045FB1002EFECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		11FD2A85B36743A166AB11FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45B6B94ECE580ACE75EC0FDE /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2001E9130148BB775012CFD2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBD6EED8BFA05B9A08C3D38C /* Pods.debug.xcconfig */,
+				773032A5A1620FDDEAF9099F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC70B3C31C045FB0002EFECC = {
+			isa = PBXGroup;
+			children = (
+				AC70B3CE1C045FB0002EFECC /* ZFDragableModal */,
+				AC70B3E81C045FB1002EFECC /* ZFDragableModalTests */,
+				AC70B3F31C045FB1002EFECC /* ZFDragableModalUITests */,
+				AC70B3CD1C045FB0002EFECC /* Products */,
+				2001E9130148BB775012CFD2 /* Pods */,
+				11FD2A85B36743A166AB11FD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AC70B3CD1C045FB0002EFECC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC70B3CC1C045FB0002EFECC /* ZFDragableModal.app */,
+				AC70B3E51C045FB1002EFECC /* ZFDragableModalTests.xctest */,
+				AC70B3F01C045FB1002EFECC /* ZFDragableModalUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC70B3CE1C045FB0002EFECC /* ZFDragableModal */ = {
+			isa = PBXGroup;
+			children = (
+				AC70B3D21C045FB0002EFECC /* AppDelegate.h */,
+				AC70B3D31C045FB0002EFECC /* AppDelegate.m */,
+				AC70B3D51C045FB0002EFECC /* ViewController.h */,
+				AC70B3D61C045FB0002EFECC /* ViewController.m */,
+				AC70B4021C04602C002EFECC /* ModalViewController.h */,
+				AC70B4031C04602C002EFECC /* ModalViewController.m */,
+				AC70B3D81C045FB0002EFECC /* Main.storyboard */,
+				AC70B3DB1C045FB0002EFECC /* Assets.xcassets */,
+				AC70B3DD1C045FB0002EFECC /* LaunchScreen.storyboard */,
+				AC70B3E01C045FB0002EFECC /* Info.plist */,
+				AC70B3CF1C045FB0002EFECC /* Supporting Files */,
+			);
+			path = ZFDragableModal;
+			sourceTree = "<group>";
+		};
+		AC70B3CF1C045FB0002EFECC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AC70B3D01C045FB0002EFECC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AC70B3E81C045FB1002EFECC /* ZFDragableModalTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC70B3E91C045FB1002EFECC /* ZFDragableModalTests.m */,
+				AC70B3EB1C045FB1002EFECC /* Info.plist */,
+			);
+			path = ZFDragableModalTests;
+			sourceTree = "<group>";
+		};
+		AC70B3F31C045FB1002EFECC /* ZFDragableModalUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC70B3F41C045FB1002EFECC /* ZFDragableModalUITests.m */,
+				AC70B3F61C045FB1002EFECC /* Info.plist */,
+			);
+			path = ZFDragableModalUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC70B3CB1C045FB0002EFECC /* ZFDragableModal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC70B3F91C045FB1002EFECC /* Build configuration list for PBXNativeTarget "ZFDragableModal" */;
+			buildPhases = (
+				28022B246D0DA9075FA031C4 /* Check Pods Manifest.lock */,
+				AC70B3C81C045FB0002EFECC /* Sources */,
+				AC70B3C91C045FB0002EFECC /* Frameworks */,
+				AC70B3CA1C045FB0002EFECC /* Resources */,
+				D93D31B7BDD1F5677D6D7E96 /* Embed Pods Frameworks */,
+				980E4DC2CC42DC76AE0F2FC3 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZFDragableModal;
+			productName = ZFDragableModal;
+			productReference = AC70B3CC1C045FB0002EFECC /* ZFDragableModal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC70B3E41C045FB1002EFECC /* ZFDragableModalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC70B3FC1C045FB1002EFECC /* Build configuration list for PBXNativeTarget "ZFDragableModalTests" */;
+			buildPhases = (
+				AC70B3E11C045FB1002EFECC /* Sources */,
+				AC70B3E21C045FB1002EFECC /* Frameworks */,
+				AC70B3E31C045FB1002EFECC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC70B3E71C045FB1002EFECC /* PBXTargetDependency */,
+			);
+			name = ZFDragableModalTests;
+			productName = ZFDragableModalTests;
+			productReference = AC70B3E51C045FB1002EFECC /* ZFDragableModalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC70B3EF1C045FB1002EFECC /* ZFDragableModalUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC70B3FF1C045FB1002EFECC /* Build configuration list for PBXNativeTarget "ZFDragableModalUITests" */;
+			buildPhases = (
+				AC70B3EC1C045FB1002EFECC /* Sources */,
+				AC70B3ED1C045FB1002EFECC /* Frameworks */,
+				AC70B3EE1C045FB1002EFECC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC70B3F21C045FB1002EFECC /* PBXTargetDependency */,
+			);
+			name = ZFDragableModalUITests;
+			productName = ZFDragableModalUITests;
+			productReference = AC70B3F01C045FB1002EFECC /* ZFDragableModalUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC70B3C41C045FB0002EFECC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = DEV_TEAM1_IOS;
+				TargetAttributes = {
+					AC70B3CB1C045FB0002EFECC = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					AC70B3E41C045FB1002EFECC = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = AC70B3CB1C045FB0002EFECC;
+					};
+					AC70B3EF1C045FB1002EFECC = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = AC70B3CB1C045FB0002EFECC;
+					};
+				};
+			};
+			buildConfigurationList = AC70B3C71C045FB0002EFECC /* Build configuration list for PBXProject "ZFDragableModal" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC70B3C31C045FB0002EFECC;
+			productRefGroup = AC70B3CD1C045FB0002EFECC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC70B3CB1C045FB0002EFECC /* ZFDragableModal */,
+				AC70B3E41C045FB1002EFECC /* ZFDragableModalTests */,
+				AC70B3EF1C045FB1002EFECC /* ZFDragableModalUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC70B3CA1C045FB0002EFECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC70B3DF1C045FB0002EFECC /* LaunchScreen.storyboard in Resources */,
+				AC70B3DC1C045FB0002EFECC /* Assets.xcassets in Resources */,
+				AC70B3DA1C045FB0002EFECC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC70B3E31C045FB1002EFECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC70B3EE1C045FB1002EFECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28022B246D0DA9075FA031C4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		980E4DC2CC42DC76AE0F2FC3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D93D31B7BDD1F5677D6D7E96 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC70B3C81C045FB0002EFECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC70B4041C04602C002EFECC /* ModalViewController.m in Sources */,
+				AC70B3D71C045FB0002EFECC /* ViewController.m in Sources */,
+				AC70B3D41C045FB0002EFECC /* AppDelegate.m in Sources */,
+				AC70B3D11C045FB0002EFECC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC70B3E11C045FB1002EFECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC70B4051C04602C002EFECC /* ModalViewController.m in Sources */,
+				AC70B3EA1C045FB1002EFECC /* ZFDragableModalTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC70B3EC1C045FB1002EFECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC70B3F51C045FB1002EFECC /* ZFDragableModalUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC70B3E71C045FB1002EFECC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC70B3CB1C045FB0002EFECC /* ZFDragableModal */;
+			targetProxy = AC70B3E61C045FB1002EFECC /* PBXContainerItemProxy */;
+		};
+		AC70B3F21C045FB1002EFECC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC70B3CB1C045FB0002EFECC /* ZFDragableModal */;
+			targetProxy = AC70B3F11C045FB1002EFECC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC70B3D81C045FB0002EFECC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC70B3D91C045FB0002EFECC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC70B3DD1C045FB0002EFECC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC70B3DE1C045FB0002EFECC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC70B3F71C045FB1002EFECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AC70B3F81C045FB1002EFECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC70B3FA1C045FB1002EFECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBD6EED8BFA05B9A08C3D38C /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ZFDragableModal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.ZFDragableModal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AC70B3FB1C045FB1002EFECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 773032A5A1620FDDEAF9099F /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ZFDragableModal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.ZFDragableModal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AC70B3FD1C045FB1002EFECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ZFDragableModalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.ZFDragableModalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZFDragableModal.app/ZFDragableModal";
+			};
+			name = Debug;
+		};
+		AC70B3FE1C045FB1002EFECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ZFDragableModalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.ZFDragableModalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZFDragableModal.app/ZFDragableModal";
+			};
+			name = Release;
+		};
+		AC70B4001C045FB1002EFECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ZFDragableModalUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.ZFDragableModalUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ZFDragableModal;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		AC70B4011C045FB1002EFECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ZFDragableModalUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.ZFDragableModalUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ZFDragableModal;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC70B3C71C045FB0002EFECC /* Build configuration list for PBXProject "ZFDragableModal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC70B3F71C045FB1002EFECC /* Debug */,
+				AC70B3F81C045FB1002EFECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC70B3F91C045FB1002EFECC /* Build configuration list for PBXNativeTarget "ZFDragableModal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC70B3FA1C045FB1002EFECC /* Debug */,
+				AC70B3FB1C045FB1002EFECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC70B3FC1C045FB1002EFECC /* Build configuration list for PBXNativeTarget "ZFDragableModalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC70B3FD1C045FB1002EFECC /* Debug */,
+				AC70B3FE1C045FB1002EFECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC70B3FF1C045FB1002EFECC /* Build configuration list for PBXNativeTarget "ZFDragableModalUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC70B4001C045FB1002EFECC /* Debug */,
+				AC70B4011C045FB1002EFECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC70B3C41C045FB0002EFECC /* Project object */;
+}
