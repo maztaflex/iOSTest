@@ -13,6 +13,8 @@
 @import AVFoundation;
 
 #define DEFAULT_VOLUME_VALUE                    0.062500f  // Default Value of System Volume
+#define DEFAULT_CONTAINER_WIDTH                 [UIScreen mainScreen].bounds.size.width
+#define DEFAULT_CONTAINER_HEIGHT                18.0f
 #define DEFAULT_CELL_HSPACE                     1.0f
 #define DEFAULT_CELL_VSPACE                     1.0f
 #define DEFAULT_INDICATOR_COUNT                 8
@@ -21,6 +23,7 @@
 
 // IBOutlet
 @property (weak, nonatomic) IBOutlet UIView *volumeContainer;
+@property (weak, nonatomic) IBOutlet UIImageView *ivOpaqueBackground;
 @property (weak, nonatomic) IBOutlet UICollectionView *volumeIndicatorList;
 
 // Object Instance
@@ -38,10 +41,15 @@
 
 @implementation YHVolumeViewController
 
+- (instancetype)init
+{
+    self.viewRect = CGRectMake(0.0f, 0.0f, DEFAULT_CONTAINER_WIDTH, DEFAULT_CONTAINER_HEIGHT);
+    
+    return [self initWithFrame:self.viewRect];
+}
+
 - (instancetype)initWithFrame:(CGRect)rect
 {
-    
-    
     [self setDefaultWithRect:rect];
     
     return [self initWithNibName:@"YHVolumeViewController" bundle:nil];
@@ -67,7 +75,7 @@
     [self.audioSession setActive:YES error:nil];
     [self.audioSession addObserver:self
                         forKeyPath:@"outputVolume"
-                           options:0
+                           options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                            context:nil];
     
     // 임시 볼륨뷰 서브뷰 등록
@@ -83,15 +91,25 @@
     self.cellHeight = rect.size.height - (DEFAULT_CELL_VSPACE * 2);
     self.hCellSpace = DEFAULT_CELL_HSPACE;
     self.vCellSpace = DEFAULT_CELL_VSPACE;
+    self.ivOpaqueBackground.backgroundColor = [UIColor blackColor];
+    self.ivOpaqueBackground.alpha = 0.5f;
+    self.indicatorColor = [UIColor whiteColor];
+}
+
+- (void)setOpaqueBgColor:(UIColor *)opaqueBgColor
+{
+    self.ivOpaqueBackground.backgroundColor = opaqueBgColor;
+}
+
+- (void)setOpaqueBgAlpha:(CGFloat)opaqueBgAlpha
+{
+    self.ivOpaqueBackground.alpha = opaqueBgAlpha;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    
+    NSLog(@"change : %@",change);
     float vol = self.audioSession.outputVolume;
-    
     self.volumeIndex = vol / DEFAULT_VOLUME_VALUE;
-    
-    NSLog(@"volumeIndex : %zd",self.volumeIndex);
     
     if ([keyPath isEqual:@"outputVolume"]) {
         
@@ -126,7 +144,7 @@
     NSInteger row = indexPath.row;
     
     YHVolumeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    
+    cell.ivVolumeIndicator.backgroundColor = self.indicatorColor;
     NSInteger newVol = self.volumeIndex - 1;
     
     if (newVol < 0) {

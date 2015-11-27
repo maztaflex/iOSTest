@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YHVolumeViewController">
             <connections>
+                <outlet property="ivOpaqueBackground" destination="gL2-Hp-zB4" id="s2k-sP-8Es"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="volumeContainer" destination="PAX-ih-hMs" id="lCf-Yu-aAi"/>
                 <outlet property="volumeIndicatorList" destination="duS-DX-nZt" id="pU9-2k-TPm"/>

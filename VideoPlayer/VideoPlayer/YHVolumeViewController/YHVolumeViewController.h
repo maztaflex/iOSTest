@@ -10,6 +10,12 @@
 
 @interface YHVolumeViewController : UIViewController
 
+@property (strong, nonatomic) UIColor *opaqueBgColor;
+
+@property (assign, nonatomic) CGFloat opaqueBgAlpha;
+
+@property (strong, nonatomic) UIColor *indicatorColor;
+
 - (instancetype)initWithFrame:(CGRect)rect;
 
 @end
