@@ -59,7 +59,8 @@
     
     // 시스템 볼륨 HUD를 숨기기 위한 임시 볼륨뷰 등록 ( 해당 서브뷰가 없을 경우 시스템 볼륨 HUD 노출됨)
     self.audioSession = [AVAudioSession sharedInstance];
-    [self.audioSession setActive:NO error:nil];
+    NSLog(@"self.audioSession : %@",self.audioSession);
+    [self.audioSession setActive:YES error:nil];
     [self.audioSession addObserver:self
                         forKeyPath:@"outputVolume"
                            options:0

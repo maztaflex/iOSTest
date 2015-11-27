@@ -17,6 +17,16 @@
 		AC1FDA1D1C02B55C009A8247 /* VideoPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1FDA1C1C02B55C009A8247 /* VideoPlayerUITests.m */; };
 		AC1FDA2D1C02B5B2009A8247 /* PARTY_Music Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AC1FDA2C1C02B5B2009A8247 /* PARTY_Music Video.mp4 */; };
 		AC1FDA2E1C02B5B2009A8247 /* PARTY_Music Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AC1FDA2C1C02B5B2009A8247 /* PARTY_Music Video.mp4 */; };
+		AC36F9341C083C0100020134 /* YHVolumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC36F9321C083C0100020134 /* YHVolumeViewController.m */; };
+		AC36F9351C083C0100020134 /* YHVolumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC36F9321C083C0100020134 /* YHVolumeViewController.m */; };
+		AC36F9361C083C0100020134 /* YHVolumeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC36F9331C083C0100020134 /* YHVolumeViewController.xib */; };
+		AC36F9371C083C0100020134 /* YHVolumeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC36F9331C083C0100020134 /* YHVolumeViewController.xib */; };
+		AC36F93A1C0848FB00020134 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC36F9391C0848FB00020134 /* SecondViewController.m */; };
+		AC36F93B1C0848FB00020134 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC36F9391C0848FB00020134 /* SecondViewController.m */; };
+		AC36F93F1C084F6100020134 /* YHVolumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC36F93D1C084F6100020134 /* YHVolumeCell.m */; };
+		AC36F9401C084F6100020134 /* YHVolumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC36F93D1C084F6100020134 /* YHVolumeCell.m */; };
+		AC36F9411C084F6100020134 /* YHVolumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC36F93E1C084F6100020134 /* YHVolumeCell.xib */; };
+		AC36F9421C084F6100020134 /* YHVolumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC36F93E1C084F6100020134 /* YHVolumeCell.xib */; };
 		AC4C56621C03FCA80057699A /* img_001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC4C56611C03FCA80057699A /* img_001.jpeg */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +65,14 @@
 		AC1FDA1C1C02B55C009A8247 /* VideoPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerUITests.m; sourceTree = "<group>"; };
 		AC1FDA1E1C02B55C009A8247 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1FDA2C1C02B5B2009A8247 /* PARTY_Music Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PARTY_Music Video.mp4"; sourceTree = "<group>"; };
+		AC36F9311C083C0100020134 /* YHVolumeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHVolumeViewController.h; sourceTree = "<group>"; };
+		AC36F9321C083C0100020134 /* YHVolumeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHVolumeViewController.m; sourceTree = "<group>"; };
+		AC36F9331C083C0100020134 /* YHVolumeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHVolumeViewController.xib; sourceTree = "<group>"; };
+		AC36F9381C0848FB00020134 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		AC36F9391C0848FB00020134 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		AC36F93C1C084F6100020134 /* YHVolumeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHVolumeCell.h; sourceTree = "<group>"; };
+		AC36F93D1C084F6100020134 /* YHVolumeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHVolumeCell.m; sourceTree = "<group>"; };
+		AC36F93E1C084F6100020134 /* YHVolumeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHVolumeCell.xib; sourceTree = "<group>"; };
 		AC4C56611C03FCA80057699A /* img_001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_001.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,11 +124,14 @@
 		AC1FD9F61C02B55C009A8247 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				AC36F9301C083BF000020134 /* YHVolumeViewController */,
 				AC1FDA2A1C02B5B2009A8247 /* Resource */,
 				AC1FD9FA1C02B55C009A8247 /* AppDelegate.h */,
 				AC1FD9FB1C02B55C009A8247 /* AppDelegate.m */,
 				AC1FD9FD1C02B55C009A8247 /* ViewController.h */,
 				AC1FD9FE1C02B55C009A8247 /* ViewController.m */,
+				AC36F9381C0848FB00020134 /* SecondViewController.h */,
+				AC36F9391C0848FB00020134 /* SecondViewController.m */,
 				AC1FDA001C02B55C009A8247 /* Main.storyboard */,
 				AC1FDA031C02B55C009A8247 /* Assets.xcassets */,
 				AC1FDA051C02B55C009A8247 /* LaunchScreen.storyboard */,
@@ -161,6 +182,19 @@
 				AC1FDA2C1C02B5B2009A8247 /* PARTY_Music Video.mp4 */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		AC36F9301C083BF000020134 /* YHVolumeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AC36F9311C083C0100020134 /* YHVolumeViewController.h */,
+				AC36F9321C083C0100020134 /* YHVolumeViewController.m */,
+				AC36F9331C083C0100020134 /* YHVolumeViewController.xib */,
+				AC36F93C1C084F6100020134 /* YHVolumeCell.h */,
+				AC36F93D1C084F6100020134 /* YHVolumeCell.m */,
+				AC36F93E1C084F6100020134 /* YHVolumeCell.xib */,
+			);
+			path = YHVolumeViewController;
 			sourceTree = "<group>";
 		};
 		AC4C56601C03FCA80057699A /* Images */ = {
@@ -275,8 +309,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC1FDA071C02B55C009A8247 /* LaunchScreen.storyboard in Resources */,
+				AC36F9411C084F6100020134 /* YHVolumeCell.xib in Resources */,
 				AC1FDA041C02B55C009A8247 /* Assets.xcassets in Resources */,
 				AC4C56621C03FCA80057699A /* img_001.jpeg in Resources */,
+				AC36F9361C083C0100020134 /* YHVolumeViewController.xib in Resources */,
 				AC1FDA021C02B55C009A8247 /* Main.storyboard in Resources */,
 				AC1FDA2D1C02B5B2009A8247 /* PARTY_Music Video.mp4 in Resources */,
 			);
@@ -286,7 +322,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC36F9421C084F6100020134 /* YHVolumeCell.xib in Resources */,
 				AC1FDA2E1C02B5B2009A8247 /* PARTY_Music Video.mp4 in Resources */,
+				AC36F9371C083C0100020134 /* YHVolumeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,9 +342,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC36F93A1C0848FB00020134 /* SecondViewController.m in Sources */,
 				AC1FD9FF1C02B55C009A8247 /* ViewController.m in Sources */,
+				AC36F93F1C084F6100020134 /* YHVolumeCell.m in Sources */,
 				AC1FD9FC1C02B55C009A8247 /* AppDelegate.m in Sources */,
 				AC1FD9F91C02B55C009A8247 /* main.m in Sources */,
+				AC36F9341C083C0100020134 /* YHVolumeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +355,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC36F93B1C0848FB00020134 /* SecondViewController.m in Sources */,
 				AC1FDA121C02B55C009A8247 /* VideoPlayerTests.m in Sources */,
+				AC36F9401C084F6100020134 /* YHVolumeCell.m in Sources */,
+				AC36F9351C083C0100020134 /* YHVolumeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
