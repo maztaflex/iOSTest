@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC2EC4C51C07E19E00A247FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2EC4C41C07E19E00A247FA /* main.m */; };
+		AC2EC4C81C07E19E00A247FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2EC4C71C07E19E00A247FA /* AppDelegate.m */; };
+		AC2EC4CB1C07E19E00A247FA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2EC4CA1C07E19E00A247FA /* ViewController.m */; };
+		AC2EC4CE1C07E19E00A247FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2EC4CC1C07E19E00A247FA /* Main.storyboard */; };
+		AC2EC4D01C07E19E00A247FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC2EC4CF1C07E19E00A247FA /* Assets.xcassets */; };
+		AC2EC4D31C07E19E00A247FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2EC4D11C07E19E00A247FA /* LaunchScreen.storyboard */; };
+		AC2EC4DE1C07E19E00A247FA /* GoogleAnalyticsDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2EC4DD1C07E19E00A247FA /* GoogleAnalyticsDemoTests.m */; };
+		AC2EC4E91C07E19E00A247FA /* GoogleAnalyticsDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2EC4E81C07E19E00A247FA /* GoogleAnalyticsDemoUITests.m */; };
+		BAA1C17BFF24895D2D610948 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25C1EA4E8E1A30AB37BD739 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC2EC4DA1C07E19E00A247FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC2EC4B81C07E19E00A247FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC2EC4BF1C07E19E00A247FA;
+			remoteInfo = GoogleAnalyticsDemo;
+		};
+		AC2EC4E51C07E19E00A247FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC2EC4B81C07E19E00A247FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC2EC4BF1C07E19E00A247FA;
+			remoteInfo = GoogleAnalyticsDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9B476A2ECDC00A2345131087 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		AC2EC4C01C07E19E00A247FA /* GoogleAnalyticsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleAnalyticsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC2EC4C41C07E19E00A247FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC2EC4C61C07E19E00A247FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AC2EC4C71C07E19E00A247FA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AC2EC4C91C07E19E00A247FA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AC2EC4CA1C07E19E00A247FA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AC2EC4CD1C07E19E00A247FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC2EC4CF1C07E19E00A247FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC2EC4D21C07E19E00A247FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC2EC4D41C07E19E00A247FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC2EC4D91C07E19E00A247FA /* GoogleAnalyticsDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleAnalyticsDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC2EC4DD1C07E19E00A247FA /* GoogleAnalyticsDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsDemoTests.m; sourceTree = "<group>"; };
+		AC2EC4DF1C07E19E00A247FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC2EC4E41C07E19E00A247FA /* GoogleAnalyticsDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleAnalyticsDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC2EC4E81C07E19E00A247FA /* GoogleAnalyticsDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsDemoUITests.m; sourceTree = "<group>"; };
+		AC2EC4EA1C07E19E00A247FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B30380F8DDE3FC07CCCBFF68 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E25C1EA4E8E1A30AB37BD739 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC2EC4BD1C07E19E00A247FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAA1C17BFF24895D2D610948 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2EC4D61C07E19E00A247FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2EC4E11C07E19E00A247FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		028F6CC9D706F11C5EA0613C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E25C1EA4E8E1A30AB37BD739 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B6C754775451748F93E40F3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9B476A2ECDC00A2345131087 /* Pods.debug.xcconfig */,
+				B30380F8DDE3FC07CCCBFF68 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC2EC4B71C07E19E00A247FA = {
+			isa = PBXGroup;
+			children = (
+				AC2EC4C21C07E19E00A247FA /* GoogleAnalyticsDemo */,
+				AC2EC4DC1C07E19E00A247FA /* GoogleAnalyticsDemoTests */,
+				AC2EC4E71C07E19E00A247FA /* GoogleAnalyticsDemoUITests */,
+				AC2EC4C11C07E19E00A247FA /* Products */,
+				3B6C754775451748F93E40F3 /* Pods */,
+				028F6CC9D706F11C5EA0613C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AC2EC4C11C07E19E00A247FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC2EC4C01C07E19E00A247FA /* GoogleAnalyticsDemo.app */,
+				AC2EC4D91C07E19E00A247FA /* GoogleAnalyticsDemoTests.xctest */,
+				AC2EC4E41C07E19E00A247FA /* GoogleAnalyticsDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC2EC4C21C07E19E00A247FA /* GoogleAnalyticsDemo */ = {
+			isa = PBXGroup;
+			children = (
+				AC2EC4C61C07E19E00A247FA /* AppDelegate.h */,
+				AC2EC4C71C07E19E00A247FA /* AppDelegate.m */,
+				AC2EC4C91C07E19E00A247FA /* ViewController.h */,
+				AC2EC4CA1C07E19E00A247FA /* ViewController.m */,
+				AC2EC4CC1C07E19E00A247FA /* Main.storyboard */,
+				AC2EC4CF1C07E19E00A247FA /* Assets.xcassets */,
+				AC2EC4D11C07E19E00A247FA /* LaunchScreen.storyboard */,
+				AC2EC4D41C07E19E00A247FA /* Info.plist */,
+				AC2EC4C31C07E19E00A247FA /* Supporting Files */,
+			);
+			path = GoogleAnalyticsDemo;
+			sourceTree = "<group>";
+		};
+		AC2EC4C31C07E19E00A247FA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AC2EC4C41C07E19E00A247FA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AC2EC4DC1C07E19E00A247FA /* GoogleAnalyticsDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC2EC4DD1C07E19E00A247FA /* GoogleAnalyticsDemoTests.m */,
+				AC2EC4DF1C07E19E00A247FA /* Info.plist */,
+			);
+			path = GoogleAnalyticsDemoTests;
+			sourceTree = "<group>";
+		};
+		AC2EC4E71C07E19E00A247FA /* GoogleAnalyticsDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC2EC4E81C07E19E00A247FA /* GoogleAnalyticsDemoUITests.m */,
+				AC2EC4EA1C07E19E00A247FA /* Info.plist */,
+			);
+			path = GoogleAnalyticsDemoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC2EC4BF1C07E19E00A247FA /* GoogleAnalyticsDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC2EC4ED1C07E19E00A247FA /* Build configuration list for PBXNativeTarget "GoogleAnalyticsDemo" */;
+			buildPhases = (
+				C13A4592F24BEBDF97B43349 /* Check Pods Manifest.lock */,
+				AC2EC4BC1C07E19E00A247FA /* Sources */,
+				AC2EC4BD1C07E19E00A247FA /* Frameworks */,
+				AC2EC4BE1C07E19E00A247FA /* Resources */,
+				260F730EBE47557B0C06FFE8 /* Embed Pods Frameworks */,
+				056CE667916DFA1F9C59ED56 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoogleAnalyticsDemo;
+			productName = GoogleAnalyticsDemo;
+			productReference = AC2EC4C01C07E19E00A247FA /* GoogleAnalyticsDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC2EC4D81C07E19E00A247FA /* GoogleAnalyticsDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC2EC4F01C07E19E00A247FA /* Build configuration list for PBXNativeTarget "GoogleAnalyticsDemoTests" */;
+			buildPhases = (
+				AC2EC4D51C07E19E00A247FA /* Sources */,
+				AC2EC4D61C07E19E00A247FA /* Frameworks */,
+				AC2EC4D71C07E19E00A247FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC2EC4DB1C07E19E00A247FA /* PBXTargetDependency */,
+			);
+			name = GoogleAnalyticsDemoTests;
+			productName = GoogleAnalyticsDemoTests;
+			productReference = AC2EC4D91C07E19E00A247FA /* GoogleAnalyticsDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC2EC4E31C07E19E00A247FA /* GoogleAnalyticsDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC2EC4F31C07E19E00A247FA /* Build configuration list for PBXNativeTarget "GoogleAnalyticsDemoUITests" */;
+			buildPhases = (
+				AC2EC4E01C07E19E00A247FA /* Sources */,
+				AC2EC4E11C07E19E00A247FA /* Frameworks */,
+				AC2EC4E21C07E19E00A247FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC2EC4E61C07E19E00A247FA /* PBXTargetDependency */,
+			);
+			name = GoogleAnalyticsDemoUITests;
+			productName = GoogleAnalyticsDemoUITests;
+			productReference = AC2EC4E41C07E19E00A247FA /* GoogleAnalyticsDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC2EC4B81C07E19E00A247FA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = DEV_TEAM1_IOS;
+				TargetAttributes = {
+					AC2EC4BF1C07E19E00A247FA = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					AC2EC4D81C07E19E00A247FA = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = AC2EC4BF1C07E19E00A247FA;
+					};
+					AC2EC4E31C07E19E00A247FA = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = AC2EC4BF1C07E19E00A247FA;
+					};
+				};
+			};
+			buildConfigurationList = AC2EC4BB1C07E19E00A247FA /* Build configuration list for PBXProject "GoogleAnalyticsDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC2EC4B71C07E19E00A247FA;
+			productRefGroup = AC2EC4C11C07E19E00A247FA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC2EC4BF1C07E19E00A247FA /* GoogleAnalyticsDemo */,
+				AC2EC4D81C07E19E00A247FA /* GoogleAnalyticsDemoTests */,
+				AC2EC4E31C07E19E00A247FA /* GoogleAnalyticsDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC2EC4BE1C07E19E00A247FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC2EC4D31C07E19E00A247FA /* LaunchScreen.storyboard in Resources */,
+				AC2EC4D01C07E19E00A247FA /* Assets.xcassets in Resources */,
+				AC2EC4CE1C07E19E00A247FA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2EC4D71C07E19E00A247FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2EC4E21C07E19E00A247FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		056CE667916DFA1F9C59ED56 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		260F730EBE47557B0C06FFE8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C13A4592F24BEBDF97B43349 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC2EC4BC1C07E19E00A247FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC2EC4CB1C07E19E00A247FA /* ViewController.m in Sources */,
+				AC2EC4C81C07E19E00A247FA /* AppDelegate.m in Sources */,
+				AC2EC4C51C07E19E00A247FA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2EC4D51C07E19E00A247FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC2EC4DE1C07E19E00A247FA /* GoogleAnalyticsDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC2EC4E01C07E19E00A247FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC2EC4E91C07E19E00A247FA /* GoogleAnalyticsDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC2EC4DB1C07E19E00A247FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC2EC4BF1C07E19E00A247FA /* GoogleAnalyticsDemo */;
+			targetProxy = AC2EC4DA1C07E19E00A247FA /* PBXContainerItemProxy */;
+		};
+		AC2EC4E61C07E19E00A247FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC2EC4BF1C07E19E00A247FA /* GoogleAnalyticsDemo */;
+			targetProxy = AC2EC4E51C07E19E00A247FA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC2EC4CC1C07E19E00A247FA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC2EC4CD1C07E19E00A247FA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC2EC4D11C07E19E00A247FA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC2EC4D21C07E19E00A247FA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC2EC4EB1C07E19E00A247FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AC2EC4EC1C07E19E00A247FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC2EC4EE1C07E19E00A247FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B476A2ECDC00A2345131087 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GoogleAnalyticsDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.GoogleAnalyticsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AC2EC4EF1C07E19E00A247FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B30380F8DDE3FC07CCCBFF68 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GoogleAnalyticsDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.GoogleAnalyticsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AC2EC4F11C07E19E00A247FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GoogleAnalyticsDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.GoogleAnalyticsDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoogleAnalyticsDemo.app/GoogleAnalyticsDemo";
+			};
+			name = Debug;
+		};
+		AC2EC4F21C07E19E00A247FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GoogleAnalyticsDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.GoogleAnalyticsDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoogleAnalyticsDemo.app/GoogleAnalyticsDemo";
+			};
+			name = Release;
+		};
+		AC2EC4F41C07E19E00A247FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GoogleAnalyticsDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.GoogleAnalyticsDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GoogleAnalyticsDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		AC2EC4F51C07E19E00A247FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GoogleAnalyticsDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smtown.GoogleAnalyticsDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GoogleAnalyticsDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC2EC4BB1C07E19E00A247FA /* Build configuration list for PBXProject "GoogleAnalyticsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC2EC4EB1C07E19E00A247FA /* Debug */,
+				AC2EC4EC1C07E19E00A247FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC2EC4ED1C07E19E00A247FA /* Build configuration list for PBXNativeTarget "GoogleAnalyticsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC2EC4EE1C07E19E00A247FA /* Debug */,
+				AC2EC4EF1C07E19E00A247FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC2EC4F01C07E19E00A247FA /* Build configuration list for PBXNativeTarget "GoogleAnalyticsDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC2EC4F11C07E19E00A247FA /* Debug */,
+				AC2EC4F21C07E19E00A247FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC2EC4F31C07E19E00A247FA /* Build configuration list for PBXNativeTarget "GoogleAnalyticsDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC2EC4F41C07E19E00A247FA /* Debug */,
+				AC2EC4F51C07E19E00A247FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC2EC4B81C07E19E00A247FA /* Project object */;
+}

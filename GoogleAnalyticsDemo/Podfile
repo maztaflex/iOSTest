@@ -1,0 +1,7 @@
+platform :ios, "7.1"
+
+pod "Google/Analytics"
+
+target :GoogleAnalyticsDemoTests, :exclusive => true do
+  # pod 'Kiwi'
+end
