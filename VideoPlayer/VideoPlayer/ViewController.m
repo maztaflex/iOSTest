@@ -2,8 +2,8 @@
 //  ViewController.m
 //  VideoPlayer
 //
-//  Created by DEV_TEAM1_IOS on 2015. 11. 23..
-//  Copyright © 2015년 DEV_TEAM1_IOS. All rights reserved.
+//  Created by Yonghwi Nam on 2015. 11. 23..
+//  Copyright © 2015년 Yonghwi Nam. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -133,10 +133,26 @@
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     
+    NSInteger newVol = self.volumeIndex - 1;
+    NSLog(@"newVol : %zd",newVol);
     
-    if (row < self.volumeIndex / 2)
+    if (newVol < 0) {
+        cell.hidden = YES;
+        return cell;
+    }
+    
+    if (row <= newVol / 2)
     {
         cell.hidden = NO;
+        UIImageView *indicator = [cell viewWithTag:500];
+        indicator.alpha = 1.0f;
+        if (row == newVol / 2)
+        {
+            if (newVol % 2 == 0)
+            {
+                indicator.alpha = 0.5f;
+            }
+        }
     }
     else
     {
