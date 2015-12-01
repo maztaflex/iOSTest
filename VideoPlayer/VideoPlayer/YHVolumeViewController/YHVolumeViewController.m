@@ -40,6 +40,8 @@
 
 @implementation YHVolumeViewController
 
+#pragma mark -
+#pragma mark - Initialize
 - (instancetype)init
 {
     self.viewRect = CGRectMake(0.0f, 0.0f, DEFAULT_CONTAINER_WIDTH, DEFAULT_CONTAINER_HEIGHT);
@@ -64,6 +66,8 @@
     return self;
 }
 
+#pragma mark -
+#pragma mark - View Cycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -87,28 +91,8 @@
     [self.view addSubview:volView];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)handlerForAudioSesseionInterrupted:(NSNotification *)notification
-{
-    NSString *notifyName = notification.name;
-    NSDictionary *userInfo = notification.userInfo;
-    
-    NSLog(@"notifyName : %@, userInfo : %@",notifyName,userInfo);
-    
-    if ([notifyName isEqualToString:AVAudioSessionInterruptionNotification]) {
-        AVAudioSessionInterruptionType interruptionType = [[userInfo objectForKey:AVAudioSessionInterruptionTypeKey] integerValue];
-        NSLog(@"interruptionType : %zd" , interruptionType);
-        if (interruptionType == AVAudioSessionInterruptionTypeEnded) {
-            [self.audioSession setActive:YES error:nil];
-        }
-    }
-}
-
-#pragma mark - Handler for Volume
+#pragma mark -
+#pragma mark - Private Method
 - (void)setDefaultWithRect:(CGRect)rect
 {
     self.viewRect = rect;
@@ -121,6 +105,9 @@
     self.indicatorColor = [UIColor whiteColor];
 }
 
+/*
+ * Calculate cell width from horizontal spacing
+ */
 - (void)setHCellSpace:(CGFloat)hCellSpace
 {
     _hCellSpace = hCellSpace;
@@ -129,6 +116,9 @@
     self.alcTrailingOfVolumeIndicatorList.constant = hCellSpace;
 }
 
+/*
+ * Calculate cell width from vertical spacing
+ */
 - (void)setVCellSpace:(CGFloat)vCellSpace
 {
     _vCellSpace = vCellSpace;
@@ -149,14 +139,15 @@
 
     float vol = self.audioSession.outputVolume;
     
-    if (vol == MAX_OUTPUT_VOLUME_LEVEL) {
+    if (vol == MAX_OUTPUT_VOLUME_LEVEL)
+    {
         [self registerNotificationCenterForMaxVolume];
     }
     
     self.volumeIndex = vol / DEFAULT_VOLUME_VALUE;
-    NSLog(@"observeValueForKeyPath : %f , %zd",vol, self.volumeIndex);
-    if ([keyPath isEqual:@"outputVolume"]) {
-        
+
+    if ([keyPath isEqual:@"outputVolume"])
+    {
         self.volumeContainer.alpha = 1.0f;
         [self.volumeIndicatorList reloadData];
         
@@ -171,6 +162,25 @@
     }
 }
 
+- (void)handlerForAudioSesseionInterrupted:(NSNotification *)notification
+{
+    NSString *notifyName = notification.name;
+    NSDictionary *userInfo = notification.userInfo;
+    
+    if ([notifyName isEqualToString:AVAudioSessionInterruptionNotification])
+    {
+        AVAudioSessionInterruptionType interruptionType = [[userInfo objectForKey:AVAudioSessionInterruptionTypeKey] integerValue];
+        
+        if (interruptionType == AVAudioSessionInterruptionTypeEnded)
+        {
+            [self.audioSession setActive:YES error:nil];
+        }
+    }
+}
+
+/*
+ * Invoke method when audio session output level max
+ */
 - (void)volumeDidChange:(NSNotification *)notification
 {
     float vol = self.audioSession.outputVolume;
@@ -180,7 +190,6 @@
     }
     
     self.volumeIndex = vol / DEFAULT_VOLUME_VALUE;
-    NSLog(@"volumeDidChange : %f , %zd",vol, self.volumeIndex);
     self.volumeContainer.alpha = 1.0f;
     [self.volumeIndicatorList reloadData];
     
@@ -202,12 +211,7 @@
                                                object:nil];
 }
 
-- (void)unregisterNotificationCenterForMaxVolume
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark - UICollectionView Datasource, Delegate ( Custom Volume UI )
+#pragma mark - UICollectionView Datasource, Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
