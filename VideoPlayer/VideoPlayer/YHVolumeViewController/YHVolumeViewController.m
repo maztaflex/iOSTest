@@ -14,28 +14,27 @@
 
 #define DEFAULT_VOLUME_VALUE                    0.062500f  // Default Value of System Volume
 #define DEFAULT_CONTAINER_WIDTH                 [UIScreen mainScreen].bounds.size.width
-#define DEFAULT_CONTAINER_HEIGHT                18.0f
+#define DEFAULT_CONTAINER_HEIGHT                12.0f
 #define DEFAULT_CELL_HSPACE                     1.0f
 #define DEFAULT_CELL_VSPACE                     1.0f
 #define DEFAULT_INDICATOR_COUNT                 8
+#define MAX_OUTPUT_VOLUME_LEVEL                 1.0f
 
 @interface YHVolumeViewController ()
 
-// IBOutlet
-@property (weak, nonatomic) IBOutlet UIView *volumeContainer;
-@property (weak, nonatomic) IBOutlet UIImageView *ivOpaqueBackground;
-@property (weak, nonatomic) IBOutlet UICollectionView *volumeIndicatorList;
+@property (weak, nonatomic) IBOutlet UIView             *volumeContainer;
 
-// Object Instance
+@property (weak, nonatomic) IBOutlet UIImageView        *ivOpaqueBackground;
+
+@property (weak, nonatomic) IBOutlet UICollectionView   *volumeIndicatorList;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfVolumeIndicatorList;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfVolumeIndicatorList;
+
 @property (weak, nonatomic) AVAudioSession *audioSession;
-
-// Data
 @property (assign, nonatomic) NSInteger volumeIndex;
 @property (assign, nonatomic) CGRect viewRect;
 @property (assign, nonatomic) CGFloat cellWidth;
 @property (assign, nonatomic) CGFloat cellHeight;
-@property (assign, nonatomic) CGFloat hCellSpace;
-@property (assign, nonatomic) CGFloat vCellSpace;
 
 @end
 
@@ -75,25 +74,65 @@
     [self.audioSession setActive:YES error:nil];
     [self.audioSession addObserver:self
                         forKeyPath:@"outputVolume"
-                           options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                           options:0
                            context:nil];
     
-    // 임시 볼륨뷰 서브뷰 등록
-    MPVolumeView *volView = [[MPVolumeView alloc] initWithFrame:CGRectMake(-2000, -2000, 0, 0)];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlerForAudioSesseionInterrupted:) name:AVAudioSessionInterruptionNotification object:nil];
+    
+    if (self.audioSession.outputVolume == MAX_OUTPUT_VOLUME_LEVEL) {
+        [self registerNotificationCenterForMaxVolume];
+    }
+    
+    MPVolumeView *volView = [[MPVolumeView alloc] initWithFrame:CGRectMake(INFINITY, INFINITY, CGFLOAT_MIN , CGFLOAT_MIN)];
     [self.view addSubview:volView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)handlerForAudioSesseionInterrupted:(NSNotification *)notification
+{
+    NSString *notifyName = notification.name;
+    NSDictionary *userInfo = notification.userInfo;
+    
+    NSLog(@"notifyName : %@, userInfo : %@",notifyName,userInfo);
+    
+    if ([notifyName isEqualToString:AVAudioSessionInterruptionNotification]) {
+        AVAudioSessionInterruptionType interruptionType = [[userInfo objectForKey:AVAudioSessionInterruptionTypeKey] integerValue];
+        NSLog(@"interruptionType : %zd" , interruptionType);
+        if (interruptionType == AVAudioSessionInterruptionTypeEnded) {
+            [self.audioSession setActive:YES error:nil];
+        }
+    }
 }
 
 #pragma mark - Handler for Volume
 - (void)setDefaultWithRect:(CGRect)rect
 {
     self.viewRect = rect;
-    self.cellWidth = (rect.size.width - (DEFAULT_CELL_HSPACE * DEFAULT_INDICATOR_COUNT + 1)) / DEFAULT_INDICATOR_COUNT;
+    self.cellWidth = (rect.size.width - (DEFAULT_CELL_HSPACE * DEFAULT_INDICATOR_COUNT - 1) - DEFAULT_CELL_HSPACE * 2) / DEFAULT_INDICATOR_COUNT;
     self.cellHeight = rect.size.height - (DEFAULT_CELL_VSPACE * 2);
     self.hCellSpace = DEFAULT_CELL_HSPACE;
     self.vCellSpace = DEFAULT_CELL_VSPACE;
     self.ivOpaqueBackground.backgroundColor = [UIColor blackColor];
     self.ivOpaqueBackground.alpha = 0.5f;
     self.indicatorColor = [UIColor whiteColor];
+}
+
+- (void)setHCellSpace:(CGFloat)hCellSpace
+{
+    _hCellSpace = hCellSpace;
+    self.cellWidth = (self.viewRect.size.width - (hCellSpace * (DEFAULT_INDICATOR_COUNT - 1)) - hCellSpace * 2) / DEFAULT_INDICATOR_COUNT;
+    self.alcLeadingOfVolumeIndicatorList.constant = hCellSpace;
+    self.alcTrailingOfVolumeIndicatorList.constant = hCellSpace;
+}
+
+- (void)setVCellSpace:(CGFloat)vCellSpace
+{
+    _vCellSpace = vCellSpace;
+    self.cellHeight = self.viewRect.size.height - (vCellSpace * 2);
 }
 
 - (void)setOpaqueBgColor:(UIColor *)opaqueBgColor
@@ -107,10 +146,15 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    NSLog(@"change : %@",change);
+
     float vol = self.audioSession.outputVolume;
-    self.volumeIndex = vol / DEFAULT_VOLUME_VALUE;
     
+    if (vol == MAX_OUTPUT_VOLUME_LEVEL) {
+        [self registerNotificationCenterForMaxVolume];
+    }
+    
+    self.volumeIndex = vol / DEFAULT_VOLUME_VALUE;
+    NSLog(@"observeValueForKeyPath : %f , %zd",vol, self.volumeIndex);
     if ([keyPath isEqual:@"outputVolume"]) {
         
         self.volumeContainer.alpha = 1.0f;
@@ -125,6 +169,42 @@
             }];
         });
     }
+}
+
+- (void)volumeDidChange:(NSNotification *)notification
+{
+    float vol = self.audioSession.outputVolume;
+    
+    if (vol < MAX_OUTPUT_VOLUME_LEVEL) {
+        return;
+    }
+    
+    self.volumeIndex = vol / DEFAULT_VOLUME_VALUE;
+    NSLog(@"volumeDidChange : %f , %zd",vol, self.volumeIndex);
+    self.volumeContainer.alpha = 1.0f;
+    [self.volumeIndicatorList reloadData];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [UIView animateWithDuration:1.0f animations:^{
+            self.volumeContainer.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            
+        }];
+    });
+}
+
+- (void)registerNotificationCenterForMaxVolume
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(volumeDidChange:)
+                                                 name:@"AVSystemController_SystemVolumeDidChangeNotification"
+                                               object:nil];
+}
+
+- (void)unregisterNotificationCenterForMaxVolume
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UICollectionView Datasource, Delegate ( Custom Volume UI )
@@ -190,4 +270,12 @@
     return inset;
 }
 
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    CGFloat spacing = self.hCellSpace;
+    
+    return spacing;
+}
 @end

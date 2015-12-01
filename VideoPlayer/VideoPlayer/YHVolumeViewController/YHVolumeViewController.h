@@ -10,6 +10,10 @@
 
 @interface YHVolumeViewController : UIViewController
 
+@property (assign, nonatomic) CGFloat hCellSpace;
+
+@property (assign, nonatomic) CGFloat vCellSpace;
+
 @property (strong, nonatomic) UIColor *opaqueBgColor;
 
 @property (assign, nonatomic) CGFloat opaqueBgAlpha;

@@ -21,10 +21,14 @@
     [super viewDidLoad];
     
     self.volumeVC = [[YHVolumeViewController alloc] init];
-    self.volumeVC.opaqueBgColor = [UIColor redColor];
-    self.volumeVC.opaqueBgAlpha = 1.0f;
-    self.volumeVC.indicatorColor = [UIColor yellowColor];
-//    self.volumeVC = [[YHVolumeViewController alloc] initWithFrame:CGRectMake(50, 10, 320, 18)];
+
+//    self.volumeVC = [[YHVolumeViewController alloc] initWithFrame:CGRectMake(0, 0, 414, 20)];
+//    self.volumeVC.hCellSpace = 3.0f;
+//    self.volumeVC.vCellSpace = 2.0f;
+//    self.volumeVC.opaqueBgColor = [UIColor redColor];
+//    self.volumeVC.opaqueBgAlpha = 1.0f;
+//    self.volumeVC.indicatorColor = [UIColor yellowColor];
+    
     
     [self.view addSubview:self.volumeVC.view];
 }
