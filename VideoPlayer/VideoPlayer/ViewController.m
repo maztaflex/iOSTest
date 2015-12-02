@@ -45,7 +45,8 @@
 - (void)configureLayout
 {
     // 비디오 플레이어 설정
-    self.player = [[MPMoviePlayerController alloc] initWithContentURL:[self getContentURLInBundleWithFileName:@"PARTY_Music Video" ext:@"mp4"]];
+    //
+    self.player = [[MPMoviePlayerController alloc] initWithContentURL:[self getContentURLInBundleWithFileName:@"sampleVideo" ext:@"mp4"]];
     self.player.scalingMode = MPMovieScalingModeAspectFill;
     self.player.controlStyle = MPMovieControlStyleNone;
     self.player.shouldAutoplay = YES;

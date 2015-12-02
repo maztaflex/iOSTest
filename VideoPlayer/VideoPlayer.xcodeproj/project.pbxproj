@@ -28,6 +28,7 @@
 		AC36F9411C084F6100020134 /* YHVolumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC36F93E1C084F6100020134 /* YHVolumeCell.xib */; };
 		AC36F9421C084F6100020134 /* YHVolumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC36F93E1C084F6100020134 /* YHVolumeCell.xib */; };
 		AC4C56621C03FCA80057699A /* img_001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC4C56611C03FCA80057699A /* img_001.jpeg */; };
+		AC8432771C0E8513008B156E /* sampleVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AC8432761C0E8513008B156E /* sampleVideo.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		AC36F93D1C084F6100020134 /* YHVolumeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHVolumeCell.m; sourceTree = "<group>"; };
 		AC36F93E1C084F6100020134 /* YHVolumeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHVolumeCell.xib; sourceTree = "<group>"; };
 		AC4C56611C03FCA80057699A /* img_001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_001.jpeg; sourceTree = "<group>"; };
+		AC8432761C0E8513008B156E /* sampleVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampleVideo.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 		AC1FDA2B1C02B5B2009A8247 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				AC8432761C0E8513008B156E /* sampleVideo.mp4 */,
 				AC1FDA2C1C02B5B2009A8247 /* PARTY_Music Video.mp4 */,
 			);
 			path = Video;
@@ -315,6 +318,7 @@
 				AC36F9361C083C0100020134 /* YHVolumeViewController.xib in Resources */,
 				AC1FDA021C02B55C009A8247 /* Main.storyboard in Resources */,
 				AC1FDA2D1C02B5B2009A8247 /* PARTY_Music Video.mp4 in Resources */,
+				AC8432771C0E8513008B156E /* sampleVideo.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
