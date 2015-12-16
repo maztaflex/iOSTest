@@ -1,0 +1,21 @@
+platform :ios, "7.1"
+
+pod 'AFNetworking', '~> 2.6.3'
+pod 'GoogleAnalytics-iOS-SDK', '~> 3.12'
+pod 'googleplus-ios-sdk', '~> 1.7.1'
+pod 'Parse'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'
+pod 'Fabric'
+pod 'TwitterKit'
+pod 'TwitterCore'
+pod 'SDWebImage'
+pod 'MarqueeLabel'
+pod 'CHTCollectionViewWaterfallLayout'
+
+#pod 'AWSAPIGateway'
+
+target :GridCollectionViewTests, :exclusive => true do
+  # pod 'Kiwi'
+end

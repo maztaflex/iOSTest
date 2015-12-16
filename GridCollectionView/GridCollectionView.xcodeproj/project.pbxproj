@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		659255E1D99B94909AF3E5D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 142601B8B83AA6C69F6E5D0D /* libPods.a */; };
 		AC1514971C21011E0067DF79 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1514961C21011E0067DF79 /* main.m */; };
 		AC15149A1C21011E0067DF79 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1514991C21011E0067DF79 /* AppDelegate.m */; };
 		AC15149D1C21011E0067DF79 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC15149C1C21011E0067DF79 /* ViewController.m */; };
@@ -15,6 +16,26 @@
 		AC1514A51C21011E0067DF79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1514A31C21011E0067DF79 /* LaunchScreen.storyboard */; };
 		AC1514B01C21011E0067DF79 /* GridCollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1514AF1C21011E0067DF79 /* GridCollectionViewTests.m */; };
 		AC1514BB1C21011E0067DF79 /* GridCollectionViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1514BA1C21011E0067DF79 /* GridCollectionViewUITests.m */; };
+		AC1514CF1C2101F00067DF79 /* FLKPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1514CA1C2101F00067DF79 /* FLKPhoto.m */; };
+		AC1514D01C2101F00067DF79 /* FLKPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1514CC1C2101F00067DF79 /* FLKPhotos.m */; };
+		AC1514D11C2101F00067DF79 /* FLKRecentPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1514CE1C2101F00067DF79 /* FLKRecentPhotos.m */; };
+		ACC568AD1C21295400EF6D8A /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACC568881C21295400EF6D8A /* ProgressHUD.bundle */; };
+		ACC568AE1C21295400EF6D8A /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC5688A1C21295400EF6D8A /* ProgressHUD.m */; };
+		ACC568AF1C21295400EF6D8A /* YHCustomActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC5688D1C21295400EF6D8A /* YHCustomActivity.m */; };
+		ACC568B01C21295400EF6D8A /* YHFacebookActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568911C21295400EF6D8A /* YHFacebookActivity.m */; };
+		ACC568B11C21295400EF6D8A /* YHGoogleLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568941C21295400EF6D8A /* YHGoogleLoginViewController.m */; };
+		ACC568B21C21295400EF6D8A /* YHGoogleLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC568951C21295400EF6D8A /* YHGoogleLoginViewController.xib */; };
+		ACC568B31C21295400EF6D8A /* YHGooglePlusActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568971C21295400EF6D8A /* YHGooglePlusActivity.m */; };
+		ACC568B41C21295400EF6D8A /* YHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC5689A1C21295400EF6D8A /* YHModel.m */; };
+		ACC568B51C21295400EF6D8A /* YHNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC5689C1C21295400EF6D8A /* YHNetwork.m */; };
+		ACC568B61C21295400EF6D8A /* YHPushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC5689E1C21295400EF6D8A /* YHPushModel.m */; };
+		ACC568B71C21295400EF6D8A /* YHSnsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568A01C21295400EF6D8A /* YHSnsModel.m */; };
+		ACC568B81C21295400EF6D8A /* YHTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568A21C21295400EF6D8A /* YHTableViewCell.m */; };
+		ACC568B91C21295400EF6D8A /* YHTools.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568A41C21295400EF6D8A /* YHTools.m */; };
+		ACC568BA1C21295400EF6D8A /* YHTwitterActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568A61C21295400EF6D8A /* YHTwitterActivity.m */; };
+		ACC568BB1C21295400EF6D8A /* YHVariableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568A81C21295400EF6D8A /* YHVariableObject.m */; };
+		ACC568BC1C21295400EF6D8A /* YHView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568AA1C21295400EF6D8A /* YHView.m */; };
+		ACC568BD1C21295400EF6D8A /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568AC1C21295400EF6D8A /* YHViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		142601B8B83AA6C69F6E5D0D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		68E7CCEDECF5FBE85E32A985 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A82A2D396C88CE987314C1A7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AC1514921C21011E0067DF79 /* GridCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1514961C21011E0067DF79 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC1514981C21011E0067DF79 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +75,50 @@
 		AC1514B61C21011E0067DF79 /* GridCollectionViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GridCollectionViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1514BA1C21011E0067DF79 /* GridCollectionViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridCollectionViewUITests.m; sourceTree = "<group>"; };
 		AC1514BC1C21011E0067DF79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC1514C91C2101F00067DF79 /* FLKPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKPhoto.h; sourceTree = "<group>"; };
+		AC1514CA1C2101F00067DF79 /* FLKPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKPhoto.m; sourceTree = "<group>"; };
+		AC1514CB1C2101F00067DF79 /* FLKPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKPhotos.h; sourceTree = "<group>"; };
+		AC1514CC1C2101F00067DF79 /* FLKPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKPhotos.m; sourceTree = "<group>"; };
+		AC1514CD1C2101F00067DF79 /* FLKRecentPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKRecentPhotos.h; sourceTree = "<group>"; };
+		AC1514CE1C2101F00067DF79 /* FLKRecentPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKRecentPhotos.m; sourceTree = "<group>"; };
+		ACC568881C21295400EF6D8A /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		ACC568891C21295400EF6D8A /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		ACC5688A1C21295400EF6D8A /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		ACC5688B1C21295400EF6D8A /* YHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHConfig.h; sourceTree = "<group>"; };
+		ACC5688C1C21295400EF6D8A /* YHCustomActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHCustomActivity.h; sourceTree = "<group>"; };
+		ACC5688D1C21295400EF6D8A /* YHCustomActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCustomActivity.m; sourceTree = "<group>"; };
+		ACC5688E1C21295400EF6D8A /* YHDebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHDebugLog.h; sourceTree = "<group>"; };
+		ACC5688F1C21295400EF6D8A /* YHDevTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHDevTools.h; sourceTree = "<group>"; };
+		ACC568901C21295400EF6D8A /* YHFacebookActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHFacebookActivity.h; sourceTree = "<group>"; };
+		ACC568911C21295400EF6D8A /* YHFacebookActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHFacebookActivity.m; sourceTree = "<group>"; };
+		ACC568921C21295400EF6D8A /* YHGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHGlobal.h; sourceTree = "<group>"; };
+		ACC568931C21295400EF6D8A /* YHGoogleLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHGoogleLoginViewController.h; sourceTree = "<group>"; };
+		ACC568941C21295400EF6D8A /* YHGoogleLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHGoogleLoginViewController.m; sourceTree = "<group>"; };
+		ACC568951C21295400EF6D8A /* YHGoogleLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHGoogleLoginViewController.xib; sourceTree = "<group>"; };
+		ACC568961C21295400EF6D8A /* YHGooglePlusActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHGooglePlusActivity.h; sourceTree = "<group>"; };
+		ACC568971C21295400EF6D8A /* YHGooglePlusActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHGooglePlusActivity.m; sourceTree = "<group>"; };
+		ACC568981C21295400EF6D8A /* YHLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHLayout.h; sourceTree = "<group>"; };
+		ACC568991C21295400EF6D8A /* YHModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHModel.h; sourceTree = "<group>"; };
+		ACC5689A1C21295400EF6D8A /* YHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHModel.m; sourceTree = "<group>"; };
+		ACC5689B1C21295400EF6D8A /* YHNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHNetwork.h; sourceTree = "<group>"; };
+		ACC5689C1C21295400EF6D8A /* YHNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHNetwork.m; sourceTree = "<group>"; };
+		ACC5689D1C21295400EF6D8A /* YHPushModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPushModel.h; sourceTree = "<group>"; };
+		ACC5689E1C21295400EF6D8A /* YHPushModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPushModel.m; sourceTree = "<group>"; };
+		ACC5689F1C21295400EF6D8A /* YHSnsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSnsModel.h; sourceTree = "<group>"; };
+		ACC568A01C21295400EF6D8A /* YHSnsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHSnsModel.m; sourceTree = "<group>"; };
+		ACC568A11C21295400EF6D8A /* YHTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHTableViewCell.h; sourceTree = "<group>"; };
+		ACC568A21C21295400EF6D8A /* YHTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHTableViewCell.m; sourceTree = "<group>"; };
+		ACC568A31C21295400EF6D8A /* YHTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHTools.h; sourceTree = "<group>"; };
+		ACC568A41C21295400EF6D8A /* YHTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHTools.m; sourceTree = "<group>"; };
+		ACC568A51C21295400EF6D8A /* YHTwitterActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHTwitterActivity.h; sourceTree = "<group>"; };
+		ACC568A61C21295400EF6D8A /* YHTwitterActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHTwitterActivity.m; sourceTree = "<group>"; };
+		ACC568A71C21295400EF6D8A /* YHVariableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHVariableObject.h; sourceTree = "<group>"; };
+		ACC568A81C21295400EF6D8A /* YHVariableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHVariableObject.m; sourceTree = "<group>"; };
+		ACC568A91C21295400EF6D8A /* YHView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHView.h; sourceTree = "<group>"; };
+		ACC568AA1C21295400EF6D8A /* YHView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHView.m; sourceTree = "<group>"; };
+		ACC568AB1C21295400EF6D8A /* YHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHViewController.h; sourceTree = "<group>"; };
+		ACC568AC1C21295400EF6D8A /* YHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHViewController.m; sourceTree = "<group>"; };
+		ACC568BE1C2129C700EF6D8A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659255E1D99B94909AF3E5D8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +147,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06F1E4927CEEB487233741CD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				68E7CCEDECF5FBE85E32A985 /* Pods.debug.xcconfig */,
+				A82A2D396C88CE987314C1A7 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AC1514891C21011E0067DF79 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +163,8 @@
 				AC1514AE1C21011E0067DF79 /* GridCollectionViewTests */,
 				AC1514B91C21011E0067DF79 /* GridCollectionViewUITests */,
 				AC1514931C21011E0067DF79 /* Products */,
+				06F1E4927CEEB487233741CD /* Pods */,
+				C7D9B12EB1793D642CF0D423 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +181,8 @@
 		AC1514941C21011E0067DF79 /* GridCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				ACC568861C21295400EF6D8A /* Common */,
+				AC1514C81C2101F00067DF79 /* FLKModel */,
 				AC1514981C21011E0067DF79 /* AppDelegate.h */,
 				AC1514991C21011E0067DF79 /* AppDelegate.m */,
 				AC15149B1C21011E0067DF79 /* ViewController.h */,
@@ -117,6 +199,7 @@
 		AC1514951C21011E0067DF79 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ACC568BE1C2129C700EF6D8A /* PrefixHeader.pch */,
 				AC1514961C21011E0067DF79 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -140,6 +223,79 @@
 			path = GridCollectionViewUITests;
 			sourceTree = "<group>";
 		};
+		AC1514C81C2101F00067DF79 /* FLKModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC1514C91C2101F00067DF79 /* FLKPhoto.h */,
+				AC1514CA1C2101F00067DF79 /* FLKPhoto.m */,
+				AC1514CB1C2101F00067DF79 /* FLKPhotos.h */,
+				AC1514CC1C2101F00067DF79 /* FLKPhotos.m */,
+				AC1514CD1C2101F00067DF79 /* FLKRecentPhotos.h */,
+				AC1514CE1C2101F00067DF79 /* FLKRecentPhotos.m */,
+			);
+			path = FLKModel;
+			sourceTree = "<group>";
+		};
+		ACC568861C21295400EF6D8A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ACC568871C21295400EF6D8A /* ProgressHUD */,
+				ACC5688B1C21295400EF6D8A /* YHConfig.h */,
+				ACC5688C1C21295400EF6D8A /* YHCustomActivity.h */,
+				ACC5688D1C21295400EF6D8A /* YHCustomActivity.m */,
+				ACC5688E1C21295400EF6D8A /* YHDebugLog.h */,
+				ACC5688F1C21295400EF6D8A /* YHDevTools.h */,
+				ACC568901C21295400EF6D8A /* YHFacebookActivity.h */,
+				ACC568911C21295400EF6D8A /* YHFacebookActivity.m */,
+				ACC568921C21295400EF6D8A /* YHGlobal.h */,
+				ACC568931C21295400EF6D8A /* YHGoogleLoginViewController.h */,
+				ACC568941C21295400EF6D8A /* YHGoogleLoginViewController.m */,
+				ACC568951C21295400EF6D8A /* YHGoogleLoginViewController.xib */,
+				ACC568961C21295400EF6D8A /* YHGooglePlusActivity.h */,
+				ACC568971C21295400EF6D8A /* YHGooglePlusActivity.m */,
+				ACC568981C21295400EF6D8A /* YHLayout.h */,
+				ACC568991C21295400EF6D8A /* YHModel.h */,
+				ACC5689A1C21295400EF6D8A /* YHModel.m */,
+				ACC5689B1C21295400EF6D8A /* YHNetwork.h */,
+				ACC5689C1C21295400EF6D8A /* YHNetwork.m */,
+				ACC5689D1C21295400EF6D8A /* YHPushModel.h */,
+				ACC5689E1C21295400EF6D8A /* YHPushModel.m */,
+				ACC5689F1C21295400EF6D8A /* YHSnsModel.h */,
+				ACC568A01C21295400EF6D8A /* YHSnsModel.m */,
+				ACC568A11C21295400EF6D8A /* YHTableViewCell.h */,
+				ACC568A21C21295400EF6D8A /* YHTableViewCell.m */,
+				ACC568A31C21295400EF6D8A /* YHTools.h */,
+				ACC568A41C21295400EF6D8A /* YHTools.m */,
+				ACC568A51C21295400EF6D8A /* YHTwitterActivity.h */,
+				ACC568A61C21295400EF6D8A /* YHTwitterActivity.m */,
+				ACC568A71C21295400EF6D8A /* YHVariableObject.h */,
+				ACC568A81C21295400EF6D8A /* YHVariableObject.m */,
+				ACC568A91C21295400EF6D8A /* YHView.h */,
+				ACC568AA1C21295400EF6D8A /* YHView.m */,
+				ACC568AB1C21295400EF6D8A /* YHViewController.h */,
+				ACC568AC1C21295400EF6D8A /* YHViewController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ACC568871C21295400EF6D8A /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				ACC568881C21295400EF6D8A /* ProgressHUD.bundle */,
+				ACC568891C21295400EF6D8A /* ProgressHUD.h */,
+				ACC5688A1C21295400EF6D8A /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		C7D9B12EB1793D642CF0D423 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				142601B8B83AA6C69F6E5D0D /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +303,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC1514BF1C21011E0067DF79 /* Build configuration list for PBXNativeTarget "GridCollectionView" */;
 			buildPhases = (
+				177F0EEE7CBC129481CCA289 /* Check Pods Manifest.lock */,
 				AC15148E1C21011E0067DF79 /* Sources */,
 				AC15148F1C21011E0067DF79 /* Frameworks */,
 				AC1514901C21011E0067DF79 /* Resources */,
+				A2651CCA63175851003ED196 /* Embed Pods Frameworks */,
+				F4C8ED4CCAF1BE2C6D39274E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,6 +402,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACC568B21C21295400EF6D8A /* YHGoogleLoginViewController.xib in Resources */,
+				ACC568AD1C21295400EF6D8A /* ProgressHUD.bundle in Resources */,
 				AC1514A51C21011E0067DF79 /* LaunchScreen.storyboard in Resources */,
 				AC1514A21C21011E0067DF79 /* Assets.xcassets in Resources */,
 				AC1514A01C21011E0067DF79 /* Main.storyboard in Resources */,
@@ -265,14 +426,80 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		177F0EEE7CBC129481CCA289 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A2651CCA63175851003ED196 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4C8ED4CCAF1BE2C6D39274E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AC15148E1C21011E0067DF79 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACC568B81C21295400EF6D8A /* YHTableViewCell.m in Sources */,
+				ACC568B11C21295400EF6D8A /* YHGoogleLoginViewController.m in Sources */,
+				AC1514CF1C2101F00067DF79 /* FLKPhoto.m in Sources */,
+				ACC568BA1C21295400EF6D8A /* YHTwitterActivity.m in Sources */,
+				ACC568B91C21295400EF6D8A /* YHTools.m in Sources */,
+				ACC568B41C21295400EF6D8A /* YHModel.m in Sources */,
+				AC1514D11C2101F00067DF79 /* FLKRecentPhotos.m in Sources */,
+				ACC568B61C21295400EF6D8A /* YHPushModel.m in Sources */,
 				AC15149D1C21011E0067DF79 /* ViewController.m in Sources */,
+				ACC568AE1C21295400EF6D8A /* ProgressHUD.m in Sources */,
+				AC1514D01C2101F00067DF79 /* FLKPhotos.m in Sources */,
+				ACC568B71C21295400EF6D8A /* YHSnsModel.m in Sources */,
 				AC15149A1C21011E0067DF79 /* AppDelegate.m in Sources */,
+				ACC568BD1C21295400EF6D8A /* YHViewController.m in Sources */,
+				ACC568B51C21295400EF6D8A /* YHNetwork.m in Sources */,
+				ACC568AF1C21295400EF6D8A /* YHCustomActivity.m in Sources */,
+				ACC568B01C21295400EF6D8A /* YHFacebookActivity.m in Sources */,
+				ACC568B31C21295400EF6D8A /* YHGooglePlusActivity.m in Sources */,
 				AC1514971C21011E0067DF79 /* main.m in Sources */,
+				ACC568BB1C21295400EF6D8A /* YHVariableObject.m in Sources */,
+				ACC568BC1C21295400EF6D8A /* YHView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,8 +638,10 @@
 		};
 		AC1514C01C21011E0067DF79 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68E7CCEDECF5FBE85E32A985 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = GridCollectionView/PrefixHeader.pch;
 				INFOPLIST_FILE = GridCollectionView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.doozerstage.GridCollectionView;
@@ -422,8 +651,10 @@
 		};
 		AC1514C11C21011E0067DF79 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A82A2D396C88CE987314C1A7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = GridCollectionView/PrefixHeader.pch;
 				INFOPLIST_FILE = GridCollectionView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.doozerstage.GridCollectionView;
@@ -498,6 +729,7 @@
 				AC1514C11C21011E0067DF79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC1514C21C21011E0067DF79 /* Build configuration list for PBXNativeTarget "GridCollectionViewTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +738,7 @@
 				AC1514C41C21011E0067DF79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC1514C51C21011E0067DF79 /* Build configuration list for PBXNativeTarget "GridCollectionViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +747,7 @@
 				AC1514C71C21011E0067DF79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
