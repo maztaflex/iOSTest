@@ -6,9 +6,9 @@
 //  Copyright © 2015년 doozerstage. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "YHViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : YHViewController
 
 
 @end

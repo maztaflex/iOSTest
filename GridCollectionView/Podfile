@@ -13,6 +13,8 @@ pod 'TwitterCore'
 pod 'SDWebImage'
 pod 'MarqueeLabel'
 pod 'CHTCollectionViewWaterfallLayout'
+pod 'PureLayout'
+pod 'RACollectionViewReorderableTripletLayout'
 
 #pod 'AWSAPIGateway'
 

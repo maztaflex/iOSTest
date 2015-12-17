@@ -36,6 +36,7 @@
 		ACC568BB1C21295400EF6D8A /* YHVariableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568A81C21295400EF6D8A /* YHVariableObject.m */; };
 		ACC568BC1C21295400EF6D8A /* YHView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568AA1C21295400EF6D8A /* YHView.m */; };
 		ACC568BD1C21295400EF6D8A /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568AC1C21295400EF6D8A /* YHViewController.m */; };
+		ACC568C11C21481400EF6D8A /* GridCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568C01C21481400EF6D8A /* GridCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,8 @@
 		ACC568AB1C21295400EF6D8A /* YHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHViewController.h; sourceTree = "<group>"; };
 		ACC568AC1C21295400EF6D8A /* YHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHViewController.m; sourceTree = "<group>"; };
 		ACC568BE1C2129C700EF6D8A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		ACC568BF1C21481400EF6D8A /* GridCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCollectionViewController.h; sourceTree = "<group>"; };
+		ACC568C01C21481400EF6D8A /* GridCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +190,8 @@
 				AC1514991C21011E0067DF79 /* AppDelegate.m */,
 				AC15149B1C21011E0067DF79 /* ViewController.h */,
 				AC15149C1C21011E0067DF79 /* ViewController.m */,
+				ACC568BF1C21481400EF6D8A /* GridCollectionViewController.h */,
+				ACC568C01C21481400EF6D8A /* GridCollectionViewController.m */,
 				AC15149E1C21011E0067DF79 /* Main.storyboard */,
 				AC1514A11C21011E0067DF79 /* Assets.xcassets */,
 				AC1514A31C21011E0067DF79 /* LaunchScreen.storyboard */,
@@ -481,6 +486,7 @@
 			files = (
 				ACC568B81C21295400EF6D8A /* YHTableViewCell.m in Sources */,
 				ACC568B11C21295400EF6D8A /* YHGoogleLoginViewController.m in Sources */,
+				ACC568C11C21481400EF6D8A /* GridCollectionViewController.m in Sources */,
 				AC1514CF1C2101F00067DF79 /* FLKPhoto.m in Sources */,
 				ACC568BA1C21295400EF6D8A /* YHTwitterActivity.m in Sources */,
 				ACC568B91C21295400EF6D8A /* YHTools.m in Sources */,

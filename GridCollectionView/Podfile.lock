@@ -48,6 +48,8 @@ PODS:
   - MarqueeLabel (2.4.1)
   - Parse (1.11.0):
     - Bolts/Tasks (~> 1.5)
+  - PureLayout (3.0.1)
+  - RACollectionViewReorderableTripletLayout (0.1.0)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -67,6 +69,8 @@ DEPENDENCIES:
   - googleplus-ios-sdk (~> 1.7.1)
   - MarqueeLabel
   - Parse
+  - PureLayout
+  - RACollectionViewReorderableTripletLayout
   - SDWebImage
   - TwitterCore
   - TwitterKit
@@ -83,6 +87,8 @@ SPEC CHECKSUMS:
   googleplus-ios-sdk: 065d9135061a5f84c07656a68ced48336408fe35
   MarqueeLabel: fbd22549a4b87d2cd334a9f7d536327a9ed8234d
   Parse: 886af46a0a677402f6374bb97ac212e795f70afe
+  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
+  RACollectionViewReorderableTripletLayout: 929208004b2f8c2dde12326bf75b11e902959ddf
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
   TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92

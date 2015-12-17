@@ -12,10 +12,155 @@ class ViewController: UIViewController {
 
     override func viewDidLoad()
     {
+        var player = Player(name: "doozer")
         
-        let stepCounter = StepCounter()
+        player.completeLevel(1)
         
-        stepCounter.totalSteps = 10
+        print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
+        
+        player = Player(name: "Beto")
+        
+        if player.tracker.advanceToLevel(6) {
+            
+            print("player is now on level 6")
+        } else {
+            
+            print("level 6 has not yet been unlocked")
+        }
+    }
+}
+
+class Player {
+    
+    var tracker = LevelTracker()
+    
+    let playerName: String
+    
+    func completeLevel(level: Int) {
+        
+        LevelTracker.unlockLevel(level + 1)
+        
+        tracker.advanceToLevel(level + 1)
+    }
+    
+    init(name: String) {
+        
+        playerName = name
+    }
+}
+
+struct LevelTracker {
+    
+    static var highestUnlockedLevel = 1
+    
+    static func unlockLevel(level: Int) {
+        
+        if level > highestUnlockedLevel {
+            
+            highestUnlockedLevel = level
+        }
+    }
+    
+    static func levelIsUnlocked(level: Int) -> Bool {
+        
+        return level <= highestUnlockedLevel
+    }
+    
+    var currentLevel = 1
+    
+    mutating func advanceToLevel(level: Int) -> Bool {
+        
+        if LevelTracker.levelIsUnlocked(level) {
+            
+            currentLevel = level
+            
+            return true
+            
+        } else {
+            
+            return false
+        }
+    }
+}
+
+enum TriStateSwich {
+    
+    case Off, Low, High
+    
+    mutating func next() {
+        
+        switch self {
+            
+        case Off:
+            print("Off")
+            self = Low
+            
+        case Low:
+            print("Low")
+            self = High
+            
+        case High:
+            print("High")
+            self = Off
+        }
+    }
+}
+
+struct AudioChannel {
+    
+    static let thresholdLevel = 10
+    
+    static var maxInputLevelForAllChannels = 0
+    
+    var currentLevel: Int = 0 {
+        
+        didSet {
+            
+            if currentLevel > AudioChannel.thresholdLevel {
+                
+                currentLevel = AudioChannel.thresholdLevel
+            }
+            
+            if currentLevel > AudioChannel.maxInputLevelForAllChannels {
+                
+                AudioChannel.maxInputLevelForAllChannels = currentLevel
+            }
+        }
+    }
+}
+
+struct SomeStructure {
+    
+    static var storedTypeProperty = "Some value."
+    
+    static var computedTypeProperty: Int {
+        
+        return 1
+    }
+}
+
+enum SomeEnumeration {
+    
+    static var storedTypeProperty = "Some value."
+    
+    static var computedTypeProperty: Int {
+        
+        return 6
+    }
+}
+
+class SomeClass {
+    
+    static var storedTypeProperty = "Some value."
+    
+    static var computedTypeProperty: Int {
+        
+        return 27
+    }
+    
+    class var overrideableComputedTypeProperty: Int {
+        
+        return 107
     }
 }
 
