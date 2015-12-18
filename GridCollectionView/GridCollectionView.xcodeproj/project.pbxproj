@@ -19,6 +19,9 @@
 		AC1514CF1C2101F00067DF79 /* FLKPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1514CA1C2101F00067DF79 /* FLKPhoto.m */; };
 		AC1514D01C2101F00067DF79 /* FLKPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1514CC1C2101F00067DF79 /* FLKPhotos.m */; };
 		AC1514D11C2101F00067DF79 /* FLKRecentPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1514CE1C2101F00067DF79 /* FLKRecentPhotos.m */; };
+		AC70BB6C1C2282730083242D /* EKOriginImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AC70BB671C2282730083242D /* EKOriginImage.m */; };
+		AC70BB6D1C2282730083242D /* EKRecentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC70BB691C2282730083242D /* EKRecentModel.m */; };
+		AC70BB6E1C2282730083242D /* EKThumbnailImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AC70BB6B1C2282730083242D /* EKThumbnailImage.m */; };
 		ACC568AD1C21295400EF6D8A /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACC568881C21295400EF6D8A /* ProgressHUD.bundle */; };
 		ACC568AE1C21295400EF6D8A /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC5688A1C21295400EF6D8A /* ProgressHUD.m */; };
 		ACC568AF1C21295400EF6D8A /* YHCustomActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC5688D1C21295400EF6D8A /* YHCustomActivity.m */; };
@@ -82,6 +85,12 @@
 		AC1514CC1C2101F00067DF79 /* FLKPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKPhotos.m; sourceTree = "<group>"; };
 		AC1514CD1C2101F00067DF79 /* FLKRecentPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKRecentPhotos.h; sourceTree = "<group>"; };
 		AC1514CE1C2101F00067DF79 /* FLKRecentPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKRecentPhotos.m; sourceTree = "<group>"; };
+		AC70BB661C2282730083242D /* EKOriginImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKOriginImage.h; sourceTree = "<group>"; };
+		AC70BB671C2282730083242D /* EKOriginImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKOriginImage.m; sourceTree = "<group>"; };
+		AC70BB681C2282730083242D /* EKRecentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRecentModel.h; sourceTree = "<group>"; };
+		AC70BB691C2282730083242D /* EKRecentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRecentModel.m; sourceTree = "<group>"; };
+		AC70BB6A1C2282730083242D /* EKThumbnailImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKThumbnailImage.h; sourceTree = "<group>"; };
+		AC70BB6B1C2282730083242D /* EKThumbnailImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKThumbnailImage.m; sourceTree = "<group>"; };
 		ACC568881C21295400EF6D8A /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		ACC568891C21295400EF6D8A /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		ACC5688A1C21295400EF6D8A /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -184,6 +193,7 @@
 		AC1514941C21011E0067DF79 /* GridCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				AC70BB651C2282730083242D /* EKModel */,
 				ACC568861C21295400EF6D8A /* Common */,
 				AC1514C81C2101F00067DF79 /* FLKModel */,
 				AC1514981C21011E0067DF79 /* AppDelegate.h */,
@@ -239,6 +249,19 @@
 				AC1514CE1C2101F00067DF79 /* FLKRecentPhotos.m */,
 			);
 			path = FLKModel;
+			sourceTree = "<group>";
+		};
+		AC70BB651C2282730083242D /* EKModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC70BB661C2282730083242D /* EKOriginImage.h */,
+				AC70BB671C2282730083242D /* EKOriginImage.m */,
+				AC70BB681C2282730083242D /* EKRecentModel.h */,
+				AC70BB691C2282730083242D /* EKRecentModel.m */,
+				AC70BB6A1C2282730083242D /* EKThumbnailImage.h */,
+				AC70BB6B1C2282730083242D /* EKThumbnailImage.m */,
+			);
+			path = EKModel;
 			sourceTree = "<group>";
 		};
 		ACC568861C21295400EF6D8A /* Common */ = {
@@ -491,10 +514,12 @@
 				ACC568BA1C21295400EF6D8A /* YHTwitterActivity.m in Sources */,
 				ACC568B91C21295400EF6D8A /* YHTools.m in Sources */,
 				ACC568B41C21295400EF6D8A /* YHModel.m in Sources */,
+				AC70BB6C1C2282730083242D /* EKOriginImage.m in Sources */,
 				AC1514D11C2101F00067DF79 /* FLKRecentPhotos.m in Sources */,
 				ACC568B61C21295400EF6D8A /* YHPushModel.m in Sources */,
 				AC15149D1C21011E0067DF79 /* ViewController.m in Sources */,
 				ACC568AE1C21295400EF6D8A /* ProgressHUD.m in Sources */,
+				AC70BB6D1C2282730083242D /* EKRecentModel.m in Sources */,
 				AC1514D01C2101F00067DF79 /* FLKPhotos.m in Sources */,
 				ACC568B71C21295400EF6D8A /* YHSnsModel.m in Sources */,
 				AC15149A1C21011E0067DF79 /* AppDelegate.m in Sources */,
@@ -505,6 +530,7 @@
 				ACC568B31C21295400EF6D8A /* YHGooglePlusActivity.m in Sources */,
 				AC1514971C21011E0067DF79 /* main.m in Sources */,
 				ACC568BB1C21295400EF6D8A /* YHVariableObject.m in Sources */,
+				AC70BB6E1C2282730083242D /* EKThumbnailImage.m in Sources */,
 				ACC568BC1C21295400EF6D8A /* YHView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

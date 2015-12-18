@@ -12,21 +12,122 @@ class ViewController: UIViewController {
 
     override func viewDidLoad()
     {
-        var player = Player(name: "doozer")
+       let car  = Car()
         
-        player.completeLevel(1)
+        car.currentSpeed = 25.0
         
-        print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
+        car.gear = 3
         
-        player = Player(name: "Beto")
+        print("Car : \(car.description)")
         
-        if player.tracker.advanceToLevel(6) {
+        let automatic = AutomaticCar()
+        
+        automatic.currentSpeed = 35.0
+        
+        print("AutomaticCar : \(automatic.description)")
+    }
+}
+
+class AutomaticCar: Car {
+    
+    override var currentSpeed: Double {
+        
+        didSet {
             
-            print("player is now on level 6")
-        } else {
-            
-            print("level 6 has not yet been unlocked")
+            gear = Int(currentSpeed / 10.0) + 1
         }
+    }
+}
+
+class Car: Vehicle {
+    
+    var gear = 1
+    
+    override var description: String {
+        
+        return super.description + " in gear \(gear)"
+    }
+}
+
+class Train: Vehicle {
+    
+    override func makeNoise() {
+        
+        print("Choo Choo")
+    }
+}
+
+class Tandem : Bicycle{
+    
+    var currentNumberOfPassengers = 0
+}
+
+class Bicycle : Vehicle  {
+    
+    var hasBasket = false
+    
+}
+
+class Vehicle {
+    
+    var currentSpeed = 0.0
+    
+    var description: String {
+        
+        return "traveling at \(currentSpeed) miles per hour"
+    }
+    
+    func makeNoise() {
+        
+        // should be overrie
+    }
+}
+
+struct Matrix {
+    
+    let rows: Int, columns: Int
+    
+    var grid: [Double]
+    
+    init(rows: Int, columns: Int) {
+        
+        self.rows = rows
+        
+        self.columns = columns
+        
+        grid = Array(count: rows * columns, repeatedValue: 0.0)
+    }
+    
+    func indexIsValidForRow(row: Int, column: Int) -> Bool {
+        
+        return row >= 0 && row < rows && column >= 0 && column < columns
+    }
+    
+    subscript(row: Int, column: Int) -> Double {
+        
+        get {
+            
+            assert(indexIsValidForRow(row, column: column))
+            
+            return grid[(row * columns) + column]
+        }
+        
+        set {
+            
+            assert(indexIsValidForRow(row, column: column), "Index out of range")
+            
+            grid[(row * columns) + column] = newValue
+        }
+    }
+}
+
+struct TimesTable {
+    
+    let multiplier: Int
+    
+    subscript(index: Int) -> Int {
+        
+        return multiplier * index
     }
 }
 

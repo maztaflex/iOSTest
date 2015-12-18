@@ -15,6 +15,7 @@ pod 'MarqueeLabel'
 pod 'CHTCollectionViewWaterfallLayout'
 pod 'PureLayout'
 pod 'RACollectionViewReorderableTripletLayout'
+pod 'FBLikeLayout', '~> 1.2'
 
 #pod 'AWSAPIGateway'
 

@@ -73,7 +73,7 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="I3B-C7-w94">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                         <animations/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2A2-Mb-e0p" customClass="RACollectionViewReorderableTripletLayout">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2A2-Mb-e0p">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -86,10 +86,22 @@
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" tag="300" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mme-GS-RRV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <animations/>
+                                                        </imageView>
+                                                    </subviews>
                                                     <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <animations/>
+                                                <constraints>
+                                                    <constraint firstItem="mme-GS-RRV" firstAttribute="leading" secondItem="F7C-h1-Sqt" secondAttribute="leading" id="K0z-as-XAy"/>
+                                                    <constraint firstAttribute="bottom" secondItem="mme-GS-RRV" secondAttribute="bottom" id="M87-Jv-V99"/>
+                                                    <constraint firstAttribute="trailing" secondItem="mme-GS-RRV" secondAttribute="trailing" id="szT-6i-8VG"/>
+                                                    <constraint firstItem="mme-GS-RRV" firstAttribute="top" secondItem="F7C-h1-Sqt" secondAttribute="top" id="t59-3g-m9u"/>
+                                                </constraints>
                                             </collectionViewCell>
                                         </cells>
                                         <connections>
@@ -117,6 +129,9 @@
                             <constraint firstAttribute="trailing" secondItem="bH4-M5-BBx" secondAttribute="trailing" id="xBC-fe-4kt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="I3B-C7-w94" id="07Q-T0-Dy5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lol-UX-aLm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
