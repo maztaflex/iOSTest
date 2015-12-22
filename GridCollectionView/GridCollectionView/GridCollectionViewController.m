@@ -22,6 +22,13 @@
 @property (strong, nonatomic) EKRecentModel *ekModel;
 @property (strong, nonatomic) NSMutableArray *mappedList;
 
+
+//============================================================================================================================================
+@property (strong, nonatomic) NSMutableArray *imageSizeList;
+@property (strong, nonatomic) NSMutableArray *calImageSizeList;
+@property (assign, nonatomic) CGFloat sw;
+
+
 @end
 
 @implementation GridCollectionViewController
@@ -29,22 +36,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self reqEKRecent];
+    self.imageSizeList = [NSMutableArray array];
     
-//    FBLikeLayout *layout = [FBLikeLayout new];
-//    
-//    //in this case we want 3 cells per row, maximum. This is also the default value if you do not customize the layout.singleCellWidth property
-//    CGFloat cellWidth = (MIN(self.collectionView.bounds.size.width, self.collectionView.bounds.size.height)-self.collectionView.contentInset.left-self.collectionView.contentInset.right-8)/5.0;
-//    
-//    layout.minimumInteritemSpacing = 4;
-//    layout.singleCellWidth = cellWidth;
-//    layout.maxCellSpace = 3; //for full size cells, this parameter determines the max cell space
-//    
-//    //if you want the items size to be forced in order to have the minimumInteritemSpacing always respected. Otherwise the interitem spacing will be adapted in order to cover the complete row with cells
-//    layout.forceCellWidthForMinimumInteritemSpacing = YES;
-//    layout.fullImagePercentageOfOccurrency = 25; //this percent value determines how many times randomly the item will be full size.
-//    
-//    self.collectionView.collectionViewLayout = layout;
+    [self reqEKRecent];
 }
 
 - (void)reqEKRecent
@@ -54,15 +48,21 @@
     [ekRecentModel requestRecentPhotosWithLastKey:nil Success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSArray *list = responseObject;
-        
-        LogGreen(@"list : %@",list);
-        
         self.mappedList = [NSMutableArray array];
         
-        for (id obj in list) {
-            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
+//        for (id obj in list) {
+//            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
+//            [self.mappedList addObject:ek];
+//        }
+        
+        for (NSInteger i = 0; i < list.count; i++) {
+            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
             [self.mappedList addObject:ek];
+            
+            [self.imageSizeList addObject:ek.thumbnailImage];
         }
+        
+        [self testCalculate];
         
         [self.collectionView reloadData];
         
@@ -115,30 +115,169 @@
     
     CGSize cellSize = CGSizeZero;
     
-    EKRecentModel *ekRecentModel = [self.mappedList objectAtIndex:indexPath.row];
+    EKThumbnailImage *thumbImg = [self.calImageSizeList objectAtIndex:indexPath.row];
+    EKRecentModel *rModel = [self.mappedList objectAtIndex:indexPath.row];
+    EKThumbnailImage *originImg = rModel.thumbnailImage;
     
-    EKThumbnailImage *thumbImg = ekRecentModel.thumbnailImage;
+    cellSize = CGSizeMake(thumbImg.width.integerValue, thumbImg.height.integerValue);
     
-    cellSize = CGSizeMake(thumbImg.width.floatValue/4, thumbImg.height.floatValue/4);
+    LogGreen(@"cellSize : %zd, %zd / new cellSize : %f, %f",originImg.width.integerValue, originImg.height.integerValue, cellSize.width, cellSize.height);
     
-//    LogGreen(@"cellSize : %f, %f",cellSize.width, cellSize.height);
-//    LogGreen(@"collectionView : %@",collectionView);
-//    UICollectionViewCell *cell = [collectionView viewWithTag:200];
-//    LogGreen(@"cell : %@",cell);
-//    cellSize = [cell systemLayoutSizeFittingSize:cellSize];
-//    LogGreen(@"fitting cellSize : %f, %f",cellSize.width, cellSize.height);
     
     return cellSize;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+#pragma mark - Calculate ImageSize
+
+#define ch                                        100.0f
+#define MAX_CELL_COUNT_PER_ROW                    5
+#define kDefaultCellSpace                         2.0f
+#define kLeftCellMargin                           kDefaultCellSpace
+#define kRightCellMargin                          kDefaultCellSpace
+
+- (void)testCalculate
+{
+    self.calImageSizeList = [NSMutableArray array];
+    self.sw = [self.tools screenWidthWithConsideredOrientation];
+    
+    NSMutableArray *tempImageSizeList = [NSMutableArray array];
+    LogGreen(@"self.imageSizeList : %@",self.imageSizeList);
+    LogGreen(@"self.sw : %f",self.sw);
+    
+    NSInteger itemIdx = 0;
+    
+    [tempImageSizeList addObject:[self.imageSizeList objectAtIndex:itemIdx]];
+    
+    CGFloat cal1 = 1;
+    CGFloat cal2 = 0;
+    CGFloat r = 1;
+    CGFloat cch = 0.0f;
+    
+    while (self.calImageSizeList.count != self.imageSizeList.count)
+    {
+        for (NSInteger i = 0; i < tempImageSizeList.count; i++)
+        {
+            
+            EKThumbnailImage *th = nil;
+            if (tempImageSizeList.count == 1)
+            {
+                th = [tempImageSizeList objectAtIndex:i];
+                cal1 = self.sw - (kLeftCellMargin + kRightCellMargin);
+                cal2 = th.width.floatValue;
+            }
+            else
+            {
+                cal1 = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultCellSpace) + kRightCellMargin);
+                cal2 = 0;
+                for (NSInteger j = 1; j <= tempImageSizeList.count - 1; j++) {
+                    th = [tempImageSizeList objectAtIndex:j];
+                    cal1 = cal1 * th.height.floatValue;
+                }
+                
+                for (NSInteger k = 0; k < tempImageSizeList.count; k++)
+                {
+                    th = tempImageSizeList[k];
+                    CGFloat rw = th.width.floatValue;
+                    
+                    for (NSInteger p = 0; p < tempImageSizeList.count; p++) {
+                        th = tempImageSizeList[p];
+                        
+                        if (k != p) {
+                            rw = rw * th.height.floatValue;
+                        }
+                    }
+                    
+                    cal2 += rw;
+                }
+            }
+            
+            LogGreen(@"idx : %zd, rw : %f, rh : %f",i,th.width.floatValue, th.height.floatValue );
+            r = cal1 / cal2;
+            LogGreen(@"cal1 : %f, cal2 : %f",cal1, cal2);
+            LogGreen(@"r : %f",r);
+            cch = r * th.height.floatValue;
+            LogGreen(@"cch : %f",cch);
+            
+            if (cch < ch)
+            {
+                EKThumbnailImage *firstTh = [tempImageSizeList firstObject];
+                for (NSInteger v = 0; v < tempImageSizeList.count; v++)
+                {
+                    CGFloat nr = 1.0f;
+                    th = [tempImageSizeList objectAtIndex:v];
+                    
+                    if (v != 0) {
+                        nr = firstTh.height.floatValue * r / th.height.floatValue;
+                    }
+                    else
+                    {
+                        nr = r;
+                    }
+                    LogGreen(@"nr : %f",nr);
+                    EKThumbnailImage *resizedTh = [[EKThumbnailImage alloc] init];
+                    resizedTh.width = [NSString stringWithFormat:@"%f",(th.width.floatValue * nr)];
+                    resizedTh.height = [NSString stringWithFormat:@"%f",(th.height.floatValue * nr)];
+                    
+                    [self.calImageSizeList addObject:resizedTh];
+                }
+                
+                if ([self isExistItem:self.imageSizeList atIndex:itemIdx+1] == YES)
+                {
+                    itemIdx += 1;
+                    [tempImageSizeList removeAllObjects];
+                    [tempImageSizeList addObject:[self.imageSizeList objectAtIndex:itemIdx]];
+                }
+            }
+            else
+            {
+                LogGreen(@"itemIdx : %zd",itemIdx);
+                if ([self isExistItem:self.imageSizeList atIndex:itemIdx+1] == YES)
+                {
+                    itemIdx += 1;
+                    [tempImageSizeList addObject:[self.imageSizeList objectAtIndex:itemIdx]];
+                }
+                else
+                {
+                    EKThumbnailImage *firstTh = [tempImageSizeList firstObject];
+                    for (NSInteger v = 0; v < tempImageSizeList.count; v++)
+                    {
+                        CGFloat nr = 1.0f;
+                        th = [tempImageSizeList objectAtIndex:v];
+                        
+                        if (v != 0) {
+                            nr = firstTh.height.floatValue * r / th.height.floatValue;
+                        }
+                        else
+                        {
+                            nr = r;
+                        }
+                        LogGreen(@"nr : %f",nr);
+                        EKThumbnailImage *resizedTh = [[EKThumbnailImage alloc] init];
+                        resizedTh.width = [NSString stringWithFormat:@"%f",(th.width.floatValue * nr)];
+                        resizedTh.height = [NSString stringWithFormat:@"%f",(th.height.floatValue * nr)];
+                        
+                        [self.calImageSizeList addObject:resizedTh];
+                    }
+                }
+            }
+        }
+    }
 }
-*/
+
+- (BOOL)isExistItem:(NSArray *)arr atIndex:(NSInteger)idx
+{
+    BOOL result = NO;
+    @try {
+        [arr objectAtIndex:idx];
+        result = YES;
+    }
+    @catch (NSException *exception) {
+        result = NO;
+    }
+    
+    return result;
+}
 
 @end
