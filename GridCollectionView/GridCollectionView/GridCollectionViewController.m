@@ -11,14 +11,30 @@
 #import "EKRecentModel.h"
 #import "EKThumbnailImage.h"
 
-#define ch                                        100.0f
-#define MAX_CELL_COUNT_PER_ROW                    5
-#define kDefaultCellSpace                         2.0f
-#define kLeftCellMargin                           kDefaultCellSpace
-#define kRightCellMargin                          kDefaultCellSpace
+//============================================================================================================================================
+// 비율이 적용된 공통 이미지 셀의 높이, 해당 값을 기준으로 개행 결정
+#define kCriticalHeight                             100.0f
+
+// 동일 행에 최대 삽입 가능한 셀의 수 (!현재 미사용)
+#define kMaxCellCountPerRow                         5
+
+// 기본 여백값
+#define kDefaultMargin                              2.0f
+
+// 셀과 셀 사이 여백
+#define kInterCellSpacing                           kDefaultMargin
+
+// 좌측끝 셀 여백
+#define kLeftCellMargin                             kDefaultMargin
+
+// 우측끝 셀 여백
+#define kRightCellMargin                            kDefaultMargin
+
+// 셀 라인 여백
+#define kCellLineSpacing                            kDefaultMargin
+//============================================================================================================================================
 
 @interface GridCollectionViewController () <UICollectionViewDelegateFlowLayout>
-
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -26,12 +42,11 @@
 @property (strong, nonatomic) EKRecentModel *ekModel;
 @property (strong, nonatomic) NSMutableArray *mappedList;
 
-
 //============================================================================================================================================
 @property (strong, nonatomic) NSMutableArray *imageSizeList;
 @property (strong, nonatomic) NSMutableArray *calImageSizeList;
 @property (assign, nonatomic) CGFloat sw;
-
+//============================================================================================================================================
 
 @end
 
@@ -54,9 +69,11 @@
         NSArray *list = responseObject;
         self.mappedList = [NSMutableArray array];
         
-        for (id obj in list) {
+        for (id obj in list)
+        {
             EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
             [self.mappedList addObject:ek];
+            
             [self.imageSizeList addObject:ek.thumbnailImage];
         }
         
@@ -131,7 +148,7 @@
                         layout:(UICollectionViewLayout *)collectionViewLayout
         insetForSectionAtIndex:(NSInteger)section
 {
-    UIEdgeInsets insets = UIEdgeInsetsMake(kDefaultCellSpace, kDefaultCellSpace, kDefaultCellSpace, kDefaultCellSpace);
+    UIEdgeInsets insets = UIEdgeInsetsMake(kDefaultMargin, kDefaultMargin, kDefaultMargin, kDefaultMargin);
     
     return insets;
 }
@@ -140,7 +157,7 @@
                    layout:(UICollectionViewLayout *)collectionViewLayout
 minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    CGFloat lineSpacing = kDefaultCellSpace;
+    CGFloat lineSpacing = kCellLineSpacing;
     
     return lineSpacing;
 }
@@ -149,7 +166,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
                    layout:(UICollectionViewLayout *)collectionViewLayout
 minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    CGFloat itemSpacing = kDefaultCellSpace;
+    CGFloat itemSpacing = kDefaultMargin;
     
     return itemSpacing;
 }
@@ -188,7 +205,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
             }
             else
             {
-                cal1 = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultCellSpace) + kRightCellMargin);
+                cal1 = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kInterCellSpacing) + kRightCellMargin);
                 cal2 = 0;
                 for (NSInteger j = 1; j <= tempImageSizeList.count - 1; j++) {
                     th = [tempImageSizeList objectAtIndex:j];
@@ -219,7 +236,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
             cch = r * th.height.floatValue;
             LogGreen(@"cch : %f",cch);
             
-            if (cch < ch)
+            if (cch < kCriticalHeight)
             {
                 NSInteger totalWidth = 0;
                 EKThumbnailImage *firstTh = [tempImageSizeList firstObject];
@@ -237,7 +254,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                     }
                     LogGreen(@"nr : %f",nr);
                     EKThumbnailImage *resizedTh = [[EKThumbnailImage alloc] init];
-                    NSInteger deviceWidth = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultCellSpace) + kRightCellMargin);
+                    NSInteger deviceWidth = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultMargin) + kRightCellMargin);
                     NSInteger resizedWidth = th.width.floatValue * nr;
                     NSInteger resizedHeight = th.height.floatValue * nr;
                     totalWidth += resizedWidth;
@@ -284,7 +301,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                         LogGreen(@"nr : %f",nr);
                         EKThumbnailImage *resizedTh = [[EKThumbnailImage alloc] init];
                         
-                        NSInteger deviceWidth = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultCellSpace) + kRightCellMargin);
+                        NSInteger deviceWidth = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultMargin) + kRightCellMargin);
                         NSInteger resizedWidth = th.width.floatValue * nr;
                         NSInteger resizedHeight = th.height.floatValue * nr;
                         totalWidth += resizedWidth;
