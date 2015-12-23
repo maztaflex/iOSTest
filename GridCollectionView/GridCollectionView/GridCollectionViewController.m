@@ -185,16 +185,15 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
      * rw : 원본 가로 길이
      * rh : 원본 세로 길이
      * nw : 비율 적용 가로 길이
-     * nh : 비율 적용 세로 길이
      * r0 : 첫번째 아이템의 계산된 비율
-     * cch :
+     * cch : 동일행의 공통 높이
      * 
-     * Fomula1 : sw = (rw0 * r0) + (rw1 * r1) + (rw2 * r2) ....
-     * Fomula2 :
-     *
-     *                               sw * rh1 * rh2
-     *    r0 = ---------------------------------------------------------------
-     *          (rw0 * rh1 * rh2) + (rw1 * rh2 * rh0) + (rw2 * rh0 * rh1)
+     * Formula1 : sw = (rw0 * r0) + (rw1 * r1) + (rw2 * r2) ...
+     * Formula2 : cch = (rh0 * r0) = (rh1 * r1) = (rh2 * r2) ...
+     * Formula3 :
+     *                                         sw * rh1 * rh2
+     *            r0 = --------------------------------------------------------------
+     *                    (rw0 * rh1 * rh2) + (rw1 * rh2 * rh0) + (rw2 * rh0 * rh1)
      */
     
     NSMutableArray *resizedList = [NSMutableArray array]; // 리사이즈 완료된 사이즈 저장 리스트
