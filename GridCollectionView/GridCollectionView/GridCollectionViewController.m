@@ -66,7 +66,7 @@
             [self.imageSizeList addObject:ek.thumbnailImage];
         }
         
-        [self testCalculate];
+        [self gernerateResizedCell];
         
         [self.collectionView reloadData];
         
@@ -162,7 +162,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 
 
 #pragma mark - Calculate ImageSize
-- (void)testCalculate
+- (void)gernerateResizedCell
 {
     self.calImageSizeList = [NSMutableArray array];
     self.sw = [self.tools screenWidthWithConsideredOrientation];
