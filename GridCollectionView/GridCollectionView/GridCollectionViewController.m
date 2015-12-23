@@ -177,7 +177,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 
 
 #pragma mark - Calculate ImageSize
-- (NSArray *)getResizedListFromOriginSizes:(NSArray *)orisinSizes
+- (NSArray *)getResizedListFromOriginSizes:(NSArray *)originSizes
 {
     /* 첫번째 아이템 비율 계산 - ex. 아이템이 3개일때
      *
@@ -194,6 +194,11 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
      *                                         sw * rh1 * rh2
      *            r0 = --------------------------------------------------------------
      *                    (rw0 * rh1 * rh2) + (rw1 * rh2 * rh0) + (rw2 * rh0 * rh1)
+     *
+     *                    r0 * rh0             r0 * rh0
+     * Formula4 : r1 = ------------- , r2 = -------------- ...
+     *                      rh1                   rh2
+     *
      */
     
     NSMutableArray *resizedList = [NSMutableArray array]; // 리사이즈 완료된 사이즈 저장 리스트
@@ -210,8 +215,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     CGFloat nextRatio = 1.0f; // r1..r2..r3..
     CGFloat commonHeightPerRow = 0.0f; // cch
     
-    [sizeListForCalculate addObject:[orisinSizes objectAtIndex:itemIdx]];
-    while (resizedList.count != orisinSizes.count)
+    [sizeListForCalculate addObject:[originSizes objectAtIndex:itemIdx]];
+    while (resizedList.count != originSizes.count)
     {
         for (NSInteger i = 0; i < sizeListForCalculate.count; i++)
         {
@@ -277,20 +282,20 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                     [resizedList addObject:[NSValue valueWithCGSize:CGSizeMake(resizedWidth, commonHeightPerRow)]];
                 }
                 
-                if ([self isExistItem:orisinSizes atIndex:itemIdx+1] == YES)
+                if ([self isExistItem:originSizes atIndex:itemIdx+1] == YES)
                 {
                     itemIdx += 1;
                     [sizeListForCalculate removeAllObjects];
-                    [sizeListForCalculate addObject:[orisinSizes objectAtIndex:itemIdx]];
+                    [sizeListForCalculate addObject:[originSizes objectAtIndex:itemIdx]];
                 }
             }
             else
             {
                 LogGreen(@"itemIdx : %zd",itemIdx);
-                if ([self isExistItem:orisinSizes atIndex:itemIdx+1] == YES)
+                if ([self isExistItem:originSizes atIndex:itemIdx+1] == YES)
                 {
                     itemIdx += 1;
-                    [sizeListForCalculate addObject:[orisinSizes objectAtIndex:itemIdx]];
+                    [sizeListForCalculate addObject:[originSizes objectAtIndex:itemIdx]];
                 }
                 else
                 {
