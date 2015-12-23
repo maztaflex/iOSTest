@@ -44,8 +44,7 @@
 
 //============================================================================================================================================
 @property (strong, nonatomic) NSMutableArray *imageSizeList;
-@property (strong, nonatomic) NSMutableArray *calImageSizeList;
-@property (assign, nonatomic) CGFloat sw;
+@property (strong, nonatomic) NSArray *resizedList;
 //============================================================================================================================================
 
 @end
@@ -56,6 +55,7 @@
     [super viewDidLoad];
     
     self.imageSizeList = [NSMutableArray array];
+    self.resizedList = [NSArray array];
     
     [self reqEKRecent];
 }
@@ -69,15 +69,15 @@
         NSArray *list = responseObject;
         self.mappedList = [NSMutableArray array];
         
+        NSMutableArray *originImageSizeList = [NSMutableArray array];
         for (id obj in list)
         {
             EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
             [self.mappedList addObject:ek];
-            
-            [self.imageSizeList addObject:ek.thumbnailImage];
+            [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
         }
         
-        [self gernerateResizedCell];
+        self.resizedList = [self getResizedListFromOriginSizes:originImageSizeList];
         
         [self.collectionView reloadData];
         
@@ -130,16 +130,12 @@
 
 -(CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGSize cellSize = CGSizeZero;
+    CGSize cellSize = [(NSValue *)[self.resizedList objectAtIndex:indexPath.row] CGSizeValue];
     
-    EKThumbnailImage *thumbImg = [self.calImageSizeList objectAtIndex:indexPath.row];
     EKRecentModel *rModel = [self.mappedList objectAtIndex:indexPath.row];
     EKThumbnailImage *originImg = rModel.thumbnailImage;
     
-    cellSize = CGSizeMake(thumbImg.width.integerValue, thumbImg.height.integerValue);
-    
     LogGreen(@"cellSize : %zd, %zd / new cellSize : %f, %f",originImg.width.integerValue, originImg.height.integerValue, cellSize.width, cellSize.height);
-    
     
     return cellSize;
 }
@@ -173,55 +169,51 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 
 
 #pragma mark - Calculate ImageSize
-- (void)gernerateResizedCell
+- (NSArray *)getResizedListFromOriginSizes:(NSArray *)orisinSizes
 {
-    self.calImageSizeList = [NSMutableArray array];
-    self.sw = [self.tools screenWidthWithConsideredOrientation];
+    NSMutableArray *resizedList = [NSMutableArray array];
+    NSInteger screenWidth = [[UIScreen mainScreen] bounds].size.width;
     
     NSMutableArray *tempImageSizeList = [NSMutableArray array];
-    LogGreen(@"self.imageSizeList : %@",self.imageSizeList);
-    LogGreen(@"self.sw : %f",self.sw);
-    
     NSInteger itemIdx = 0;
     
-    [tempImageSizeList addObject:[self.imageSizeList objectAtIndex:itemIdx]];
+    [tempImageSizeList addObject:[orisinSizes objectAtIndex:itemIdx]];
     
     CGFloat cal1 = 1.0f;
     CGFloat cal2 = 0.0f;
     CGFloat r = 1.0f;
     CGFloat cch = 0.0f;
     
-    while (self.calImageSizeList.count != self.imageSizeList.count)
+    while (resizedList.count != orisinSizes.count)
     {
         for (NSInteger i = 0; i < tempImageSizeList.count; i++)
         {
-            
-            EKThumbnailImage *th = nil;
+            CGSize imgSize = CGSizeZero;
             if (tempImageSizeList.count == 1)
             {
-                th = [tempImageSizeList objectAtIndex:i];
-                cal1 = self.sw - (kLeftCellMargin + kRightCellMargin);
-                cal2 = th.width.floatValue;
+                imgSize = [(NSValue *)[tempImageSizeList objectAtIndex:i] CGSizeValue];
+                cal1 = screenWidth - (kLeftCellMargin + kRightCellMargin);
+                cal2 = imgSize.width;
             }
             else
             {
-                cal1 = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kInterCellSpacing) + kRightCellMargin);
+                cal1 = screenWidth - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kInterCellSpacing) + kRightCellMargin);
                 cal2 = 0;
                 for (NSInteger j = 1; j <= tempImageSizeList.count - 1; j++) {
-                    th = [tempImageSizeList objectAtIndex:j];
-                    cal1 = cal1 * th.height.floatValue;
+                    imgSize = [(NSValue *)[tempImageSizeList objectAtIndex:j] CGSizeValue];
+                    cal1 = cal1 * imgSize.height;
                 }
                 
                 for (NSInteger k = 0; k < tempImageSizeList.count; k++)
                 {
-                    th = tempImageSizeList[k];
-                    CGFloat rw = th.width.floatValue;
+                    imgSize = [(NSValue *)tempImageSizeList[k] CGSizeValue];
+                    CGFloat rw = imgSize.width;
                     
                     for (NSInteger p = 0; p < tempImageSizeList.count; p++) {
-                        th = tempImageSizeList[p];
+                        imgSize = [(NSValue *)tempImageSizeList[p] CGSizeValue];
                         
                         if (k != p) {
-                            rw = rw * th.height.floatValue;
+                            rw = rw * imgSize.height;
                         }
                     }
                     
@@ -229,94 +221,93 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                 }
             }
             
-            LogGreen(@"idx : %zd, rw : %f, rh : %f",i,th.width.floatValue, th.height.floatValue );
+            LogGreen(@"idx : %zd, rw : %f, rh : %f",i,imgSize.width, imgSize.height);
             r = cal1 / cal2;
             LogGreen(@"cal1 : %f, cal2 : %f",cal1, cal2);
             LogGreen(@"r : %f",r);
-            cch = r * th.height.floatValue;
+            cch = r * imgSize.height;
             LogGreen(@"cch : %f",cch);
             
             if (cch < kCriticalHeight)
             {
                 NSInteger totalWidth = 0;
-                EKThumbnailImage *firstTh = [tempImageSizeList firstObject];
+                CGSize  firstSize = [(NSValue *)[tempImageSizeList firstObject] CGSizeValue];
                 for (NSInteger v = 0; v < tempImageSizeList.count; v++)
                 {
                     CGFloat nr = 1.0f;
-                    th = [tempImageSizeList objectAtIndex:v];
+                    imgSize = [(NSValue *)[tempImageSizeList objectAtIndex:v] CGSizeValue];
                     
                     if (v != 0) {
-                        nr = firstTh.height.floatValue * r / th.height.floatValue;
+                        nr = firstSize.height * r / imgSize.height;
                     }
                     else
                     {
                         nr = r;
                     }
                     LogGreen(@"nr : %f",nr);
-                    EKThumbnailImage *resizedTh = [[EKThumbnailImage alloc] init];
-                    NSInteger deviceWidth = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultMargin) + kRightCellMargin);
-                    NSInteger resizedWidth = th.width.floatValue * nr;
-                    NSInteger resizedHeight = th.height.floatValue * nr;
+
+                    NSInteger combinedCellWidth = screenWidth - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultMargin) + kRightCellMargin);
+                    NSInteger resizedWidth = imgSize.width * nr;
+                    NSInteger resizedHeight = imgSize.height * nr;
                     totalWidth += resizedWidth;
-                    if ((v == tempImageSizeList.count - 1 ) && (totalWidth != deviceWidth)) {
-                        resizedWidth = resizedWidth + (deviceWidth - totalWidth);
+                    if ((v == tempImageSizeList.count - 1 ) && (totalWidth != combinedCellWidth))
+                    {
+                        resizedWidth = resizedWidth + (combinedCellWidth - totalWidth);
                     }
-                    resizedTh.width = [NSString stringWithFormat:@"%zd",resizedWidth];
-                    resizedTh.height = [NSString stringWithFormat:@"%zd",resizedHeight];
                     
-                    [self.calImageSizeList addObject:resizedTh];
+                    [resizedList addObject:[NSValue valueWithCGSize:CGSizeMake(resizedWidth, resizedHeight)]];
                 }
                 
-                if ([self isExistItem:self.imageSizeList atIndex:itemIdx+1] == YES)
+                if ([self isExistItem:orisinSizes atIndex:itemIdx+1] == YES)
                 {
                     itemIdx += 1;
                     [tempImageSizeList removeAllObjects];
-                    [tempImageSizeList addObject:[self.imageSizeList objectAtIndex:itemIdx]];
+                    [tempImageSizeList addObject:[orisinSizes objectAtIndex:itemIdx]];
                 }
             }
             else
             {
                 LogGreen(@"itemIdx : %zd",itemIdx);
-                if ([self isExistItem:self.imageSizeList atIndex:itemIdx+1] == YES)
+                if ([self isExistItem:orisinSizes atIndex:itemIdx+1] == YES)
                 {
                     itemIdx += 1;
-                    [tempImageSizeList addObject:[self.imageSizeList objectAtIndex:itemIdx]];
+                    [tempImageSizeList addObject:[orisinSizes objectAtIndex:itemIdx]];
                 }
                 else
                 {
                     NSInteger totalWidth = 0;
-                    EKThumbnailImage *firstTh = [tempImageSizeList firstObject];
+                    CGSize firstSize = [(NSValue *)[tempImageSizeList firstObject] CGSizeValue];
                     for (NSInteger v = 0; v < tempImageSizeList.count; v++)
                     {
                         CGFloat nr = 1.0f;
-                        th = [tempImageSizeList objectAtIndex:v];
+                        imgSize = [(NSValue *)[tempImageSizeList objectAtIndex:v] CGSizeValue];
                         
                         if (v != 0) {
-                            nr = firstTh.height.floatValue * r / th.height.floatValue;
+                            nr = firstSize.height * r / imgSize.height;
                         }
                         else
                         {
                             nr = r;
                         }
                         LogGreen(@"nr : %f",nr);
-                        EKThumbnailImage *resizedTh = [[EKThumbnailImage alloc] init];
                         
-                        NSInteger deviceWidth = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultMargin) + kRightCellMargin);
-                        NSInteger resizedWidth = th.width.floatValue * nr;
-                        NSInteger resizedHeight = th.height.floatValue * nr;
+                        NSInteger combinedCellWidth = screenWidth - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultMargin) + kRightCellMargin);
+                        NSInteger resizedWidth = imgSize.width * nr;
+                        NSInteger resizedHeight = imgSize.height * nr;
                         totalWidth += resizedWidth;
-                        if ((v == tempImageSizeList.count - 1 ) && (totalWidth != deviceWidth)) {
-                            resizedWidth = resizedWidth + (deviceWidth - totalWidth);
+                        if ((v == tempImageSizeList.count - 1 ) && (totalWidth != combinedCellWidth)) {
+                            resizedWidth = resizedWidth + (combinedCellWidth - totalWidth);
                         }
-                        resizedTh.width = [NSString stringWithFormat:@"%zd",resizedWidth];
-                        resizedTh.height = [NSString stringWithFormat:@"%zd",resizedHeight];
                         
-                        [self.calImageSizeList addObject:resizedTh];
+                        
+                        [resizedList addObject:[NSValue valueWithCGSize:CGSizeMake(resizedWidth, resizedHeight)]];
                     }
                 }
             }
         }
     }
+    
+    return resizedList;
 }
 
 - (BOOL)isExistItem:(NSArray *)arr atIndex:(NSInteger)idx
