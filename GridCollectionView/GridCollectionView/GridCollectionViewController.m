@@ -91,6 +91,8 @@
         LogRed(@"error : %@",error);
     }];
 }
+
+#pragma mark - UICollectionView Datasource & Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
