@@ -11,7 +11,11 @@
 #import "EKRecentModel.h"
 #import "EKThumbnailImage.h"
 
-#import <FBLikeLayout.h>
+#define ch                                        100.0f
+#define MAX_CELL_COUNT_PER_ROW                    5
+#define kDefaultCellSpace                         2.0f
+#define kLeftCellMargin                           kDefaultCellSpace
+#define kRightCellMargin                          kDefaultCellSpace
 
 @interface GridCollectionViewController () <UICollectionViewDelegateFlowLayout>
 
@@ -127,16 +131,35 @@
     return cellSize;
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+                        layout:(UICollectionViewLayout *)collectionViewLayout
+        insetForSectionAtIndex:(NSInteger)section
+{
+    UIEdgeInsets insets = UIEdgeInsetsMake(kDefaultCellSpace, kDefaultCellSpace, kDefaultCellSpace, kDefaultCellSpace);
+    
+    return insets;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    CGFloat lineSpacing = kDefaultCellSpace;
+    
+    return lineSpacing;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    CGFloat itemSpacing = kDefaultCellSpace;
+    
+    return itemSpacing;
+}
 
 
 #pragma mark - Calculate ImageSize
-
-#define ch                                        100.0f
-#define MAX_CELL_COUNT_PER_ROW                    5
-#define kDefaultCellSpace                         2.0f
-#define kLeftCellMargin                           kDefaultCellSpace
-#define kRightCellMargin                          kDefaultCellSpace
-
 - (void)testCalculate
 {
     self.calImageSizeList = [NSMutableArray array];
@@ -150,9 +173,9 @@
     
     [tempImageSizeList addObject:[self.imageSizeList objectAtIndex:itemIdx]];
     
-    CGFloat cal1 = 1;
-    CGFloat cal2 = 0;
-    CGFloat r = 1;
+    CGFloat cal1 = 1.0f;
+    CGFloat cal2 = 0.0f;
+    CGFloat r = 1.0f;
     CGFloat cch = 0.0f;
     
     while (self.calImageSizeList.count != self.imageSizeList.count)
@@ -202,6 +225,7 @@
             
             if (cch < ch)
             {
+                NSInteger totalWidth = 0;
                 EKThumbnailImage *firstTh = [tempImageSizeList firstObject];
                 for (NSInteger v = 0; v < tempImageSizeList.count; v++)
                 {
@@ -217,8 +241,15 @@
                     }
                     LogGreen(@"nr : %f",nr);
                     EKThumbnailImage *resizedTh = [[EKThumbnailImage alloc] init];
-                    resizedTh.width = [NSString stringWithFormat:@"%f",(th.width.floatValue * nr)];
-                    resizedTh.height = [NSString stringWithFormat:@"%f",(th.height.floatValue * nr)];
+                    NSInteger deviceWidth = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultCellSpace) + kRightCellMargin);
+                    NSInteger resizedWidth = th.width.floatValue * nr;
+                    NSInteger resizedHeight = th.height.floatValue * nr;
+                    totalWidth += resizedWidth;
+                    if ((v == tempImageSizeList.count - 1 ) && (totalWidth != deviceWidth)) {
+                        resizedWidth = resizedWidth + (deviceWidth - totalWidth);
+                    }
+                    resizedTh.width = [NSString stringWithFormat:@"%zd",resizedWidth];
+                    resizedTh.height = [NSString stringWithFormat:@"%zd",resizedHeight];
                     
                     [self.calImageSizeList addObject:resizedTh];
                 }
@@ -240,6 +271,7 @@
                 }
                 else
                 {
+                    NSInteger totalWidth = 0;
                     EKThumbnailImage *firstTh = [tempImageSizeList firstObject];
                     for (NSInteger v = 0; v < tempImageSizeList.count; v++)
                     {
@@ -255,8 +287,16 @@
                         }
                         LogGreen(@"nr : %f",nr);
                         EKThumbnailImage *resizedTh = [[EKThumbnailImage alloc] init];
-                        resizedTh.width = [NSString stringWithFormat:@"%f",(th.width.floatValue * nr)];
-                        resizedTh.height = [NSString stringWithFormat:@"%f",(th.height.floatValue * nr)];
+                        
+                        NSInteger deviceWidth = self.sw - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultCellSpace) + kRightCellMargin);
+                        NSInteger resizedWidth = th.width.floatValue * nr;
+                        NSInteger resizedHeight = th.height.floatValue * nr;
+                        totalWidth += resizedWidth;
+                        if ((v == tempImageSizeList.count - 1 ) && (totalWidth != deviceWidth)) {
+                            resizedWidth = resizedWidth + (deviceWidth - totalWidth);
+                        }
+                        resizedTh.width = [NSString stringWithFormat:@"%zd",resizedWidth];
+                        resizedTh.height = [NSString stringWithFormat:@"%zd",resizedHeight];
                         
                         [self.calImageSizeList addObject:resizedTh];
                     }
