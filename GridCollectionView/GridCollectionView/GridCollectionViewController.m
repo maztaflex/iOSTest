@@ -54,15 +54,9 @@
         NSArray *list = responseObject;
         self.mappedList = [NSMutableArray array];
         
-//        for (id obj in list) {
-//            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
-//            [self.mappedList addObject:ek];
-//        }
-        
-        for (NSInteger i = 0; i < list.count; i++) {
-            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
+        for (id obj in list) {
+            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
             [self.mappedList addObject:ek];
-            
             [self.imageSizeList addObject:ek.thumbnailImage];
         }
         
