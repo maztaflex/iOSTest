@@ -70,10 +70,17 @@
         self.mappedList = [NSMutableArray array];
         
         NSMutableArray *originImageSizeList = [NSMutableArray array];
-        for (id obj in list)
-        {
-            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
+//        for (id obj in list)
+//        {
+//            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
+//            [self.mappedList addObject:ek];
+//            [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
+//        }
+        
+        for (NSInteger i = 0; i < list.count; i++) {
+            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
             [self.mappedList addObject:ek];
+            
             [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
         }
         
@@ -187,36 +194,30 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
         for (NSInteger i = 0; i < sizeListForCalculate.count; i++)
         {
             CGSize imgSize = CGSizeZero;
-            if (sizeListForCalculate.count == 1)
+            
+            cal1 = screenWidth - (kLeftCellMargin + ((sizeListForCalculate.count - 1) * kInterCellSpacing) + kRightCellMargin);
+            
+            cal2 = CGFLOAT_MIN;
+            for (NSInteger j = 1; j <= sizeListForCalculate.count - 1; j++)
             {
-                imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:i] CGSizeValue];
-                cal1 = screenWidth - (kLeftCellMargin + kRightCellMargin);
-                cal2 = imgSize.width;
+                imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:j] CGSizeValue];
+                cal1 = cal1 * imgSize.height;
             }
-            else
+            
+            for (NSInteger k = 0; k < sizeListForCalculate.count; k++)
             {
-                cal1 = screenWidth - (kLeftCellMargin + ((sizeListForCalculate.count - 1) * kInterCellSpacing) + kRightCellMargin);
-                cal2 = 0;
-                for (NSInteger j = 1; j <= sizeListForCalculate.count - 1; j++) {
-                    imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:j] CGSizeValue];
-                    cal1 = cal1 * imgSize.height;
+                imgSize = [(NSValue *)sizeListForCalculate[k] CGSizeValue];
+                CGFloat widthForCalculate = imgSize.width;
+                
+                for (NSInteger p = 0; p < sizeListForCalculate.count; p++) {
+                    imgSize = [(NSValue *)sizeListForCalculate[p] CGSizeValue];
+                    
+                    if (k != p) {
+                        widthForCalculate = widthForCalculate * imgSize.height;
+                    }
                 }
                 
-                for (NSInteger k = 0; k < sizeListForCalculate.count; k++)
-                {
-                    imgSize = [(NSValue *)sizeListForCalculate[k] CGSizeValue];
-                    CGFloat rw = imgSize.width;
-                    
-                    for (NSInteger p = 0; p < sizeListForCalculate.count; p++) {
-                        imgSize = [(NSValue *)sizeListForCalculate[p] CGSizeValue];
-                        
-                        if (k != p) {
-                            rw = rw * imgSize.height;
-                        }
-                    }
-                    
-                    cal2 += rw;
-                }
+                cal2 += widthForCalculate;
             }
         
             firstRatio = cal1 / cal2;
