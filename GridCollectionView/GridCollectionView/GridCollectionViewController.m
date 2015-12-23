@@ -172,45 +172,43 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 - (NSArray *)getResizedListFromOriginSizes:(NSArray *)orisinSizes
 {
     NSMutableArray *resizedList = [NSMutableArray array];
-    NSInteger screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    NSMutableArray *sizeListForCalculate = [NSMutableArray array];
     
-    NSMutableArray *tempImageSizeList = [NSMutableArray array];
     NSInteger itemIdx = 0;
-    
-    [tempImageSizeList addObject:[orisinSizes objectAtIndex:itemIdx]];
-    
+    NSInteger screenWidth = [[UIScreen mainScreen] bounds].size.width;
     CGFloat cal1 = 1.0f;
     CGFloat cal2 = 0.0f;
-    CGFloat r = 1.0f;
-    CGFloat cch = 0.0f;
+    CGFloat firstRatio = 1.0f;
+    CGFloat commonHeightPerRow = 0.0f;
     
+    [sizeListForCalculate addObject:[orisinSizes objectAtIndex:itemIdx]];
     while (resizedList.count != orisinSizes.count)
     {
-        for (NSInteger i = 0; i < tempImageSizeList.count; i++)
+        for (NSInteger i = 0; i < sizeListForCalculate.count; i++)
         {
             CGSize imgSize = CGSizeZero;
-            if (tempImageSizeList.count == 1)
+            if (sizeListForCalculate.count == 1)
             {
-                imgSize = [(NSValue *)[tempImageSizeList objectAtIndex:i] CGSizeValue];
+                imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:i] CGSizeValue];
                 cal1 = screenWidth - (kLeftCellMargin + kRightCellMargin);
                 cal2 = imgSize.width;
             }
             else
             {
-                cal1 = screenWidth - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kInterCellSpacing) + kRightCellMargin);
+                cal1 = screenWidth - (kLeftCellMargin + ((sizeListForCalculate.count - 1) * kInterCellSpacing) + kRightCellMargin);
                 cal2 = 0;
-                for (NSInteger j = 1; j <= tempImageSizeList.count - 1; j++) {
-                    imgSize = [(NSValue *)[tempImageSizeList objectAtIndex:j] CGSizeValue];
+                for (NSInteger j = 1; j <= sizeListForCalculate.count - 1; j++) {
+                    imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:j] CGSizeValue];
                     cal1 = cal1 * imgSize.height;
                 }
                 
-                for (NSInteger k = 0; k < tempImageSizeList.count; k++)
+                for (NSInteger k = 0; k < sizeListForCalculate.count; k++)
                 {
-                    imgSize = [(NSValue *)tempImageSizeList[k] CGSizeValue];
+                    imgSize = [(NSValue *)sizeListForCalculate[k] CGSizeValue];
                     CGFloat rw = imgSize.width;
                     
-                    for (NSInteger p = 0; p < tempImageSizeList.count; p++) {
-                        imgSize = [(NSValue *)tempImageSizeList[p] CGSizeValue];
+                    for (NSInteger p = 0; p < sizeListForCalculate.count; p++) {
+                        imgSize = [(NSValue *)sizeListForCalculate[p] CGSizeValue];
                         
                         if (k != p) {
                             rw = rw * imgSize.height;
@@ -220,37 +218,35 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                     cal2 += rw;
                 }
             }
+        
+            firstRatio = cal1 / cal2;
+            commonHeightPerRow = firstRatio * imgSize.height;
+            LogGreen(@"firstRatio : %f",firstRatio);
+            LogGreen(@"commonHeightPerRow : %f",commonHeightPerRow);
             
-            LogGreen(@"idx : %zd, rw : %f, rh : %f",i,imgSize.width, imgSize.height);
-            r = cal1 / cal2;
-            LogGreen(@"cal1 : %f, cal2 : %f",cal1, cal2);
-            LogGreen(@"r : %f",r);
-            cch = r * imgSize.height;
-            LogGreen(@"cch : %f",cch);
-            
-            if (cch < kCriticalHeight)
+            if (commonHeightPerRow < kCriticalHeight)
             {
                 NSInteger totalWidth = 0;
-                CGSize  firstSize = [(NSValue *)[tempImageSizeList firstObject] CGSizeValue];
-                for (NSInteger v = 0; v < tempImageSizeList.count; v++)
+                CGSize  firstSize = [(NSValue *)[sizeListForCalculate firstObject] CGSizeValue];
+                for (NSInteger v = 0; v < sizeListForCalculate.count; v++)
                 {
                     CGFloat nr = 1.0f;
-                    imgSize = [(NSValue *)[tempImageSizeList objectAtIndex:v] CGSizeValue];
+                    imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:v] CGSizeValue];
                     
                     if (v != 0) {
-                        nr = firstSize.height * r / imgSize.height;
+                        nr = firstSize.height * firstRatio / imgSize.height;
                     }
                     else
                     {
-                        nr = r;
+                        nr = firstRatio;
                     }
                     LogGreen(@"nr : %f",nr);
 
-                    NSInteger combinedCellWidth = screenWidth - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultMargin) + kRightCellMargin);
+                    NSInteger combinedCellWidth = screenWidth - (kLeftCellMargin + ((sizeListForCalculate.count - 1) * kDefaultMargin) + kRightCellMargin);
                     NSInteger resizedWidth = imgSize.width * nr;
                     NSInteger resizedHeight = imgSize.height * nr;
                     totalWidth += resizedWidth;
-                    if ((v == tempImageSizeList.count - 1 ) && (totalWidth != combinedCellWidth))
+                    if ((v == sizeListForCalculate.count - 1 ) && (totalWidth != combinedCellWidth))
                     {
                         resizedWidth = resizedWidth + (combinedCellWidth - totalWidth);
                     }
@@ -261,8 +257,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                 if ([self isExistItem:orisinSizes atIndex:itemIdx+1] == YES)
                 {
                     itemIdx += 1;
-                    [tempImageSizeList removeAllObjects];
-                    [tempImageSizeList addObject:[orisinSizes objectAtIndex:itemIdx]];
+                    [sizeListForCalculate removeAllObjects];
+                    [sizeListForCalculate addObject:[orisinSizes objectAtIndex:itemIdx]];
                 }
             }
             else
@@ -271,31 +267,31 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                 if ([self isExistItem:orisinSizes atIndex:itemIdx+1] == YES)
                 {
                     itemIdx += 1;
-                    [tempImageSizeList addObject:[orisinSizes objectAtIndex:itemIdx]];
+                    [sizeListForCalculate addObject:[orisinSizes objectAtIndex:itemIdx]];
                 }
                 else
                 {
                     NSInteger totalWidth = 0;
-                    CGSize firstSize = [(NSValue *)[tempImageSizeList firstObject] CGSizeValue];
-                    for (NSInteger v = 0; v < tempImageSizeList.count; v++)
+                    CGSize firstSize = [(NSValue *)[sizeListForCalculate firstObject] CGSizeValue];
+                    for (NSInteger v = 0; v < sizeListForCalculate.count; v++)
                     {
                         CGFloat nr = 1.0f;
-                        imgSize = [(NSValue *)[tempImageSizeList objectAtIndex:v] CGSizeValue];
+                        imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:v] CGSizeValue];
                         
                         if (v != 0) {
-                            nr = firstSize.height * r / imgSize.height;
+                            nr = firstSize.height * firstRatio / imgSize.height;
                         }
                         else
                         {
-                            nr = r;
+                            nr = firstRatio;
                         }
                         LogGreen(@"nr : %f",nr);
                         
-                        NSInteger combinedCellWidth = screenWidth - (kLeftCellMargin + ((tempImageSizeList.count - 1) * kDefaultMargin) + kRightCellMargin);
+                        NSInteger combinedCellWidth = screenWidth - (kLeftCellMargin + ((sizeListForCalculate.count - 1) * kDefaultMargin) + kRightCellMargin);
                         NSInteger resizedWidth = imgSize.width * nr;
                         NSInteger resizedHeight = imgSize.height * nr;
                         totalWidth += resizedWidth;
-                        if ((v == tempImageSizeList.count - 1 ) && (totalWidth != combinedCellWidth)) {
+                        if ((v == sizeListForCalculate.count - 1 ) && (totalWidth != combinedCellWidth)) {
                             resizedWidth = resizedWidth + (combinedCellWidth - totalWidth);
                         }
                         
