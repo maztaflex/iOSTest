@@ -12,19 +12,192 @@ class ViewController: UIViewController {
 
     override func viewDidLoad()
     {
-       let car  = Car()
+        let board  = Checkerboard()
         
-        car.currentSpeed = 25.0
+        print(board.squareIsBlackAtRow(0, column: 1))
         
-        car.gear = 3
+        print(board.squareIsBlackAtRow(9, column: 9))
+    }
+}
+
+struct Checkerboard {
+    
+    let boardColors: [Bool] = {
         
-        print("Car : \(car.description)")
+        var temporaryBoard = [Bool]()
         
-        let automatic = AutomaticCar()
+        var isBlack = false
         
-        automatic.currentSpeed = 35.0
+        for i in 1...10 {
+            
+            for j in 1...10 {
+                
+                temporaryBoard.append(isBlack)
+                
+                isBlack = !isBlack
+            }
+            
+            isBlack = !isBlack
+        }
         
-        print("AutomaticCar : \(automatic.description)")
+        return temporaryBoard
+    }()
+    
+    func squareIsBlackAtRow(row: Int, column: Int) -> Bool {
+        
+        return boardColors[(row * 10) + column]
+    }
+}
+
+class AutomaticallyNamedDocument: Document {
+    
+    override init() {
+        
+        super.init()
+        
+        self.name = "[Unnamed]"
+        
+    }
+    
+    override init?(name: String) {
+        
+        super.init()
+        
+        if name.isEmpty {
+            
+            self.name = "[Unnamed]"
+            
+        } else {
+            
+            self.name = name
+        }
+    }
+}
+
+class Document {
+    
+    var name: String?
+    
+    init() {}
+    
+    init?(name: String) {
+        
+        self.name = name
+        
+        if name.isEmpty {return nil}
+    }
+}
+
+class CartItem: Product {
+    
+    let quantity: Int!
+    
+    init?(name: String, quantity: Int) {
+        
+        self.quantity = quantity
+        
+        super.init(name: name)
+        
+        if quantity < 1 { return nil }
+    }
+}
+
+enum NewTemperatureUnit: Character {
+    
+    case Kelvin = "K", Celcius = "C", Fahrenheit = "F"
+}
+
+enum TemperatureUnit {
+    
+    case Kelvin, Celsius, Fahrenheit
+    
+    init?(symbol: Character) {
+        
+        switch symbol {
+            
+        case "K":
+            
+            self = .Kelvin
+            
+        case "C":
+            self = .Celsius
+            
+        case "F":
+            self = .Fahrenheit
+            
+        default:
+            return nil
+        }
+    }
+}
+
+class Product {
+    
+    let name: String!
+    
+    init?(name: String) {
+        
+        self.name = name
+        
+        if name.isEmpty { return nil }
+    }
+}
+
+struct Animal {
+    
+    let species: String
+    
+    init?(species: String) {
+        
+        if species.isEmpty {return nil}
+        
+        self.species = species
+    }
+}
+
+class ShoppingListItem: RecipeIngredient {
+    
+    var purchased = false
+    
+    var description: String {
+        
+        var output = "\(quantity) x \(name)"
+        
+        output += purchased ? " ✔" : " ✘"
+        
+        return output
+    }
+}
+
+class RecipeIngredient: Food {
+    
+    var quantity: Int
+    
+    init(name: String, quantity: Int) {
+        
+        self.quantity = quantity
+        
+        super.init(name: name)
+    }
+    
+    override convenience init(name: String) {
+        
+        self.init(name: name, quantity: 1)
+    }
+}
+
+class Food {
+    
+    var name: String
+    
+    init(name: String) {
+        
+        self.name = name
+    }
+    
+    convenience init()
+    {
+        self.init(name: "[Unnamed]")
     }
 }
 
