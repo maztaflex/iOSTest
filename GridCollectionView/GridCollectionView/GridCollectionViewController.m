@@ -77,7 +77,7 @@
 //            [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
 //        }
         
-        for (NSInteger i = 0; i < 7; i++) {
+        for (NSInteger i = 0; i < list.count; i++) {
             EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
             [self.mappedList addObject:ek];
             
@@ -191,30 +191,31 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
      * 수식1 : sw = (rw0 * r0) + (rw1 * r1) + (rw2 * r2) ...
      * 수식2 : cch = (rh0 * r0) = (rh1 * r1) = (rh2 * r2) ...
      * 수식3 :
-     *                                         sw * rh1 * rh2
-     *            r0 = --------------------------------------------------------------
-     *                    (rw0 * rh1 * rh2) + (rw1 * rh2 * rh0) + (rw2 * rh0 * rh1)
+     *                                   sw * rh1 * rh2                                 r0 * rh0           r0 * rh0
+     *        r0 = ------------------------------------------------------------ , r1 = ----------- , r2 = ----------- ...
+     *              (rw0 * rh1 * rh2) + (rw1 * rh2 * rh0) + (rw2 * rh0 * rh1)              rh1                rh2
      *
-     *                    r0 * rh0             r0 * rh0
-     * 수식4 : r1 = ------------- , r2 = -------------- ...
-     *                      rh1                   rh2
      *
      */
     
-    NSMutableArray *resizedList = [NSMutableArray array]; // 리사이즈 완료된 사이즈 저장 리스트
-    NSMutableArray *sizeListForCalculate = [NSMutableArray array]; // 리사이즈 계산을 위한 사이즈 임시 리스트
+    NSMutableArray *resizedList = [NSMutableArray array];               // 리사이즈 완료된 사이즈 저장 리스트
+    NSMutableArray *sizeListForCalculate = [NSMutableArray array];      // 리사이즈 계산을 위한 사이즈 임시 리스트
     
-    BOOL isCompleteCalculate = NO;
-    NSInteger itemIdx = 0;
-    NSInteger screenWidth = [[UIScreen mainScreen] bounds].size.width; // sw
-    CGFloat criticalHeight = kCriticalHeight; // ch
-    CGFloat cal1 = 1.0f; // 분자 계산값 저장 (ex. 1개일때 : sw , 2개일때 : sw * rh1, 3개일때 : sw * rh1 * rh2)
-    CGFloat cal2 = 0.0f; // 분모 계산값 저장 (ex. 1개일때 : rw0 , 2개일때 : sw * rh1, 3개일때 : sw * rh1 * rh2)
-    CGFloat firstRatio = 1.0f; // r0
-    CGFloat nextRatio = 1.0f; // r1..r2..r3..
-    CGFloat commonHeightPerRow = 0.0f; // cch
+    BOOL isCompleteCalculate = NO;                                      // 각 행의 계산 완료 상태값
+    NSInteger itemIdx = 0;                                              // 각 행의 계산을 위한 원본 아이템의 시작 인덱스
     
+    NSInteger screenWidth = [[UIScreen mainScreen] bounds].size.width;  // sw
+    CGFloat criticalHeight = kCriticalHeight;                           // ch
+    CGFloat cal1 = 1.0f;                                                // sw * rh1 * rh2
+    CGFloat cal2 = 0.0f;                                                // (rw0 * rh1 * rh2) + (rw1 * rh2 * rh0) + (rw2 * rh0 * rh1)
+    CGFloat firstRatio = 1.0f;                                          // r0
+    CGFloat nextRatio = 1.0f;                                           // r1, r2, r3 ...
+    CGFloat commonHeightPerRow = 0.0f;                                  // cch
+    
+    // 임시 리스트에 첫번재 아이템 저장
     [sizeListForCalculate addObject:[originSizes objectAtIndex:itemIdx]];
+    
+    // 원본 아이템의 수와 리사이즈된 아이템의 수가 일치 할때 까지 반복
     while (resizedList.count != originSizes.count)
     {
         for (NSInteger i = 0; i < sizeListForCalculate.count; i++)
@@ -223,14 +224,13 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
             CGSize firstSize = [(NSValue *)[sizeListForCalculate firstObject] CGSizeValue];
             
             cal1 = screenWidth - (kLeftCellMargin + ((sizeListForCalculate.count - 1) * kInterCellSpacing) + kRightCellMargin);
-            cal2 = CGFLOAT_MIN;
-            
             for (NSInteger j = 1; j <= sizeListForCalculate.count - 1; j++)
             {
                 imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:j] CGSizeValue];
                 cal1 = cal1 * imgSize.height;
             }
             
+            cal2 = CGFLOAT_MIN;
             for (NSInteger k = 0; k < sizeListForCalculate.count; k++)
             {
                 imgSize = [(NSValue *)sizeListForCalculate[k] CGSizeValue];
@@ -247,7 +247,10 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                 cal2 += widthForCalculate;
             }
         
+            // r0 = (sw * rh1 * rh2) / (rw0 * rh1 * rh2) + (rw1 * rh2 * rh0) + (rw2 * rh0 * rh1)
             firstRatio = cal1 / cal2;
+            
+            // cch = r0 * rh0
             commonHeightPerRow = firstRatio * firstSize.height;
             
             if (commonHeightPerRow < criticalHeight)
@@ -266,9 +269,10 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                 }
             }
             
+            // 리사이즈된 정보 리스트에 저장
             if (isCompleteCalculate == YES)
             {
-                NSInteger totalWidth = 0;
+                NSInteger totalWidth = 0; // 각 아이템의 width 누적값
                 for (NSInteger v = 0; v < sizeListForCalculate.count; v++)
                 {
                     imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:v] CGSizeValue];
@@ -285,6 +289,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                     NSInteger resizedWidth = imgSize.width * nextRatio;
                     LogGreen(@"idx : %zd, r : %f, cch : %f",v, nextRatio, commonHeightPerRow);
                     totalWidth += resizedWidth;
+                    
+                    // 소수점 계산으로 인해 자동 개행되는 것을 방지 하기 위해 누적 width 값과 screenWidth에서 마진을 제거한 값이 일치 하지 않을 경우 마지막 아이템의 width 값 수정 처리
                     if ((v == sizeListForCalculate.count - 1 ) && (totalWidth != combinedCellWidth))
                     {
                         resizedWidth = resizedWidth + (combinedCellWidth - totalWidth);
@@ -293,6 +299,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                     [resizedList addObject:[NSValue valueWithCGSize:CGSizeMake(resizedWidth, commonHeightPerRow)]];
                 }
                 
+                // 다음 행 계산을 위한 임시 리스트 초기화
                 [sizeListForCalculate removeAllObjects];
             }
             
