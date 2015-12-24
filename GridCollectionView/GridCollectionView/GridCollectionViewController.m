@@ -77,7 +77,7 @@
 //            [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
 //        }
         
-        for (NSInteger i = 0; i < list.count; i++) {
+        for (NSInteger i = 0; i < 7; i++) {
             EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
             [self.mappedList addObject:ek];
             
@@ -188,15 +188,15 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
      * r0 : 첫번째 아이템의 계산된 비율
      * cch : 동일행의 공통 높이
      * 
-     * Formula1 : sw = (rw0 * r0) + (rw1 * r1) + (rw2 * r2) ...
-     * Formula2 : cch = (rh0 * r0) = (rh1 * r1) = (rh2 * r2) ...
-     * Formula3 :
+     * 수식1 : sw = (rw0 * r0) + (rw1 * r1) + (rw2 * r2) ...
+     * 수식2 : cch = (rh0 * r0) = (rh1 * r1) = (rh2 * r2) ...
+     * 수식3 :
      *                                         sw * rh1 * rh2
      *            r0 = --------------------------------------------------------------
      *                    (rw0 * rh1 * rh2) + (rw1 * rh2 * rh0) + (rw2 * rh0 * rh1)
      *
      *                    r0 * rh0             r0 * rh0
-     * Formula4 : r1 = ------------- , r2 = -------------- ...
+     * 수식4 : r1 = ------------- , r2 = -------------- ...
      *                      rh1                   rh2
      *
      */
@@ -204,11 +204,10 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     NSMutableArray *resizedList = [NSMutableArray array]; // 리사이즈 완료된 사이즈 저장 리스트
     NSMutableArray *sizeListForCalculate = [NSMutableArray array]; // 리사이즈 계산을 위한 사이즈 임시 리스트
     
+    BOOL isCompleteCalculate = NO;
     NSInteger itemIdx = 0;
-    
-    CGFloat criticalHeight = kCriticalHeight; // ch
-    
     NSInteger screenWidth = [[UIScreen mainScreen] bounds].size.width; // sw
+    CGFloat criticalHeight = kCriticalHeight; // ch
     CGFloat cal1 = 1.0f; // 분자 계산값 저장 (ex. 1개일때 : sw , 2개일때 : sw * rh1, 3개일때 : sw * rh1 * rh2)
     CGFloat cal2 = 0.0f; // 분모 계산값 저장 (ex. 1개일때 : rw0 , 2개일때 : sw * rh1, 3개일때 : sw * rh1 * rh2)
     CGFloat firstRatio = 1.0f; // r0
@@ -250,13 +249,26 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
         
             firstRatio = cal1 / cal2;
             commonHeightPerRow = firstRatio * firstSize.height;
-            LogGreen(@"firstRatio : %f",firstRatio);
-            
             
             if (commonHeightPerRow < criticalHeight)
             {
+                isCompleteCalculate = YES;
+            }
+            else
+            {
+                if ([self isExistItem:originSizes atIndex:itemIdx+1] == NO)
+                {
+                    isCompleteCalculate = YES;
+                }
+                else
+                {
+                    isCompleteCalculate = NO;
+                }
+            }
+            
+            if (isCompleteCalculate == YES)
+            {
                 NSInteger totalWidth = 0;
-                
                 for (NSInteger v = 0; v < sizeListForCalculate.count; v++)
                 {
                     imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:v] CGSizeValue];
@@ -268,11 +280,10 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                     {
                         nextRatio = firstRatio;
                     }
-                    LogGreen(@"nextRatio %zd : %f",v, nextRatio);
-
+                    
                     NSInteger combinedCellWidth = screenWidth - (kLeftCellMargin + ((sizeListForCalculate.count - 1) * kDefaultMargin) + kRightCellMargin);
                     NSInteger resizedWidth = imgSize.width * nextRatio;
-                    LogGreen(@"commonHeightPerRow : %f, resizedHeight : %f",commonHeightPerRow,commonHeightPerRow);
+                    LogGreen(@"idx : %zd, r : %f, cch : %f",v, nextRatio, commonHeightPerRow);
                     totalWidth += resizedWidth;
                     if ((v == sizeListForCalculate.count - 1 ) && (totalWidth != combinedCellWidth))
                     {
@@ -282,48 +293,13 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                     [resizedList addObject:[NSValue valueWithCGSize:CGSizeMake(resizedWidth, commonHeightPerRow)]];
                 }
                 
-                if ([self isExistItem:originSizes atIndex:itemIdx+1] == YES)
-                {
-                    itemIdx += 1;
-                    [sizeListForCalculate removeAllObjects];
-                    [sizeListForCalculate addObject:[originSizes objectAtIndex:itemIdx]];
-                }
+                [sizeListForCalculate removeAllObjects];
             }
-            else
+            
+            if ([self isExistItem:originSizes atIndex:itemIdx+1] == YES)
             {
-                LogGreen(@"itemIdx : %zd",itemIdx);
-                if ([self isExistItem:originSizes atIndex:itemIdx+1] == YES)
-                {
-                    itemIdx += 1;
-                    [sizeListForCalculate addObject:[originSizes objectAtIndex:itemIdx]];
-                }
-                else
-                {
-                    NSInteger totalWidth = 0;
-                    for (NSInteger v = 0; v < sizeListForCalculate.count; v++)
-                    {
-                        imgSize = [(NSValue *)[sizeListForCalculate objectAtIndex:v] CGSizeValue];
-                        
-                        if (v != 0) {
-                            nextRatio = firstSize.height * firstRatio / imgSize.height;
-                        }
-                        else
-                        {
-                            nextRatio = firstRatio;
-                        }
-                        LogGreen(@"nextRatio %zd : %f",v, nextRatio);
-                        
-                        NSInteger combinedCellWidth = screenWidth - (kLeftCellMargin + ((sizeListForCalculate.count - 1) * kDefaultMargin) + kRightCellMargin);
-                        NSInteger resizedWidth = imgSize.width * nextRatio;
-                        LogGreen(@"commonHeightPerRow : %f, resizedHeight : %f",commonHeightPerRow,commonHeightPerRow);
-                        totalWidth += resizedWidth;
-                        if ((v == sizeListForCalculate.count - 1 ) && (totalWidth != combinedCellWidth)) {
-                            resizedWidth = resizedWidth + (combinedCellWidth - totalWidth);
-                        }
-                        
-                        [resizedList addObject:[NSValue valueWithCGSize:CGSizeMake(resizedWidth, commonHeightPerRow)]];
-                    }
-                }
+                itemIdx += 1;
+                [sizeListForCalculate addObject:[originSizes objectAtIndex:itemIdx]];
             }
         }
     }
