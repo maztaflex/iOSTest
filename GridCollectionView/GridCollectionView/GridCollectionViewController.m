@@ -77,7 +77,7 @@
 //            [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
 //        }
         
-        for (NSInteger i = 0; i < 2; i++) {
+        for (NSInteger i = 0; i < list.count; i++) {
             EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
             [self.mappedList addObject:ek];
             
