@@ -115,7 +115,7 @@ NSString *const kEKRecentModelOriginImage = @"originImage";
     self.networkManager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSDictionary *params = @{@"lastEvaluateKey" : ((key == nil) ? [NSNull null] : key)};
-    
+    // https://y3zhm4ntme.execute-api.ap-northeast-1.amazonaws.com/prod2
     [self.networkManager POST:@"https://y3zhm4ntme.execute-api.ap-northeast-1.amazonaws.com/prod2" parameters:params success:success failure:false];
 }
 

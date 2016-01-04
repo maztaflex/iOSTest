@@ -19,7 +19,7 @@
 #define kMaxCellCountPerRow                         5
 
 // 기본 여백값
-#define kDefaultMargin                              2.0f
+#define kDefaultMargin                              1.0f
 
 // 셀과 셀 사이 여백
 #define kInterCellSpacing                           kDefaultMargin
@@ -77,7 +77,7 @@
 //            [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
 //        }
         
-        for (NSInteger i = 0; i < list.count; i++) {
+        for (NSInteger i = 0; i < 2; i++) {
             EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
             [self.mappedList addObject:ek];
             

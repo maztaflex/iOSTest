@@ -8,111 +8,124 @@
 
 import UIKit
 
-enum VendingMachineError: ErrorType {
+extension Double {
     
-    case InvalidSelection
+    var km: Double { return self * 1_000.0 }
     
-    case InsufficientFounds(coinsNeyeded: Int)
+    var m: Double { return self }
     
-    case OutOfStock
+    var cm: Double { return self / 100.0 }
+    
+    var mm: Double { return self / 1_000.0 }
+    
+    var ft: Double { return self / 3.28084 }
 }
 
-struct BlackjackCard {
+struct Size {
     
-    enum Suit: Character {
+    var width = 0.0, height = 0.0
+}
+
+struct Point {
+    
+    var x = 0.0, y = 0.0
+}
+
+struct Rect {
+    
+    var origin = Point()
+    
+    var size = Size()
+}
+
+extension Rect {
+    
+    init(center: Point, size: Size) {
         
-        case Spades = "♠", Heart = "♡", Diamonds = "♢", Clubs = "♣"
+        let originX = center.x - (size.width / 2)
+        
+        let originY = center.y - (size.height / 2)
+        
+        self.init(origin: Point(x: originX, y: originY), size: size)
     }
+}
+
+extension Int {
     
-    enum Rank: Int {
+    subscript(var digitIndex: Int) -> Int {
         
-        case Two = 2, Three, Four, Five, Six, Seven, Eight, Nine, Ten
+        var decimalBase = 1
         
-        case Jack, Queen, King, Ace
-        
-        struct Values {
+        while digitIndex > 0 {
             
-            let first: Int, second: Int?
+            decimalBase *= 10
+            
+            --digitIndex
         }
         
-        var values: Values {
+        return (self / decimalBase) % 10
+    }
+    
+    enum Kind {
+        
+        case Negative, Zero, Positive
+    }
+    
+    var kind: Kind {
+        
+        switch self {
             
-            switch self {
-                
-            case .Ace:
-                return Values(first: 1, second: 11)
-                
-            case .Jack, .Queen, .King:
-                return Values(first: 10, second: nil)
-                
-            default:
-                return Values(first: self.rawValue, second: nil)
-                
-            }
+        case 0:
+            
+            return .Zero
+            
+        case let x where x > 0:
+            
+            return .Positive
+            
+        default:
+            
+            return .Negative
+        }
+    }
+}
+
+func printIntegerKinds(numbers: [Int]) {
+    
+    for number in numbers {
+        
+        switch number.kind {
+            
+        case .Negative:
+            
+            print("- ", terminator: "")
+            
+        case .Zero:
+            
+            print("0 ", terminator: "")
+            
+        case .Positive:
+            
+            print("+ ", terminator: "")
         }
     }
     
-    let rank: Rank, suit: Suit
-    
-    var description: String {
-        
-        var output = "suit is \(suit.rawValue),"
-        
-        output += " value is \(rank.values.first)"
-        
-        if let second = rank.values.second {
-            
-            output += " or \(second)"
-        }
-        
-        return output
-    }
+    print("")
 }
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad()
-    {
-        let theAceOfSpades = BlackjackCard(rank: .Ace, suit: .Spades)
+    override func viewDidLoad() {
         
-        print("theAceOfSpades : \(theAceOfSpades.description)")
+        print("\(736381295[8])")
         
-        let heartSymbol = BlackjackCard.Suit.Heart.rawValue
+        let someInt = -1
         
-        print("heartSymbol : \(heartSymbol)")
-    }
-}
-
-class MediaItem {
-    
-    var name: String
-    
-    init(name: String) {
+        print(someInt.kind)
         
-        self.name = name
-    }
-}
-
-class Movie: MediaItem {
-    
-    var director: String
-    
-    init(name: String, director: String) {
+        printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
         
-        self.director = director
-        
-        super.init(name: name)
     }
 }
 
 
-class Song: MediaItem {
-    
-    var artist: String
-    
-    init(name: String, artist: String) {
-        
-        self.artist = artist
-        super.init(name: name)
-    }
-}
