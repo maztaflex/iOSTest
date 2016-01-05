@@ -3,7 +3,7 @@
 //  FirstSwift
 //
 //  Created by DEV_TEAM1_IOS on 2015. 12. 10..
-//  Copyright © 2015년 doozerstage. All rights reserved.
+//  Copyright © 2015년 doozerstage. All rights reserved...
 //
 
 import UIKit
