@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UwM-NP-e29">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UwM-NP-e29">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -23,11 +23,9 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pvi-XQ-e9z">
                                         <rect key="frame" x="41" y="77" width="240" height="128"/>
-                                        <animations/>
                                         <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
-                                <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="pvi-XQ-e9z" firstAttribute="leading" secondItem="EdO-Fz-Kia" secondAttribute="leading" constant="41" placeholder="YES" id="4jp-qs-z9U"/>
@@ -37,7 +35,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EdO-Fz-Kia" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" placeholder="YES" id="Kwn-6X-9wQ"/>
@@ -72,8 +69,7 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="I3B-C7-w94">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
-                                        <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="2A2-Mb-e0p">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -90,13 +86,10 @@
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" tag="300" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mme-GS-RRV">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            <animations/>
                                                         </imageView>
                                                     </subviews>
-                                                    <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstItem="mme-GS-RRV" firstAttribute="leading" secondItem="F7C-h1-Sqt" secondAttribute="leading" id="K0z-as-XAy"/>
                                                     <constraint firstAttribute="bottom" secondItem="mme-GS-RRV" secondAttribute="bottom" id="M87-Jv-V99"/>
@@ -110,18 +103,45 @@
                                             <outlet property="delegate" destination="UwM-NP-e29" id="Qdi-r4-j61"/>
                                         </connections>
                                     </collectionView>
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eW-Th-8nI" userLabel="Loading View">
+                                        <rect key="frame" x="0.0" y="580" width="600" height="28"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Loading...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcb-W7-OI2">
+                                                <rect key="frame" x="235" y="4" width="131" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9Qm-IP-ZXU">
+                                                <rect key="frame" x="205" y="4" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="Gsu-jw-aOE"/>
+                                                    <constraint firstAttribute="width" constant="20" id="icW-g2-Lor"/>
+                                                </constraints>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="9Qm-IP-ZXU" firstAttribute="centerY" secondItem="Bcb-W7-OI2" secondAttribute="centerY" id="2H2-YX-l1p"/>
+                                            <constraint firstItem="Bcb-W7-OI2" firstAttribute="centerY" secondItem="9eW-Th-8nI" secondAttribute="centerY" id="SYh-Ry-Dbc"/>
+                                            <constraint firstAttribute="height" constant="28" id="ZrD-Fn-fJQ"/>
+                                            <constraint firstItem="Bcb-W7-OI2" firstAttribute="centerX" secondItem="9eW-Th-8nI" secondAttribute="centerX" id="bA7-HP-LIt"/>
+                                            <constraint firstItem="Bcb-W7-OI2" firstAttribute="leading" secondItem="9Qm-IP-ZXU" secondAttribute="trailing" constant="10" id="hZP-90-M2f"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="I3B-C7-w94" firstAttribute="top" secondItem="bH4-M5-BBx" secondAttribute="top" id="4JB-TK-Fiu"/>
                                     <constraint firstItem="I3B-C7-w94" firstAttribute="leading" secondItem="bH4-M5-BBx" secondAttribute="leading" id="7IP-i0-t39"/>
                                     <constraint firstAttribute="bottom" secondItem="I3B-C7-w94" secondAttribute="bottom" id="Ri9-EZ-5xM"/>
+                                    <constraint firstItem="9eW-Th-8nI" firstAttribute="leading" secondItem="bH4-M5-BBx" secondAttribute="leading" id="cBG-EM-MeG"/>
                                     <constraint firstAttribute="trailing" secondItem="I3B-C7-w94" secondAttribute="trailing" id="f5O-sx-dOt"/>
+                                    <constraint firstAttribute="bottom" secondItem="9eW-Th-8nI" secondAttribute="bottom" constant="-28" id="jiv-pE-0El"/>
+                                    <constraint firstAttribute="trailing" secondItem="9eW-Th-8nI" secondAttribute="trailing" id="rYN-83-E4F"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="R66-Yv-53Y" firstAttribute="top" secondItem="bH4-M5-BBx" secondAttribute="bottom" id="M1U-zg-3dh"/>
@@ -131,6 +151,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="9Qm-IP-ZXU" id="0ex-de-dCz"/>
+                        <outlet property="alcBottomOfLoadingView" destination="jiv-pE-0El" id="y7A-un-H3X"/>
                         <outlet property="collectionView" destination="I3B-C7-w94" id="07Q-T0-Dy5"/>
                     </connections>
                 </viewController>

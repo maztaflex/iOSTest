@@ -44,8 +44,13 @@
 
 //============================================================================================================================================
 @property (strong, nonatomic) NSMutableArray *imageSizeList;
-@property (strong, nonatomic) NSArray *resizedList;
+@property (strong, nonatomic) NSMutableArray *resizedList;
 //============================================================================================================================================
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfLoadingView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+@property (assign, nonatomic) BOOL isEndOfList;
+@property (assign, nonatomic) BOOL isEndOfImageList;
 
 @end
 
@@ -55,7 +60,7 @@
     [super viewDidLoad];
     
     self.imageSizeList = [NSMutableArray array];
-    self.resizedList = [NSArray array];
+    self.resizedList = [NSMutableArray array];
     
     [self reqEKRecent];
 }
@@ -64,7 +69,9 @@
 {
     EKRecentModel *ekRecentModel = [[EKRecentModel alloc] init];
     self.ekModel = ekRecentModel;
-    [ekRecentModel requestRecentPhotosWithLastKey:nil Success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    self.ekModel = self.imageSizeList.lastObject;
+    NSString *recentKey = self.ekModel.key;
+    [ekRecentModel requestRecentPhotosWithLastKey:recentKey Success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSArray *list = responseObject;
         self.mappedList = [NSMutableArray array];
@@ -83,8 +90,10 @@
             
             [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
         }
+        self.imageSizeList = originImageSizeList;
+        self.resizedList = [self getResizedListFromOriginSizes:originImageSizeList].mutableCopy;
         
-        self.resizedList = [self getResizedListFromOriginSizes:originImageSizeList];
+        LogGreen(@"self.imageSizeList.lastObject.class : %@, self.resizedList.lastObject.class : %@, self.mappedList.lastObject.class : %@", [[self.imageSizeList lastObject] class], [[self.resizedList lastObject] class], [[self.mappedList lastObject] class]);
         
         [self.collectionView reloadData];
         
@@ -93,6 +102,71 @@
         
         LogRed(@"error : %@",error);
     }];
+}
+
+- (void)loadMoreImage
+{
+    EKRecentModel *ekRecentModel = [[EKRecentModel alloc] init];
+    
+    if(self.isEndOfList == YES)
+    {
+        EKRecentModel *ekModel = self.mappedList.lastObject;
+        NSString *recentKey = ekModel.key;
+        LogBlue(@"lastKey : %@",recentKey);
+        [ekRecentModel requestRecentPhotosWithLastKey:recentKey Success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+            LogBlue(@"responseObj : %@", responseObject);
+            
+            if(((NSArray *)responseObject).count == 0)
+            {
+                self.isEndOfImageList = YES;
+                return ;
+            }
+            
+            NSArray *list = responseObject;
+        
+            NSMutableArray *originImageSizeList = [NSMutableArray array];
+        
+            for (NSInteger i = 0; i < list.count; i++) {
+                EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
+                [self.mappedList addObject:ek];
+            
+                [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
+            }
+        
+            [self.resizedList addObjectsFromArray:[self getResizedListFromOriginSizes:originImageSizeList]];
+        
+            [self insertNewObject:originImageSizeList];
+        
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+            LogRed(@"error : %@",error);
+        }];
+    }
+}
+
+- (void)insertNewObject:(NSArray *)objs {
+//    LogGreen(@"self.imageSizeList : %@", self.imageSizeList);
+    NSMutableArray *muOpenList = [[NSMutableArray alloc] initWithArray:self.imageSizeList];
+    
+    [muOpenList addObjectsFromArray:objs];
+    NSInteger lastRow = self.imageSizeList.count - 1;
+    
+    NSMutableArray *arrIndexPath = [NSMutableArray array];
+
+    for (NSInteger i = 1; i <= objs.count; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow+i inSection:0];
+        
+        [arrIndexPath addObject:indexPath];
+//        LogGreen(@"indexPath : %@ row : %zd", indexPath, indexPath.row);
+    }
+    self.imageSizeList = muOpenList;
+    
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView insertItemsAtIndexPaths:arrIndexPath];
+    } completion:nil];
+    
+
 }
 
 - (void)reqFLKRecent
@@ -142,8 +216,8 @@
     EKRecentModel *rModel = [self.mappedList objectAtIndex:indexPath.row];
     EKThumbnailImage *originImg = rModel.thumbnailImage;
     
-    LogGreen(@"cellSize : %f, %f ,%f",originImg.width.floatValue, originImg.height.floatValue, originImg.width.floatValue / originImg.height.floatValue);
-    LogYellow(@"new cellSize : %f, %f, %f",cellSize.width, cellSize.height, cellSize.width / cellSize.height);
+//    LogGreen(@"cellSize : %f, %f ,%f",originImg.width.floatValue, originImg.height.floatValue, originImg.width.floatValue / originImg.height.floatValue);
+//    LogYellow(@"new cellSize : %f, %f, %f",cellSize.width, cellSize.height, cellSize.width / cellSize.height);
     
     return cellSize;
 }
@@ -287,7 +361,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                     
                     NSInteger combinedCellWidth = screenWidth - (kLeftCellMargin + ((sizeListForCalculate.count - 1) * kDefaultMargin) + kRightCellMargin);
                     NSInteger resizedWidth = imgSize.width * nextRatio;
-                    LogGreen(@"idx : %zd, r : %f, cch : %f",v, nextRatio, commonHeightPerRow);
+//                    LogGreen(@"idx : %zd, r : %f, cch : %f",v, nextRatio, commonHeightPerRow);
                     totalWidth += resizedWidth;
                     
                     // 소수점 계산으로 인해 자동 개행되는 것을 방지 하기 위해 누적 width 값과 screenWidth에서 마진을 제거한 값이 일치 하지 않을 경우 마지막 아이템의 width 값 수정 처리
@@ -327,5 +401,32 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     
     return result;
 }
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView
+{
+//    [self showLoadingImage];
+    
+    if(self.isEndOfImageList == NO)
+    {
+        [self loadMoreImage];
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    if(velocity.y > 0)
+    {
+        self.isEndOfList = YES;
+    }else{
+        self.isEndOfList = NO;
+    }
+}
+
+//- (void)showLoadingImage
+//{
+//    self.alcBottomOfLoadingView.constant = 0;
+//    
+//    [self.activityIndicator startAnimating];
+//}
 
 @end
