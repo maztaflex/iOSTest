@@ -14,6 +14,7 @@
 		AC0533801C19764C00FB5A88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC05337E1C19764C00FB5A88 /* LaunchScreen.storyboard */; };
 		AC05338B1C19764C00FB5A88 /* FirstSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC05338A1C19764C00FB5A88 /* FirstSwiftTests.swift */; };
 		AC0533961C19764C00FB5A88 /* FirstSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0533951C19764C00FB5A88 /* FirstSwiftUITests.swift */; };
+		AC5547131C3B6FDC004E6C60 /* STDProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5547121C3B6FDC004E6C60 /* STDProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		AC0533911C19764C00FB5A88 /* FirstSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0533951C19764C00FB5A88 /* FirstSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSwiftUITests.swift; sourceTree = "<group>"; };
 		AC0533971C19764C00FB5A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC5547121C3B6FDC004E6C60 /* STDProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STDProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				AC0533751C19764C00FB5A88 /* AppDelegate.swift */,
 				AC0533771C19764C00FB5A88 /* ViewController.swift */,
+				AC5547121C3B6FDC004E6C60 /* STDProtocol.swift */,
 				AC0533791C19764C00FB5A88 /* Main.storyboard */,
 				AC05337C1C19764C00FB5A88 /* Assets.xcassets */,
 				AC05337E1C19764C00FB5A88 /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			files = (
 				AC0533781C19764C00FB5A88 /* ViewController.swift in Sources */,
 				AC0533761C19764C00FB5A88 /* AppDelegate.swift in Sources */,
+				AC5547131C3B6FDC004E6C60 /* STDProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +486,7 @@
 				AC05339C1C19764C00FB5A88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC05339D1C19764C00FB5A88 /* Build configuration list for PBXNativeTarget "FirstSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +495,7 @@
 				AC05339F1C19764C00FB5A88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC0533A01C19764C00FB5A88 /* Build configuration list for PBXNativeTarget "FirstSwiftUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +504,7 @@
 				AC0533A21C19764C00FB5A88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
