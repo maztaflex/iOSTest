@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
-        
+/*
         let tracker = DiceGameTracker()
         
         let game = SnakeAndLadders()
@@ -31,7 +31,92 @@ class ViewController: UIViewController {
         let somethingTextRepresentable: TextRepresentable = simonTheHamster
         
         print(somethingTextRepresentable.textualDescription)
+        
+        let things: [TextRepresentable] = [game, d12, simonTheHamster]
+        
+        for thing in things {
+            
+            print(thing.textualDescription)
+        }
+        
+        print(game.prettyTextualDescription)
+
+        let birthdayPerson = Person(name: "Malcolm", age: 21)
+        
+        wishHappyBirthday(birthdayPerson)
+
+        
+        let objects: [AnyObject] = [
+            
+            Circle(radius: 2.0),
+            
+            Country(area: 243_610),
+            
+            Animal(legs: 4)
+        ]
+        
+        for object in objects {
+            
+            if let objectWithArea = object as? HasArea {
+                
+                print("Area is \(objectWithArea)")
+                
+            } else {
+                
+                print("Something that doesn't have an area")
+            }
+        }
+*/
+        let counter = Counter()
+        
+        counter.dataSource = ThreeSource()
+        
+        for _ in 1...4 {
+            
+            counter.increment()
+            
+            print(counter.count)
+        }
+
+        counter.count = -4
+        
+        counter.dataSource = TowardZeroSource()
+        
+        for _ in 1...5 {
+            
+            counter.increment()
+            
+            print(counter.count)
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
