@@ -84,7 +84,7 @@
 //            [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
 //        }
         
-        for (NSInteger i = 0; i < list.count; i++) {
+        for (NSInteger i = 0; i < 11; i++) {
             EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
             [self.mappedList addObject:ek];
             
@@ -106,6 +106,7 @@
 
 - (void)loadMoreImage
 {
+   
     EKRecentModel *ekRecentModel = [[EKRecentModel alloc] init];
     
     if(self.isEndOfList == YES)
@@ -127,22 +128,77 @@
         
             NSMutableArray *originImageSizeList = [NSMutableArray array];
         
-            for (NSInteger i = 0; i < list.count; i++) {
-                EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
+            EKRecentModel *ek = nil;
+            for (NSInteger i = 0; i < 1; i++) {
+                ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
                 [self.mappedList addObject:ek];
             
-                [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
+            
+//                [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
             }
         
-            [self.resizedList addObjectsFromArray:[self getResizedListFromOriginSizes:originImageSizeList]];
-        
-            [self insertNewObject:originImageSizeList];
+            NSArray *calculateList = [self getCaculateListWithAdditionalSize:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
+             NSArray *newResizedList = [self getResizedListFromOriginSizes:calculateList];
+            LogGreen(@"calculateList : %@ , newResizedList : %@", calculateList, newResizedList);
+            [self.resizedList addObjectsFromArray:newResizedList];
+            LogGreen(@"resizedList.count : %@ %zd", self.resizedList, self.resizedList.count);
+//            [self.resizedList addObjectsFromArray:[self getResizedListFromOriginSizes:originImageSizeList]];
+//        
+//            [self insertNewObject:originImageSizeList];
         
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
             LogRed(@"error : %@",error);
         }];
     }
+}
+
+// 업데이트해야할 인덱스 구해서 리스트 형태로 전달
+- (NSArray *)getIndexPathListOfAdditionalSizeList:(NSArray *)calculateList AtResizedList:(NSArray *)resizedList
+{
+    NSArray *result = nil;
+    
+    
+    
+    return result;
+}
+
+
+// 다시 계산할 이미지 리스트 가져오기
+- (NSArray *)getCaculateListWithAdditionalSize:(id)addtionalSize
+{
+    NSArray *result = [NSArray array];
+    
+    CGSize lastSize = [[self.resizedList lastObject] CGSizeValue];
+    CGFloat commonHeight = kCriticalHeight;
+    NSInteger resizedListCnt = self.resizedList.count;
+    CGSize previousSize = CGSizeZero;
+    
+    NSMutableArray *tempSizeList = [NSMutableArray array];
+    
+    if(lastSize.height > commonHeight)
+    {
+        for(NSInteger i = resizedListCnt - 1; i>0; i--)
+        {
+            previousSize = [self.resizedList[i] CGSizeValue];
+            if(lastSize.height == previousSize.height)
+            {
+                [tempSizeList insertObject:self.imageSizeList[i] atIndex:0];
+                [self.resizedList removeObjectAtIndex:i];
+            }
+            else{
+                break;
+            }
+            
+        }
+        
+        [tempSizeList addObject:(NSValue *)addtionalSize];
+    }
+    
+    result = tempSizeList;
+    
+    
+    return result;
 }
 
 - (void)insertNewObject:(NSArray *)objs {
