@@ -11,12 +11,12 @@ pod 'Fabric'
 pod 'TwitterKit'
 pod 'TwitterCore'
 pod 'SDWebImage'
-pod 'MarqueeLabel'
-pod 'CHTCollectionViewWaterfallLayout'
 pod 'PureLayout'
-pod 'RACollectionViewReorderableTripletLayout'
-pod 'FBLikeLayout', '~> 1.2'
 
+#pod 'MarqueeLabel'
+#pod 'CHTCollectionViewWaterfallLayout'
+#pod 'RACollectionViewReorderableTripletLayout'
+#pod 'FBLikeLayout', '~> 1.2'
 #pod 'AWSAPIGateway'
 
 target :GridCollectionViewTests, :exclusive => true do
