@@ -66,7 +66,7 @@ class ViewController: UIViewController {
                 print("Something that doesn't have an area")
             }
         }
-*/
+
         let counter = Counter()
         
         counter.dataSource = ThreeSource()
@@ -88,10 +88,29 @@ class ViewController: UIViewController {
             
             print(counter.count)
         }
+
+        
+        let generator = LinearCongruentialGenterator()
+        print("Here's a random number: \(generator.random())")
+        print("And here's a random Boolean: \(generator.randomBool())")
+        
+        let murrayTheHamster = Hamster(name: "Murray")
+        let morganTheHamster = Hamster(name: "Morgan")
+        let mauriceTheHamster = Hamster(name: "Maurice")
+        let hamsters = [murrayTheHamster, morganTheHamster, mauriceTheHamster]
+        print(hamsters.textualDescription)
+*/
+        
+        var someInt = 3
+        
+        var anotherInt = 107
+        
+        swapTwoInts(&someInt, &anotherInt)
+        
+        print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+        
     }
 }
-
-
 
 
 

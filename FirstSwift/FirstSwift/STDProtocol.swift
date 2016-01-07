@@ -358,11 +358,33 @@ class ThreeSource: NSObject, CounterDataSource {
     }
 }
 
+extension RandomNumberGenerator {
+    
+    func randomBool() -> Bool {
+        
+        return random() > 0.5
+    }
+}
 
+extension PrettyTextRepresentable {
+    
+    var prettyTextualDescription: String {
+        
+        return textualDescription
+    }
+}
 
-
-
-
+extension CollectionType where Generator.Element: TextRepresentable {
+    
+    var textualDescription: String {
+        
+        let itemsAsText = self.map {
+            $0.textualDescription
+        }
+        
+        return "[" + itemsAsText.joinWithSeparator(", ") + "]"
+    }
+}
 
 
 

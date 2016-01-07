@@ -15,6 +15,7 @@
 		AC05338B1C19764C00FB5A88 /* FirstSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC05338A1C19764C00FB5A88 /* FirstSwiftTests.swift */; };
 		AC0533961C19764C00FB5A88 /* FirstSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0533951C19764C00FB5A88 /* FirstSwiftUITests.swift */; };
 		AC5547131C3B6FDC004E6C60 /* STDProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5547121C3B6FDC004E6C60 /* STDProtocol.swift */; };
+		ACC2E8CB1C3E0B990060BC5C /* STDGenerics.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC2E8CA1C3E0B990060BC5C /* STDGenerics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		AC0533951C19764C00FB5A88 /* FirstSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSwiftUITests.swift; sourceTree = "<group>"; };
 		AC0533971C19764C00FB5A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC5547121C3B6FDC004E6C60 /* STDProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STDProtocol.swift; sourceTree = "<group>"; };
+		ACC2E8CA1C3E0B990060BC5C /* STDGenerics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STDGenerics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				AC0533751C19764C00FB5A88 /* AppDelegate.swift */,
 				AC0533771C19764C00FB5A88 /* ViewController.swift */,
+				ACC2E8CA1C3E0B990060BC5C /* STDGenerics.swift */,
 				AC5547121C3B6FDC004E6C60 /* STDProtocol.swift */,
 				AC0533791C19764C00FB5A88 /* Main.storyboard */,
 				AC05337C1C19764C00FB5A88 /* Assets.xcassets */,
@@ -262,6 +265,7 @@
 				AC0533781C19764C00FB5A88 /* ViewController.swift in Sources */,
 				AC0533761C19764C00FB5A88 /* AppDelegate.swift in Sources */,
 				AC5547131C3B6FDC004E6C60 /* STDProtocol.swift in Sources */,
+				ACC2E8CB1C3E0B990060BC5C /* STDGenerics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
