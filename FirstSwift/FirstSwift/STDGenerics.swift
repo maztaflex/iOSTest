@@ -9,6 +9,19 @@
 import UIKit
 import Foundation
 
+protocol Container {
+    
+    typealias ItemType
+    
+    mutating func append(item: ItemType)
+    
+    var count: Int { get }
+    
+    subscript(i: Int) -> ItemType { get }
+    
+}
+
+
 class STDGenerics: UIViewController {
     
     override func viewDidLoad() {
@@ -33,30 +46,42 @@ class STDGenerics: UIViewController {
         stackOfStrings.push("uno")
         stackOfStrings.push("dos")
         stackOfStrings.push("tres")
-        stackOfStrings.push("cuatro")
+//        stackOfStrings.push("cuatro")
+//
+//        let fromTheTop = stackOfStrings.pop()
+//        print(fromTheTop)
+//        
+//        if let topItem = stackOfStrings.topItem {
+//            
+//            print("The top item on the stack is \(topItem)")
+//        }
+//        
+//        let strings = ["cat", "dog", "llama", "parakeet", "terrapin"]
+//        
+//        if let foundIndex = findStringIndex(strings, "llama") {
+//            
+//            print("The index of llama is \(foundIndex)")
+//        }
+//        
+//        let doubleIndex = findIndex([3.14159, 0.1, 0.25], 9.3)
+//        
+//        print("doubleIndex : \(doubleIndex)")
+//        
+//        let stringIndex = findIndex(["Mike", "Malcolm", "Andrea"], "Andrea")
+//        
+//        print("stringIndex : \(stringIndex)")
         
-        let fromTheTop = stackOfStrings.pop()
-        print(fromTheTop)
         
-        if let topItem = stackOfStrings.topItem {
+        let arrayOfString = ["uno", "dos", "tres"]
+        
+        if allItemsMatch(stackOfStrings, arrayOfString) {
             
-            print("The top item on the stack is \(topItem)")
-        }
-        
-        let strings = ["cat", "dog", "llama", "parakeet", "terrapin"]
-        
-        if let foundIndex = findStringIndex(strings, "llama") {
+            print("All items match")
             
-            print("The index of llama is \(foundIndex)")
+        } else {
+            
+            print("Not all items match")
         }
-        
-        let doubleIndex = findIndex([3.14159, 0.1, 0.25], 9.3)
-        
-        print("doubleIndex : \(doubleIndex)")
-        
-        let stringIndex = findIndex(["Mike", "Malcolm", "Andrea"], "Andrea")
-        
-        print("stringIndex : \(stringIndex)")
     }
 }
 
@@ -96,8 +121,9 @@ func swapTwoValues<TK>(inout a: TK, inout _ b: TK) {
     b = temporaryA
 }
 
-struct IntStack {
+struct IntStack: Container {
     
+    // Original IntStack implementation
     var items = [Int]()
     
     mutating func push(item: Int) {
@@ -109,9 +135,27 @@ struct IntStack {
         
         return items.removeLast()
     }
+    
+    // conformance to the Container protocol
+    typealias ItemType = Int
+    
+    mutating func append(item: Int) {
+        
+        self.push(item)
+    }
+    
+    var count: Int {
+        
+        return items.count
+    }
+    
+    subscript(i: Int) -> Int {
+        
+        return items[i]
+    }
 }
 
-struct Stack<Element> {
+struct Stack<Element>: Container {
     
     var items = [Element]()
     
@@ -123,6 +167,22 @@ struct Stack<Element> {
     mutating func pop() -> Element {
         
         return items.removeLast()
+    }
+    
+    // conformance to the Container protocol
+    mutating func append(item: Element) {
+        
+        self.push(item)
+    }
+    
+    var count: Int {
+        
+        return items.count
+    }
+    
+    subscript(i: Int) -> Element {
+        
+        return items[i]
     }
 }
 
@@ -161,8 +221,30 @@ func findIndex<T: Equatable>(array: [T], _ valueToFind: T) -> Int? {
 }
 
 
+extension Array: Container {}
 
-
+func allItemsMatch<
+    C1: Container,
+    C2: Container where C1.ItemType == C2.ItemType,
+    C1.ItemType: Equatable>(someContainer: C1, _ anotherContainer: C2) -> Bool {
+        
+        if someContainer.count != anotherContainer.count {
+            
+            return false
+        }
+        
+        // check each pair of items to see if they are equivalent
+        for i in 0..<someContainer.count {
+            
+            if someContainer[i] != anotherContainer[i] {
+                return false
+            }
+        }
+        
+        // all items match, so return true
+        
+        return true
+}
 
 
 
