@@ -19,7 +19,7 @@
 #define kMaxCellCountPerRow                         5
 
 // 기본 여백값
-#define kDefaultMargin                              1.0f
+#define kDefaultMargin                              2.0f
 
 // 셀과 셀 사이 여백
 #define kInterCellSpacing                           kDefaultMargin
@@ -63,6 +63,7 @@
     self.resizedList = [NSMutableArray array];
     
     [self reqEKRecent];
+    LogGreen(@"contentOffset : %lf %lf", self.collectionView.contentOffset.x, self.collectionView.contentOffset.y);
 }
 
 - (void)reqEKRecent
@@ -84,7 +85,7 @@
 //            [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
 //        }
         
-        for (NSInteger i = 0; i < 11; i++) {
+        for (NSInteger i = 0; i < 31; i++) {
             EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
             [self.mappedList addObject:ek];
             
@@ -116,7 +117,7 @@
         LogBlue(@"lastKey : %@",recentKey);
         [ekRecentModel requestRecentPhotosWithLastKey:recentKey Success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-            LogBlue(@"responseObj : %@", responseObject);
+//            LogBlue(@"responseObj : %@", responseObject);
             
             if(((NSArray *)responseObject).count == 0)
             {
@@ -133,15 +134,28 @@
                 ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
                 [self.mappedList addObject:ek];
             
-            
+            [self.imageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
 //                [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
             }
-        
+            
+            // 재계산할 이미지 리스트 가져오기, resizedList에서는 다시 지워줌
             NSArray *calculateList = [self getCaculateListWithAdditionalSize:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
+            
+            // 재계산할 이미지 리스트를 계산해서 리스트로 받음
              NSArray *newResizedList = [self getResizedListFromOriginSizes:calculateList];
             LogGreen(@"calculateList : %@ , newResizedList : %@", calculateList, newResizedList);
+            
+            // 재계산한 사이즈 정보를 resizedList에 저장
             [self.resizedList addObjectsFromArray:newResizedList];
             LogGreen(@"resizedList.count : %@ %zd", self.resizedList, self.resizedList.count);
+            
+            // 업데이트해줄 indexPath 리스트 저장
+            NSArray *arrIndexPath = [self getIndexPathListOfAdditionalSizeList:calculateList AtResizedList:self.resizedList];
+            LogGreen(@"arrIndexPath : %@", arrIndexPath);
+            
+            // indexPath 리스트로 업데이트
+            [self updateObjectWithIndexPathList:arrIndexPath];
+            
 //            [self.resizedList addObjectsFromArray:[self getResizedListFromOriginSizes:originImageSizeList]];
 //        
 //            [self insertNewObject:originImageSizeList];
@@ -153,13 +167,50 @@
     }
 }
 
+- (void)updateObjectWithIndexPathList:(NSArray *)indexArr
+{
+    NSMutableArray *muIndexArr = indexArr.mutableCopy;
+    
+    NSArray *lastObjectArr = @[[muIndexArr lastObject]];
+    [muIndexArr removeLastObject];
+    
+    [self.collectionView performBatchUpdates:^{
+        if(muIndexArr != nil)
+        {
+            [self.collectionView reloadItemsAtIndexPaths:muIndexArr];
+        }
+        [self.collectionView insertItemsAtIndexPaths:lastObjectArr];
+        
+    } completion:^(BOOL finished) {
+        
+        if(CGRectGetHeight(self.collectionView.frame) > self.collectionView.contentSize.height)
+        {
+            self.collectionView.contentOffset = CGPointMake(0, 0);
+        }
+        else
+        {
+            self.collectionView.contentOffset = CGPointMake(0, self.collectionView.contentSize.height - CGRectGetHeight(self.collectionView.frame));
+        }
+        LogGreen(@"contentOffset.y : %lf, contentSize.height : %lf, collectionView.height : %lf", self.collectionView.contentOffset.y, self.collectionView.contentSize.height, CGRectGetHeight(self.collectionView.frame));
+    }];
+}
+
 // 업데이트해야할 인덱스 구해서 리스트 형태로 전달
 - (NSArray *)getIndexPathListOfAdditionalSizeList:(NSArray *)calculateList AtResizedList:(NSArray *)resizedList
 {
     NSArray *result = nil;
     
+    NSMutableArray *arrIndexPath = [NSMutableArray array];
     
+    for(NSInteger i = resizedList.count - calculateList.count; i < resizedList.count; i++)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [arrIndexPath addObject:indexPath];
+    }
     
+    result = arrIndexPath;
+    
+
     return result;
 }
 
@@ -191,10 +242,9 @@
             }
             
         }
-        
-        [tempSizeList addObject:(NSValue *)addtionalSize];
     }
     
+    [tempSizeList addObject:(NSValue *)addtionalSize];
     result = tempSizeList;
     
     
@@ -466,6 +516,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     {
         [self loadMoreImage];
     }
+    
+//    LogGreen(@"contentOffset : %lf %lf", self.collectionView.contentOffset.x, self.collectionView.contentOffset.y);
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset

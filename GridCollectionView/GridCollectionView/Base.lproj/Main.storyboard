@@ -69,7 +69,7 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="I3B-C7-w94">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="2A2-Mb-e0p">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -129,13 +129,26 @@
                                             <constraint firstItem="Bcb-W7-OI2" firstAttribute="leading" secondItem="9Qm-IP-ZXU" secondAttribute="trailing" constant="10" id="hZP-90-M2f"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1t-qg-1nh">
+                                        <rect key="frame" x="530" y="510" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="avc-X5-e1F"/>
+                                            <constraint firstAttribute="height" constant="40" id="rR2-T7-Fz6"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="touchedPhotoUploadBtn:" destination="UwM-NP-e29" eventType="touchUpInside" id="plc-l8-Ubf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="I3B-C7-w94" firstAttribute="top" secondItem="bH4-M5-BBx" secondAttribute="top" id="4JB-TK-Fiu"/>
                                     <constraint firstItem="I3B-C7-w94" firstAttribute="leading" secondItem="bH4-M5-BBx" secondAttribute="leading" id="7IP-i0-t39"/>
                                     <constraint firstAttribute="bottom" secondItem="I3B-C7-w94" secondAttribute="bottom" id="Ri9-EZ-5xM"/>
+                                    <constraint firstAttribute="trailing" secondItem="s1t-qg-1nh" secondAttribute="trailing" constant="30" id="aDs-1G-wPZ"/>
                                     <constraint firstItem="9eW-Th-8nI" firstAttribute="leading" secondItem="bH4-M5-BBx" secondAttribute="leading" id="cBG-EM-MeG"/>
+                                    <constraint firstAttribute="bottom" secondItem="s1t-qg-1nh" secondAttribute="bottom" constant="30" id="cO0-Ed-fQA"/>
                                     <constraint firstAttribute="trailing" secondItem="I3B-C7-w94" secondAttribute="trailing" id="f5O-sx-dOt"/>
                                     <constraint firstAttribute="bottom" secondItem="9eW-Th-8nI" secondAttribute="bottom" constant="-28" id="jiv-pE-0El"/>
                                     <constraint firstAttribute="trailing" secondItem="9eW-Th-8nI" secondAttribute="trailing" id="rYN-83-E4F"/>
