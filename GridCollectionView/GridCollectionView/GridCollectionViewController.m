@@ -34,7 +34,7 @@
 #define kCellLineSpacing                            kDefaultMargin
 //============================================================================================================================================
 
-@interface GridCollectionViewController () <UICollectionViewDelegateFlowLayout>
+@interface GridCollectionViewController () <UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -94,8 +94,6 @@
         self.imageSizeList = originImageSizeList;
         self.resizedList = [self getResizedListFromOriginSizes:originImageSizeList].mutableCopy;
         
-        LogGreen(@"self.imageSizeList.lastObject.class : %@, self.resizedList.lastObject.class : %@, self.mappedList.lastObject.class : %@", [[self.imageSizeList lastObject] class], [[self.resizedList lastObject] class], [[self.mappedList lastObject] class]);
-        
         [self.collectionView reloadData];
         
         
@@ -114,10 +112,7 @@
     {
         EKRecentModel *ekModel = self.mappedList.lastObject;
         NSString *recentKey = ekModel.key;
-        LogBlue(@"lastKey : %@",recentKey);
         [ekRecentModel requestRecentPhotosWithLastKey:recentKey Success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-//            LogBlue(@"responseObj : %@", responseObject);
             
             if(((NSArray *)responseObject).count == 0)
             {
@@ -127,38 +122,29 @@
             
             NSArray *list = responseObject;
         
-            NSMutableArray *originImageSizeList = [NSMutableArray array];
+            NSMutableArray *newSizeList = [NSMutableArray array];
         
             EKRecentModel *ek = nil;
-            for (NSInteger i = 0; i < 1; i++) {
+            for (NSInteger i = 0; i < list.count; i++) {
                 ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
                 [self.mappedList addObject:ek];
             
-            [self.imageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
-//                [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
+                [self.imageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
+                [newSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
             }
+        
+            // INPUT
+            // 기존 이미지 사이즈 계산된 리스트 resizedList, 기존 이미지 원본 사이즈 리스트 : self.imageSizeList, 추가될 이미지 사이즈 리스트 : newSizeList
+            // RETURN
+            // NSDictionary : 재계산할 이미지 리스트 : totalCalculateList, 리로드할 collectionview의 indexPath : reloadIndexPaths, 더할 이미지의 indexPath : insertIndexPaths
+            NSDictionary *data = [self getDataForUpdateListWithResizedList:self.resizedList originSizeList:self.imageSizeList newOriginSizeList:newSizeList];
             
-            // 재계산할 이미지 리스트 가져오기, resizedList에서는 다시 지워줌
-            NSArray *calculateList = [self getCaculateListWithAdditionalSize:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
             
-            // 재계산할 이미지 리스트를 계산해서 리스트로 받음
-             NSArray *newResizedList = [self getResizedListFromOriginSizes:calculateList];
-            LogGreen(@"calculateList : %@ , newResizedList : %@", calculateList, newResizedList);
+            NSArray *newResizedLlist = [self getResizedListFromOriginSizes:data[@"totalCalculateList"]];
             
-            // 재계산한 사이즈 정보를 resizedList에 저장
-            [self.resizedList addObjectsFromArray:newResizedList];
-            LogGreen(@"resizedList.count : %@ %zd", self.resizedList, self.resizedList.count);
-            
-            // 업데이트해줄 indexPath 리스트 저장
-            NSArray *arrIndexPath = [self getIndexPathListOfAdditionalSizeList:calculateList AtResizedList:self.resizedList];
-            LogGreen(@"arrIndexPath : %@", arrIndexPath);
-            
-            // indexPath 리스트로 업데이트
-            [self updateObjectWithIndexPathList:arrIndexPath];
-            
-//            [self.resizedList addObjectsFromArray:[self getResizedListFromOriginSizes:originImageSizeList]];
-//        
-//            [self insertNewObject:originImageSizeList];
+            [self.resizedList addObjectsFromArray:newResizedLlist];
+        
+            [self updateListWithRecomputedSizeIndexPaths:data[@"reloadIndexPaths"] addedSizeIndexPaths:data[@"insertIndexPaths"]];
         
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -167,19 +153,71 @@
     }
 }
 
-- (void)updateObjectWithIndexPathList:(NSArray *)indexArr
+- (NSDictionary *)getDataForUpdateListWithResizedList:(NSMutableArray *)resizedList
+                                       originSizeList:(NSMutableArray *)originSizeList
+                                    newOriginSizeList:(NSMutableArray *)newOriginSizeList
 {
-    NSMutableArray *muIndexArr = indexArr.mutableCopy;
+    NSDictionary *result = nil;
     
-    NSArray *lastObjectArr = @[[muIndexArr lastObject]];
-    [muIndexArr removeLastObject];
+    CGSize lastSize = [[resizedList lastObject] CGSizeValue];
+    CGFloat commonHeight = kCriticalHeight;
+    NSInteger resizedListCnt = resizedList.count;
+    CGSize previousSize = CGSizeZero;
     
-    [self.collectionView performBatchUpdates:^{
-        if(muIndexArr != nil)
+    NSMutableArray *reloadIndexPaths = [NSMutableArray array];
+    NSMutableArray *insertIndexPaths = [NSMutableArray array];
+    NSMutableArray *totalCalculateList = [NSMutableArray array];
+    
+    NSMutableArray *tempSizeList = [NSMutableArray array];
+    
+    // insert할 indexPath 리스트 구하기
+    for(NSInteger i = resizedListCnt; i < resizedListCnt + newOriginSizeList.count; i++)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [insertIndexPaths addObject:indexPath];
+    }
+    
+    // reload할 indexPath 리스트 구하기
+    if(lastSize.height > commonHeight)
+    {
+        for(NSInteger i = resizedListCnt - 1; i>0; i--)
         {
-            [self.collectionView reloadItemsAtIndexPaths:muIndexArr];
+            previousSize = [resizedList[i] CGSizeValue];
+            if(lastSize.height == previousSize.height)
+            {
+                [tempSizeList insertObject:originSizeList[i] atIndex:0];
+                NSIndexPath *reloadIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                [reloadIndexPaths insertObject:reloadIndexPath atIndex:0];
+                
+                [resizedList removeObjectAtIndex:i];
+            }
+            else{
+                break;
+            }
+            
         }
-        [self.collectionView insertItemsAtIndexPaths:lastObjectArr];
+    }
+    
+    [totalCalculateList addObjectsFromArray:tempSizeList];
+    [totalCalculateList addObjectsFromArray:newOriginSizeList];
+    
+    
+    result = @{@"reloadIndexPaths" : reloadIndexPaths, @"insertIndexPaths" : insertIndexPaths, @"totalCalculateList" : totalCalculateList};
+    
+    
+    
+    return result;
+}
+
+// 각각 indexPath로 재계산한 이미지는 reload, 추가할 이미지는 insert
+- (void)updateListWithRecomputedSizeIndexPaths:(NSArray *)recomputeSizeIndexPaths addedSizeIndexPaths:(NSArray *)addedSizeIndexPaths
+{
+    [self.collectionView performBatchUpdates:^{
+        if(recomputeSizeIndexPaths.count != 0)
+        {
+            [self.collectionView reloadItemsAtIndexPaths:recomputeSizeIndexPaths];
+        }
+        [self.collectionView insertItemsAtIndexPaths:addedSizeIndexPaths];
         
     } completion:^(BOOL finished) {
         
@@ -195,100 +233,82 @@
     }];
 }
 
-// 업데이트해야할 인덱스 구해서 리스트 형태로 전달
-- (NSArray *)getIndexPathListOfAdditionalSizeList:(NSArray *)calculateList AtResizedList:(NSArray *)resizedList
+- (IBAction)touchedAddPhotoBtn:(id)sender {
+    UIImagePickerController *imagePickController = [[UIImagePickerController alloc] init];
+    imagePickController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePickController.delegate = self;
+    imagePickController.allowsEditing = TRUE;
+    
+    [self presentViewController:imagePickController animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary<NSString *,
+                               id> *)info
 {
-    NSArray *result = nil;
+    NSLog(@"picked info : %@ infoMediaType", info);
+    UIImage *selectedImg = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSString *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
     
-    NSMutableArray *arrIndexPath = [NSMutableArray array];
     
-    for(NSInteger i = resizedList.count - calculateList.count; i < resizedList.count; i++)
-    {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        [arrIndexPath addObject:indexPath];
-    }
+    /*
+     {
+     "key": "1448796331475",
+     "thumbnailImage": {
+     "url": "http://den3ts47c2d2d.cloudfront.net/pholarzt_thumb/i11890107556.png",
+     "width": 272.7272727272727,
+     "height": 300
+     },
+     "originImage": {
+     "url": "http://den3ts47c2d2d.cloudfront.net/pholarzt/i11890107556.png",
+     "width": 300,
+     "height": 330
+     }
+     }
+     */
     
-    result = arrIndexPath;
+    NSString *previousKey = ((EKRecentModel *)[self.mappedList lastObject]).key;
+    NSString *imageWidth = [NSString stringWithFormat:@"%f", selectedImg.size.width];
+    NSString *imageHeight = [NSString stringWithFormat:@"%f", selectedImg.size.height];
     
-
-    return result;
+    NSDictionary *addImageDictionary = @{@"key" : previousKey,
+                                         @"thumbnailImage" : @{@"url" : referenceURL, @"width" : imageWidth, @"height" : imageHeight},
+                                         @"originImage" : @{@"url" : referenceURL, @"width" : imageWidth, @"height" : imageHeight}
+                                         };
+    
+    
+    [self addOneImage:addImageDictionary];
+    
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-// 다시 계산할 이미지 리스트 가져오기
-- (NSArray *)getCaculateListWithAdditionalSize:(id)addtionalSize
+- (void)addOneImage:(NSDictionary *)addImageInfo
 {
-    NSArray *result = [NSArray array];
+    EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:addImageInfo];
     
-    CGSize lastSize = [[self.resizedList lastObject] CGSizeValue];
-    CGFloat commonHeight = kCriticalHeight;
-    NSInteger resizedListCnt = self.resizedList.count;
-    CGSize previousSize = CGSizeZero;
+    [self.mappedList addObject:ek];
     
-    NSMutableArray *tempSizeList = [NSMutableArray array];
-    
-    if(lastSize.height > commonHeight)
-    {
-        for(NSInteger i = resizedListCnt - 1; i>0; i--)
-        {
-            previousSize = [self.resizedList[i] CGSizeValue];
-            if(lastSize.height == previousSize.height)
-            {
-                [tempSizeList insertObject:self.imageSizeList[i] atIndex:0];
-                [self.resizedList removeObjectAtIndex:i];
-            }
-            else{
-                break;
-            }
-            
-        }
-    }
-    
-    [tempSizeList addObject:(NSValue *)addtionalSize];
-    result = tempSizeList;
+    [self.imageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
     
     
-    return result;
+    // 재계산할 이미지 리스트 가져오기, resizedList에서는 다시 지워줌
+    NSArray *calculateList = [self getCaculateListWithAdditionalSize:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
+    
+    // 재계산할 이미지 리스트를 계산해서 리스트로 받음
+    NSArray *newResizedList = [self getResizedListFromOriginSizes:calculateList];
+    
+    // 재계산한 사이즈 정보를 resizedList에 저장
+    [self.resizedList addObjectsFromArray:newResizedList];
+    
+    // 업데이트해줄 indexPath 리스트 저장
+    NSArray *arrIndexPath = [self getIndexPathListOfAdditionalSizeList:calculateList AtResizedList:self.resizedList];
+    
+    // indexPath 리스트로 업데이트
+    [self updateObjectWithIndexPathList:arrIndexPath];
 }
 
-- (void)insertNewObject:(NSArray *)objs {
-//    LogGreen(@"self.imageSizeList : %@", self.imageSizeList);
-    NSMutableArray *muOpenList = [[NSMutableArray alloc] initWithArray:self.imageSizeList];
-    
-    [muOpenList addObjectsFromArray:objs];
-    NSInteger lastRow = self.imageSizeList.count - 1;
-    
-    NSMutableArray *arrIndexPath = [NSMutableArray array];
-
-    for (NSInteger i = 1; i <= objs.count; i++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow+i inSection:0];
-        
-        [arrIndexPath addObject:indexPath];
-//        LogGreen(@"indexPath : %@ row : %zd", indexPath, indexPath.row);
-    }
-    self.imageSizeList = muOpenList;
-    
-    [self.collectionView performBatchUpdates:^{
-        [self.collectionView insertItemsAtIndexPaths:arrIndexPath];
-    } completion:nil];
-    
-
-}
-
-- (void)reqFLKRecent
-{
-    self.flkModel = [[FLKRecentPhotos alloc] init];
-    
-    [self.flkModel reqRecentPhotosWithPageNo:1 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        LogGreen(@"responseObject : %@",responseObject);
-        
-        self.flkModel = [FLKRecentPhotos modelObjectWithDictionary:responseObject];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        LogRed(@"error : %@",error);
-    }];
-}
 
 #pragma mark - UICollectionView Datasource & Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -308,7 +328,16 @@
     EKThumbnailImage *thumbImg = ekRecentModel.thumbnailImage;
     UIImageView *ivImg = [cell viewWithTag:300];
     
-    [self.tools setImageToImageView:ivImg placeholderImage:nil imageURLString:thumbImg.url isOnlyMemoryCache:NO completion:nil];
+    if([thumbImg.url class] == [NSURL class])
+    {
+        NSString *imagePath = ((NSURL *)thumbImg.url).absoluteString;
+        UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+        [ivImg setImage:image];
+    }
+    else
+    {
+        [self.tools setImageToImageView:ivImg placeholderImage:nil imageURLString:thumbImg.url isOnlyMemoryCache:NO completion:nil];
+    }
     
     cell.contentView.backgroundColor = [UIColor yellowColor];
     
@@ -530,11 +559,231 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     }
 }
 
-//- (void)showLoadingImage
-//{
-//    self.alcBottomOfLoadingView.constant = 0;
-//    
-//    [self.activityIndicator startAnimating];
-//}
+
+
+
+
+#pragma mark - NOT USING METHOD
+
+- (void)updateObjectWithIndexPathList:(NSArray *)indexArr
+{
+    NSMutableArray *muIndexArr = indexArr.mutableCopy;
+    
+    NSArray *lastObjectArr = @[[muIndexArr lastObject]];
+    
+    [muIndexArr removeLastObject];
+    //    [muIndexArr removeObjectAtIndex:muIndexArr.count-2];
+    //    [muIndexArr removeObjectAtIndex:muIndexArr.count-1];
+    
+    [self.collectionView performBatchUpdates:^{
+        if(muIndexArr != nil)
+        {
+            [self.collectionView reloadItemsAtIndexPaths:muIndexArr];
+        }
+        [self.collectionView insertItemsAtIndexPaths:lastObjectArr];
+        
+    } completion:^(BOOL finished) {
+        
+        if(CGRectGetHeight(self.collectionView.frame) > self.collectionView.contentSize.height)
+        {
+            self.collectionView.contentOffset = CGPointMake(0, 0);
+        }
+        else
+        {
+            self.collectionView.contentOffset = CGPointMake(0, self.collectionView.contentSize.height - CGRectGetHeight(self.collectionView.frame));
+        }
+        LogGreen(@"contentOffset.y : %lf, contentSize.height : %lf, collectionView.height : %lf", self.collectionView.contentOffset.y, self.collectionView.contentSize.height, CGRectGetHeight(self.collectionView.frame));
+    }];
+}
+
+// 업데이트해야할 인덱스 구해서 리스트 형태로 전달
+- (NSArray *)getIndexPathListOfAdditionalSizeList:(NSArray *)calculateList AtResizedList:(NSArray *)resizedList
+{
+    NSArray *result = nil;
+    
+    NSMutableArray *arrIndexPath = [NSMutableArray array];
+    
+    for(NSInteger i = resizedList.count - calculateList.count; i < resizedList.count; i++)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [arrIndexPath addObject:indexPath];
+    }
+    
+    result = arrIndexPath;
+    
+    
+    return result;
+}
+
+
+// 다시 계산할 이미지 리스트 가져오기
+- (NSArray *)getCaculateListWithAdditionalSize:(id)addtionalSize
+{
+    
+    LogGreen(@"additionalSize : %@ class : %@", addtionalSize, [addtionalSize class]);
+    NSArray *result = [NSArray array];
+    
+    CGSize lastSize = [[self.resizedList lastObject] CGSizeValue];
+    CGFloat commonHeight = kCriticalHeight;
+    NSInteger resizedListCnt = self.resizedList.count;
+    CGSize previousSize = CGSizeZero;
+    
+    NSMutableArray *tempSizeList = [NSMutableArray array];
+    
+    if(lastSize.height > commonHeight)
+    {
+        for(NSInteger i = resizedListCnt - 1; i>0; i--)
+        {
+            previousSize = [self.resizedList[i] CGSizeValue];
+            if(lastSize.height == previousSize.height)
+            {
+                [tempSizeList insertObject:self.imageSizeList[i] atIndex:0];
+                [self.resizedList removeObjectAtIndex:i];
+            }
+            else{
+                break;
+            }
+            
+        }
+    }
+    
+    //    LogGreen(@"tempSizeList : %@", tempSizeList);
+    //    NSArray *tempAddtionalSize = (NSArray *)addtionalSize;
+    //    LogGreen(@"temp : %@, temp class : %@", tempAddtionalSize, [tempAddtionalSize class]);
+    if([addtionalSize isKindOfClass:[NSArray class]])
+    {
+        
+        [tempSizeList addObjectsFromArray:addtionalSize];
+    }
+    else
+    {
+        [tempSizeList addObject:(NSValue *)addtionalSize];
+    }
+    result = tempSizeList;
+    
+    
+    return result;
+}
+
+- (void)insertNewObject:(NSArray *)objs {
+    //    LogGreen(@"self.imageSizeList : %@", self.imageSizeList);
+    NSMutableArray *muOpenList = [[NSMutableArray alloc] initWithArray:self.imageSizeList];
+    
+    [muOpenList addObjectsFromArray:objs];
+    NSInteger lastRow = self.imageSizeList.count - 1;
+    
+    NSMutableArray *arrIndexPath = [NSMutableArray array];
+    
+    for (NSInteger i = 1; i <= objs.count; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow+i inSection:0];
+        
+        [arrIndexPath addObject:indexPath];
+        //        LogGreen(@"indexPath : %@ row : %zd", indexPath, indexPath.row);
+    }
+    self.imageSizeList = muOpenList;
+    
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView insertItemsAtIndexPaths:arrIndexPath];
+    } completion:nil];
+    
+    
+}
+
+- (void)reqFLKRecent
+{
+    self.flkModel = [[FLKRecentPhotos alloc] init];
+    
+    [self.flkModel reqRecentPhotosWithPageNo:1 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        LogGreen(@"responseObject : %@",responseObject);
+        
+        self.flkModel = [FLKRecentPhotos modelObjectWithDictionary:responseObject];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        LogRed(@"error : %@",error);
+    }];
+}
+
+
+- (NSArray *)getTotalCalculateListWithRecomputeSizeList:(NSArray *)recomputeSizeList addedSizeList:(NSArray *)addedSizeList
+{
+    NSArray *result = nil;
+    NSMutableArray *totalCalculateSizeList = recomputeSizeList.mutableCopy;
+    [totalCalculateSizeList addObjectsFromArray:addedSizeList];
+    
+    result = totalCalculateSizeList;
+    
+    return result;
+    
+}
+
+
+- (NSMutableArray *)getRecomputeSizeListWithResizedList:(NSMutableArray *)resizedList originImageSizeList:(NSMutableArray *)imageSizeList
+{
+    NSMutableArray *result = [NSMutableArray array];
+    
+    CGSize lastSize = [[resizedList lastObject] CGSizeValue];
+    CGFloat commonHeight = kCriticalHeight;
+    NSInteger resizedListCnt = resizedList.count;
+    CGSize previousSize = CGSizeZero;
+    
+    NSMutableArray *tempSizeList = [NSMutableArray array];
+    
+    if(lastSize.height > commonHeight)
+    {
+        for(NSInteger i = resizedListCnt - 1; i>0; i--)
+        {
+            previousSize = [resizedList[i] CGSizeValue];
+            if(lastSize.height == previousSize.height)
+            {
+                [tempSizeList insertObject:imageSizeList[i] atIndex:0];
+                [resizedList removeObjectAtIndex:i];
+            }
+            else{
+                break;
+            }
+            
+        }
+    }
+    
+    result = tempSizeList;
+    
+    return result;
+}
+
+- (NSArray *)getIndexPathsOfRecomputeSizeList:(NSArray *)recomputeSize resizedList:(NSArray *)resizedList
+{
+    NSArray *result;
+    
+    NSMutableArray *arrIndexPath = [NSMutableArray array];
+    
+    for(NSInteger i = resizedList.count; i < resizedList.count + recomputeSize.count; i++)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [arrIndexPath addObject:indexPath];
+    }
+    
+    result = arrIndexPath;
+    
+    return result;
+    
+}
+
+- (NSArray *)getIndexPathsOfAddedSizeList:(NSArray *)addedSizeList resizedList:(NSArray *)resizedList
+{
+    NSArray *result;
+    
+    NSMutableArray *arrIndexPath = [NSMutableArray array];
+    
+    for(NSInteger i = resizedList.count; i < resizedList.count + addedSizeList.count; i++)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [arrIndexPath addObject:indexPath];
+    }
+    result = arrIndexPath;
+    
+    return result;
+}
+
 
 @end

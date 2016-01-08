@@ -137,7 +137,7 @@
                                         </constraints>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="touchedPhotoUploadBtn:" destination="UwM-NP-e29" eventType="touchUpInside" id="plc-l8-Ubf"/>
+                                            <action selector="touchedAddPhotoBtn:" destination="UwM-NP-e29" eventType="touchUpInside" id="X82-o9-8Oc"/>
                                         </connections>
                                     </button>
                                 </subviews>
