@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class EKThumbnailImage, EKOriginImage;
+@class EKOriginImage, EKThumbnailImage;
 
 @interface EKRecentModel : YHModel <NSCoding, NSCopying>
 

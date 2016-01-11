@@ -10,6 +10,7 @@
 #import "FLKRecentPhotos.h"
 #import "EKRecentModel.h"
 #import "EKThumbnailImage.h"
+#import "EKOriginImage.h"
 
 //============================================================================================================================================
 // 비율이 적용된 공통 이미지 셀의 높이, 해당 값을 기준으로 개행 결정
@@ -49,8 +50,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfLoadingView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-@property (assign, nonatomic) BOOL isEndOfList;
-@property (assign, nonatomic) BOOL isEndOfImageList;
+@property (assign, nonatomic) BOOL isAddImage;
 
 @end
 
@@ -63,7 +63,6 @@
     self.resizedList = [NSMutableArray array];
     
     [self reqEKRecent];
-    LogGreen(@"contentOffset : %lf %lf", self.collectionView.contentOffset.x, self.collectionView.contentOffset.y);
 }
 
 - (void)reqEKRecent
@@ -78,14 +77,8 @@
         self.mappedList = [NSMutableArray array];
         
         NSMutableArray *originImageSizeList = [NSMutableArray array];
-//        for (id obj in list)
-//        {
-//            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:obj];
-//            [self.mappedList addObject:ek];
-//            [originImageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
-//        }
         
-        for (NSInteger i = 0; i < 31; i++) {
+        for (NSInteger i = 0; i < list.count; i++) {
             EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
             [self.mappedList addObject:ek];
             
@@ -108,49 +101,57 @@
    
     EKRecentModel *ekRecentModel = [[EKRecentModel alloc] init];
     
-    if(self.isEndOfList == YES)
+    EKRecentModel *ekModel = self.mappedList.lastObject;
+    NSString *recentKey = ekModel.key;
+        
+    [ekRecentModel requestRecentPhotosWithLastKey:recentKey Success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSArray *list = nil;
+        if(self.isAddImage == YES)
+        {
+            list = @[[(NSArray *)responseObject firstObject]];
+        }
+        else
+        {
+            list = responseObject;
+        }
+        
+        NSMutableArray *newSizeList = [NSMutableArray array];
+            
+        for (NSInteger i = 0; i < list.count; i++) {
+            EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:list[i]];
+            [self.mappedList addObject:ek];
+            [self.imageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
+            [newSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
+        }
+        
+        [self executeResizeImageWithData:newSizeList];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        LogRed(@"error : %@",error);
+    }];
+
+}
+
+- (void)executeResizeImageWithData:(NSMutableArray *)newSizeList
+{
+    // INPUT
+    // 기존 이미지 사이즈 계산된 리스트 resizedList, 기존 이미지 원본 사이즈 리스트 : self.imageSizeList, 추가될 이미지 사이즈 리스트 : newSizeList
+    // RETURN
+    // NSDictionary : 재계산할 이미지 리스트 : totalCalculateList, 리로드할 collectionview의 indexPath : reloadIndexPaths, 더할 이미지의 indexPath : insertIndexPaths
+    
+    if(self.isAddImage)
     {
-        EKRecentModel *ekModel = self.mappedList.lastObject;
-        NSString *recentKey = ekModel.key;
-        [ekRecentModel requestRecentPhotosWithLastKey:recentKey Success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            if(((NSArray *)responseObject).count == 0)
-            {
-                self.isEndOfImageList = YES;
-                return ;
-            }
-            
-            NSArray *list = responseObject;
-        
-            NSMutableArray *newSizeList = [NSMutableArray array];
-        
-            EKRecentModel *ek = nil;
-            for (NSInteger i = 0; i < list.count; i++) {
-                ek = [EKRecentModel modelObjectWithDictionary:[list objectAtIndex:i]];
-                [self.mappedList addObject:ek];
-            
-                [self.imageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
-                [newSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
-            }
-        
-            // INPUT
-            // 기존 이미지 사이즈 계산된 리스트 resizedList, 기존 이미지 원본 사이즈 리스트 : self.imageSizeList, 추가될 이미지 사이즈 리스트 : newSizeList
-            // RETURN
-            // NSDictionary : 재계산할 이미지 리스트 : totalCalculateList, 리로드할 collectionview의 indexPath : reloadIndexPaths, 더할 이미지의 indexPath : insertIndexPaths
-            NSDictionary *data = [self getDataForUpdateListWithResizedList:self.resizedList originSizeList:self.imageSizeList newOriginSizeList:newSizeList];
-            
-            
-            NSArray *newResizedLlist = [self getResizedListFromOriginSizes:data[@"totalCalculateList"]];
-            
-            [self.resizedList addObjectsFromArray:newResizedLlist];
-        
-            [self updateListWithRecomputedSizeIndexPaths:data[@"reloadIndexPaths"] addedSizeIndexPaths:data[@"insertIndexPaths"]];
-        
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-            LogRed(@"error : %@",error);
-        }];
+        newSizeList = @[[newSizeList firstObject]].mutableCopy;
     }
+    NSDictionary *data = [self getDataForUpdateListWithResizedList:self.resizedList originSizeList:self.imageSizeList newOriginSizeList:newSizeList];
+    
+    NSArray *newResizedLlist = [self getResizedListFromOriginSizes:data[@"totalCalculateList"]];
+    
+    [self.resizedList addObjectsFromArray:newResizedLlist];
+    
+    [self updateListWithRecomputedSizeIndexPaths:data[@"reloadIndexPaths"] addedSizeIndexPaths:data[@"insertIndexPaths"]];
+
 }
 
 - (NSDictionary *)getDataForUpdateListWithResizedList:(NSMutableArray *)resizedList
@@ -220,95 +221,33 @@
         [self.collectionView insertItemsAtIndexPaths:addedSizeIndexPaths];
         
     } completion:^(BOOL finished) {
+        if(self.isAddImage == YES)
+        {
         
-        if(CGRectGetHeight(self.collectionView.frame) > self.collectionView.contentSize.height)
-        {
-            self.collectionView.contentOffset = CGPointMake(0, 0);
+            if(CGRectGetHeight(self.collectionView.frame) > self.collectionView.contentSize.height)
+            {
+                self.collectionView.contentOffset = CGPointMake(0, 0);
+            }
+            else
+            {
+                self.collectionView.contentOffset = CGPointMake(0, self.collectionView.contentSize.height - CGRectGetHeight(self.collectionView.frame));
+            }
         }
-        else
-        {
-            self.collectionView.contentOffset = CGPointMake(0, self.collectionView.contentSize.height - CGRectGetHeight(self.collectionView.frame));
-        }
-        LogGreen(@"contentOffset.y : %lf, contentSize.height : %lf, collectionView.height : %lf", self.collectionView.contentOffset.y, self.collectionView.contentSize.height, CGRectGetHeight(self.collectionView.frame));
+        self.isAddImage = NO;
     }];
 }
 
 - (IBAction)touchedAddPhotoBtn:(id)sender {
-    UIImagePickerController *imagePickController = [[UIImagePickerController alloc] init];
-    imagePickController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    imagePickController.delegate = self;
-    imagePickController.allowsEditing = TRUE;
     
-    [self presentViewController:imagePickController animated:YES completion:nil];
+    self.isAddImage = YES;
+    [self loadMoreImage];
+//    UIImagePickerController *imagePickController = [[UIImagePickerController alloc] init];
+//    imagePickController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    imagePickController.delegate = self;
+//    imagePickController.allowsEditing = TRUE;
+//    
+//    [self presentViewController:imagePickController animated:YES completion:nil];
 }
-
-- (void)imagePickerController:(UIImagePickerController *)picker
-didFinishPickingMediaWithInfo:(NSDictionary<NSString *,
-                               id> *)info
-{
-    NSLog(@"picked info : %@ infoMediaType", info);
-    UIImage *selectedImg = [info objectForKey:UIImagePickerControllerOriginalImage];
-    NSString *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
-    
-    
-    /*
-     {
-     "key": "1448796331475",
-     "thumbnailImage": {
-     "url": "http://den3ts47c2d2d.cloudfront.net/pholarzt_thumb/i11890107556.png",
-     "width": 272.7272727272727,
-     "height": 300
-     },
-     "originImage": {
-     "url": "http://den3ts47c2d2d.cloudfront.net/pholarzt/i11890107556.png",
-     "width": 300,
-     "height": 330
-     }
-     }
-     */
-    
-    NSString *previousKey = ((EKRecentModel *)[self.mappedList lastObject]).key;
-    NSString *imageWidth = [NSString stringWithFormat:@"%f", selectedImg.size.width];
-    NSString *imageHeight = [NSString stringWithFormat:@"%f", selectedImg.size.height];
-    
-    NSDictionary *addImageDictionary = @{@"key" : previousKey,
-                                         @"thumbnailImage" : @{@"url" : referenceURL, @"width" : imageWidth, @"height" : imageHeight},
-                                         @"originImage" : @{@"url" : referenceURL, @"width" : imageWidth, @"height" : imageHeight}
-                                         };
-    
-    
-    [self addOneImage:addImageDictionary];
-    
-    
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)addOneImage:(NSDictionary *)addImageInfo
-{
-    EKRecentModel *ek = [EKRecentModel modelObjectWithDictionary:addImageInfo];
-    
-    [self.mappedList addObject:ek];
-    
-    [self.imageSizeList addObject:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
-    
-    
-    // 재계산할 이미지 리스트 가져오기, resizedList에서는 다시 지워줌
-    NSArray *calculateList = [self getCaculateListWithAdditionalSize:[NSValue valueWithCGSize:CGSizeMake(ek.thumbnailImage.width.floatValue, ek.thumbnailImage.height.floatValue)]];
-    
-    // 재계산할 이미지 리스트를 계산해서 리스트로 받음
-    NSArray *newResizedList = [self getResizedListFromOriginSizes:calculateList];
-    
-    // 재계산한 사이즈 정보를 resizedList에 저장
-    [self.resizedList addObjectsFromArray:newResizedList];
-    
-    // 업데이트해줄 indexPath 리스트 저장
-    NSArray *arrIndexPath = [self getIndexPathListOfAdditionalSizeList:calculateList AtResizedList:self.resizedList];
-    
-    // indexPath 리스트로 업데이트
-    [self updateObjectWithIndexPathList:arrIndexPath];
-}
-
 
 #pragma mark - UICollectionView Datasource & Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -345,12 +284,11 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,
 }
 
 -(CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     CGSize cellSize = [(NSValue *)[self.resizedList objectAtIndex:indexPath.row] CGSizeValue];
     
-    EKRecentModel *rModel = [self.mappedList objectAtIndex:indexPath.row];
-    EKThumbnailImage *originImg = rModel.thumbnailImage;
-    
+//    EKRecentModel *rModel = [self.mappedList objectAtIndex:indexPath.row];
+//    EKThumbnailImage *originImg = rModel.thumbnailImage;
 //    LogGreen(@"cellSize : %f, %f ,%f",originImg.width.floatValue, originImg.height.floatValue, originImg.width.floatValue / originImg.height.floatValue);
 //    LogYellow(@"new cellSize : %f, %f, %f",cellSize.width, cellSize.height, cellSize.width / cellSize.height);
     
@@ -539,23 +477,22 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView
 {
-//    [self showLoadingImage];
+    // collectionView의 contentOffset의 y좌표
+    NSInteger y = scrollView.contentOffset.y;
+    // collectionView의 전체 content size의 높이
+    NSInteger contentHeight = scrollView.contentSize.height;
     
-    if(self.isEndOfImageList == NO)
+    // collectionView의 높이
+    NSInteger clMainHeight = CGRectGetHeight(self.collectionView.frame);
+    
+    // 전체 content size 높이에서 collection view의 content offset의 y값을 빼면 현재 visible 영역의 y좌표 값이 나온다.
+    NSInteger compareValue = (contentHeight - y);
+    
+    // compareValue가 collectionView의 높이와 같을 경우 스크롤이 완료됨. ex) 오차 범위는 +5, -5
+    if (clMainHeight >= compareValue - 5 && clMainHeight <= compareValue + 5)
     {
+        self.isAddImage = NO;
         [self loadMoreImage];
-    }
-    
-//    LogGreen(@"contentOffset : %lf %lf", self.collectionView.contentOffset.x, self.collectionView.contentOffset.y);
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
-{
-    if(velocity.y > 0)
-    {
-        self.isEndOfList = YES;
-    }else{
-        self.isEndOfList = NO;
     }
 }
 
@@ -592,7 +529,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
         {
             self.collectionView.contentOffset = CGPointMake(0, self.collectionView.contentSize.height - CGRectGetHeight(self.collectionView.frame));
         }
-        LogGreen(@"contentOffset.y : %lf, contentSize.height : %lf, collectionView.height : %lf", self.collectionView.contentOffset.y, self.collectionView.contentSize.height, CGRectGetHeight(self.collectionView.frame));
     }];
 }
 
@@ -620,7 +556,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 - (NSArray *)getCaculateListWithAdditionalSize:(id)addtionalSize
 {
     
-    LogGreen(@"additionalSize : %@ class : %@", addtionalSize, [addtionalSize class]);
     NSArray *result = [NSArray array];
     
     CGSize lastSize = [[self.resizedList lastObject] CGSizeValue];
@@ -647,9 +582,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
         }
     }
     
-    //    LogGreen(@"tempSizeList : %@", tempSizeList);
-    //    NSArray *tempAddtionalSize = (NSArray *)addtionalSize;
-    //    LogGreen(@"temp : %@, temp class : %@", tempAddtionalSize, [tempAddtionalSize class]);
     if([addtionalSize isKindOfClass:[NSArray class]])
     {
         
@@ -666,7 +598,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 }
 
 - (void)insertNewObject:(NSArray *)objs {
-    //    LogGreen(@"self.imageSizeList : %@", self.imageSizeList);
     NSMutableArray *muOpenList = [[NSMutableArray alloc] initWithArray:self.imageSizeList];
     
     [muOpenList addObjectsFromArray:objs];
@@ -678,7 +609,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow+i inSection:0];
         
         [arrIndexPath addObject:indexPath];
-        //        LogGreen(@"indexPath : %@ row : %zd", indexPath, indexPath.row);
     }
     self.imageSizeList = muOpenList;
     
@@ -694,8 +624,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     self.flkModel = [[FLKRecentPhotos alloc] init];
     
     [self.flkModel reqRecentPhotosWithPageNo:1 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        LogGreen(@"responseObject : %@",responseObject);
         
         self.flkModel = [FLKRecentPhotos modelObjectWithDictionary:responseObject];
         
