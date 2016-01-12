@@ -35,8 +35,7 @@
 #define kCellLineSpacing                            kDefaultMargin
 //============================================================================================================================================
 
-@interface GridCollectionViewController () <UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-
+@interface GridCollectionViewController () <UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) FLKRecentPhotos *flkModel;

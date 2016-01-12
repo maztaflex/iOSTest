@@ -40,6 +40,7 @@
 		ACC568BC1C21295400EF6D8A /* YHView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568AA1C21295400EF6D8A /* YHView.m */; };
 		ACC568BD1C21295400EF6D8A /* YHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568AC1C21295400EF6D8A /* YHViewController.m */; };
 		ACC568C11C21481400EF6D8A /* GridCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC568C01C21481400EF6D8A /* GridCollectionViewController.m */; };
+		D80952971C43AFA600FA43BB /* NewGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D80952961C43AFA600FA43BB /* NewGridViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,8 @@
 		ACC568BE1C2129C700EF6D8A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		ACC568BF1C21481400EF6D8A /* GridCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCollectionViewController.h; sourceTree = "<group>"; };
 		ACC568C01C21481400EF6D8A /* GridCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCollectionViewController.m; sourceTree = "<group>"; };
+		D80952951C43AFA600FA43BB /* NewGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGridViewController.h; sourceTree = "<group>"; };
+		D80952961C43AFA600FA43BB /* NewGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGridViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,8 @@
 				AC15149B1C21011E0067DF79 /* ViewController.h */,
 				AC15149C1C21011E0067DF79 /* ViewController.m */,
 				ACC568BF1C21481400EF6D8A /* GridCollectionViewController.h */,
+				D80952951C43AFA600FA43BB /* NewGridViewController.h */,
+				D80952961C43AFA600FA43BB /* NewGridViewController.m */,
 				ACC568C01C21481400EF6D8A /* GridCollectionViewController.m */,
 				AC15149E1C21011E0067DF79 /* Main.storyboard */,
 				AC1514A11C21011E0067DF79 /* Assets.xcassets */,
@@ -508,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACC568B81C21295400EF6D8A /* YHTableViewCell.m in Sources */,
+				D80952971C43AFA600FA43BB /* NewGridViewController.m in Sources */,
 				ACC568B11C21295400EF6D8A /* YHGoogleLoginViewController.m in Sources */,
 				ACC568C11C21481400EF6D8A /* GridCollectionViewController.m in Sources */,
 				AC1514CF1C2101F00067DF79 /* FLKPhoto.m in Sources */,
