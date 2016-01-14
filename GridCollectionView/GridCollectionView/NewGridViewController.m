@@ -103,6 +103,81 @@ static NSInteger idx = 0;
     
 }
 
+- (void)excuteDeleteItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *calculateList = [NSMutableArray array];
+    NSArray *newResizedList = nil;
+    NSInteger selectedRow = indexPath.row;
+    NSInteger resizeStartIdx = 0;
+    NSRange r;
+    
+    CGSize currentSize = [self.resizedList[selectedRow] CGSizeValue];
+    
+    // 좌측 검색
+    for(NSInteger i = selectedRow - 1; i >= 0; i--)
+    {
+        CGSize previousSize = [self.resizedList[i] CGSizeValue];
+    
+        if(currentSize.height == previousSize.height)
+        {
+            [calculateList addObject:self.imageSizeList[i]];
+        }
+        else
+        {
+            resizeStartIdx = i + 1;
+            break;
+        }
+    }
+    
+    // 우측 검색
+    for(NSInteger j = selectedRow + 1; j < self.resizedList.count; j++)
+    {
+        CGSize nextSize = [self.resizedList[j] CGSizeValue];
+        
+        if(currentSize.height == nextSize.height)
+        {
+            [calculateList addObject:self.imageSizeList[j]];
+        }
+        else
+        {
+            break;
+        }
+    }
+    
+    
+    LogGreen(@"calculateList.count : %zd", calculateList.count);
+    
+    
+    NSInteger calculateCnt = calculateList.count;
+    if(calculateCnt == 1)
+    {
+        if(selectedRow == resizeStartIdx)
+        {
+            [calculateList addObject:self.imageSizeList[selectedRow + 2]];
+        }
+        else
+        {
+            [calculateList addObject:self.imageSizeList[selectedRow + 1]];
+        }
+    }
+    
+    newResizedList = [self getResizedListFromOriginSizes:calculateList];
+    LogGreen(@"newResizedList : %@", newResizedList);
+    
+    r.location = resizeStartIdx;
+    r.length = newResizedList.count;
+    
+    [self.imageSizeList removeObjectAtIndex:selectedRow];
+    [self.resizedList removeObjectAtIndex:selectedRow];
+    
+    [self.resizedList replaceObjectsInRange:r withObjectsFromArray:newResizedList];
+    
+
+    
+    
+    
+}
+
 - (NSDictionary *)getDataForUpdateListWithResizedList:(NSMutableArray *)resizedList
                                        originSizeList:(NSMutableArray *)originSizeList
                                     newOriginSizeList:(NSMutableArray *)newOriginSizeList
@@ -133,10 +208,8 @@ static NSInteger idx = 0;
             nextSize = [[resizedList firstObject] CGSizeValue];
             if(firstSize.height == nextSize.height)
             {
-//                [tempSizeList addObject:originSizeList[i+1]];
                 [tempSizeList insertObject:originSizeList[i+1] atIndex:0];
                 NSIndexPath *reloadIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
-//                [reloadIndexPaths addObject:reloadIndexPath];
                 [reloadIndexPaths insertObject:reloadIndexPath atIndex:0];
                 
                 [resizedList removeObjectAtIndex:0];
@@ -153,7 +226,6 @@ static NSInteger idx = 0;
     }
     [totalCalculateList addObjectsFromArray:tempSizeList];
     [totalCalculateList addObjectsFromArray:newOriginSizeList];
-
     
     result = @{@"reloadIndexPaths" : reloadIndexPaths, @"insertIndexPaths" : insertIndexPaths, @"totalCalculateList" : totalCalculateList};
     
@@ -413,6 +485,20 @@ static NSInteger idx = 0;
     
     return cellSize;
 //    return CGSizeMake(100, 100);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    [self excuteDeleteItemAtIndexPath:indexPath];
+    
+
+    [self.addMappedList removeObjectAtIndex:indexPath.row];
+    
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
