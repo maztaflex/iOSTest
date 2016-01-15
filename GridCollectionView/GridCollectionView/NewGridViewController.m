@@ -60,11 +60,10 @@
     
     [self reqEKRecent];
 }
+
 static NSInteger idx = 0;
 - (IBAction)touchedPlusButton:(id)sender {
 
-    
-    
     EKRecentModel *ekModel = [self.mappedList objectAtIndex:idx];
     EKThumbnailImage *thumbnailImg = ekModel.thumbnailImage;
     idx++;
@@ -75,9 +74,6 @@ static NSInteger idx = 0;
     NSMutableArray *newSizeList = @[[NSValue valueWithCGSize:CGSizeMake(thumbnailImg.width.floatValue, thumbnailImg.height.floatValue)]].mutableCopy;
     
     [self executeResizeImageWithData:newSizeList];
-    
-    LogGreen(@"origin : %@ resizedList : %@, newSizeList : %@", self.imageSizeList, self.resizedList, newSizeList);
-    
     
 }
 
@@ -106,10 +102,12 @@ static NSInteger idx = 0;
 - (void)excuteDeleteItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSMutableArray *calculateList = [NSMutableArray array];
-    NSArray *newResizedList = nil;
+    NSMutableArray *newResizedList = [NSMutableArray array];
     NSInteger selectedRow = indexPath.row;
     NSInteger resizeStartIdx = 0;
+    NSInteger restItemStartIdx = 0;
     NSRange r;
+    NSRange rangeOfRestItems;
     
     CGSize currentSize = [self.resizedList[selectedRow] CGSizeValue];
     
@@ -120,7 +118,7 @@ static NSInteger idx = 0;
     
         if(currentSize.height == previousSize.height)
         {
-            [calculateList addObject:self.imageSizeList[i]];
+            [calculateList insertObject:self.imageSizeList[i] atIndex:0];
         }
         else
         {
@@ -130,39 +128,44 @@ static NSInteger idx = 0;
     }
     
     // 우측 검색
-    for(NSInteger j = selectedRow + 1; j < self.resizedList.count; j++)
+    NSMutableArray *tempResizedList = [NSMutableArray array];
+    NSInteger j = 0;
+    for(j = selectedRow + 1; j < self.resizedList.count; j++)
     {
-        CGSize nextSize = [self.resizedList[j] CGSizeValue];
-        
-        if(currentSize.height == nextSize.height)
+        [calculateList addObject:self.imageSizeList[j]];
+        tempResizedList = [self getResizedListFromOriginSizes:calculateList].mutableCopy;
+        CGSize firstSize = [[tempResizedList firstObject] CGSizeValue];
+        if(firstSize.height < kCriticalHeight)
         {
-            [calculateList addObject:self.imageSizeList[j]];
-        }
-        else
-        {
+            [newResizedList addObjectsFromArray:tempResizedList];
+            restItemStartIdx = j + 1;
+            
             break;
         }
     }
     
-    
-    LogGreen(@"calculateList.count : %zd", calculateList.count);
-    
-    
-    NSInteger calculateCnt = calculateList.count;
-    if(calculateCnt == 1)
-    {
-        if(selectedRow == resizeStartIdx)
-        {
-            [calculateList addObject:self.imageSizeList[selectedRow + 2]];
-        }
-        else
-        {
-            [calculateList addObject:self.imageSizeList[selectedRow + 1]];
-        }
+    if (restItemStartIdx == 0) {
+        restItemStartIdx = j;
+        [newResizedList addObjectsFromArray:[self getResizedListFromOriginSizes:calculateList]];
     }
     
-    newResizedList = [self getResizedListFromOriginSizes:calculateList];
-    LogGreen(@"newResizedList : %@", newResizedList);
+    
+    [calculateList removeAllObjects];
+    [tempResizedList removeAllObjects];
+    
+    //rest item
+    if(restItemStartIdx < self.resizedList.count)
+    {
+        rangeOfRestItems.location = restItemStartIdx;
+        rangeOfRestItems.length = self.resizedList.count - restItemStartIdx;
+        
+         NSArray *subArray = [self.imageSizeList subarrayWithRange:rangeOfRestItems];
+        
+        [calculateList addObjectsFromArray:subArray];
+            
+        tempResizedList = [self getResizedListFromOriginSizes:calculateList].mutableCopy;
+        [newResizedList addObjectsFromArray:tempResizedList];
+    }
     
     r.location = resizeStartIdx;
     r.length = newResizedList.count;
@@ -171,10 +174,6 @@ static NSInteger idx = 0;
     [self.resizedList removeObjectAtIndex:selectedRow];
     
     [self.resizedList replaceObjectsInRange:r withObjectsFromArray:newResizedList];
-    
-
-    
-    
     
 }
 
@@ -302,7 +301,6 @@ static NSInteger idx = 0;
      *
      *
      */
-    
     NSMutableArray *resizedList = [NSMutableArray array];               // 리사이즈 완료된 사이즈 저장 리스트
     NSMutableArray *sizeListForCalculate = [NSMutableArray array];      // 리사이즈 계산을 위한 사이즈 임시 리스트
     
@@ -316,6 +314,11 @@ static NSInteger idx = 0;
     CGFloat firstRatio = 1.0f;                                          // r0
     CGFloat nextRatio = 1.0f;                                           // r1, r2, r3 ...
     CGFloat commonHeightPerRow = 0.0f;                                  // cch
+    
+    if(originSizes.count == 0)
+    {
+        return @[];
+    }
     
     // 임시 리스트에 첫번재 아이템 저장
     [sizeListForCalculate addObject:[originSizes objectAtIndex:itemIdx]];
