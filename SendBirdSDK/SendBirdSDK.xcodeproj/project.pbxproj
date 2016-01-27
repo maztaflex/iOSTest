@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC9386701C589D52008687E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC93866F1C589D52008687E6 /* main.m */; };
+		AC9386731C589D52008687E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9386721C589D52008687E6 /* AppDelegate.m */; };
+		AC9386761C589D52008687E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9386751C589D52008687E6 /* ViewController.m */; };
+		AC9386791C589D52008687E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9386771C589D52008687E6 /* Main.storyboard */; };
+		AC93867B1C589D52008687E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC93867A1C589D52008687E6 /* Assets.xcassets */; };
+		AC93867E1C589D52008687E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC93867C1C589D52008687E6 /* LaunchScreen.storyboard */; };
+		AC9386891C589D52008687E6 /* SendBirdSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9386881C589D52008687E6 /* SendBirdSDKTests.m */; };
+		AC9386941C589D52008687E6 /* SendBirdSDKUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9386931C589D52008687E6 /* SendBirdSDKUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC9386851C589D52008687E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC9386631C589D52008687E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC93866A1C589D52008687E6;
+			remoteInfo = SendBirdSDK;
+		};
+		AC9386901C589D52008687E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC9386631C589D52008687E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC93866A1C589D52008687E6;
+			remoteInfo = SendBirdSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AC93866B1C589D52008687E6 /* SendBirdSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendBirdSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC93866F1C589D52008687E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC9386711C589D52008687E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AC9386721C589D52008687E6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AC9386741C589D52008687E6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AC9386751C589D52008687E6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AC9386781C589D52008687E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC93867A1C589D52008687E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC93867D1C589D52008687E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC93867F1C589D52008687E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC9386841C589D52008687E6 /* SendBirdSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SendBirdSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC9386881C589D52008687E6 /* SendBirdSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendBirdSDKTests.m; sourceTree = "<group>"; };
+		AC93868A1C589D52008687E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC93868F1C589D52008687E6 /* SendBirdSDKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SendBirdSDKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC9386931C589D52008687E6 /* SendBirdSDKUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendBirdSDKUITests.m; sourceTree = "<group>"; };
+		AC9386951C589D52008687E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC9386681C589D52008687E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC9386811C589D52008687E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC93868C1C589D52008687E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC9386621C589D52008687E6 = {
+			isa = PBXGroup;
+			children = (
+				AC93866D1C589D52008687E6 /* SendBirdSDK */,
+				AC9386871C589D52008687E6 /* SendBirdSDKTests */,
+				AC9386921C589D52008687E6 /* SendBirdSDKUITests */,
+				AC93866C1C589D52008687E6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC93866C1C589D52008687E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC93866B1C589D52008687E6 /* SendBirdSDK.app */,
+				AC9386841C589D52008687E6 /* SendBirdSDKTests.xctest */,
+				AC93868F1C589D52008687E6 /* SendBirdSDKUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC93866D1C589D52008687E6 /* SendBirdSDK */ = {
+			isa = PBXGroup;
+			children = (
+				AC9386711C589D52008687E6 /* AppDelegate.h */,
+				AC9386721C589D52008687E6 /* AppDelegate.m */,
+				AC9386741C589D52008687E6 /* ViewController.h */,
+				AC9386751C589D52008687E6 /* ViewController.m */,
+				AC9386771C589D52008687E6 /* Main.storyboard */,
+				AC93867A1C589D52008687E6 /* Assets.xcassets */,
+				AC93867C1C589D52008687E6 /* LaunchScreen.storyboard */,
+				AC93867F1C589D52008687E6 /* Info.plist */,
+				AC93866E1C589D52008687E6 /* Supporting Files */,
+			);
+			path = SendBirdSDK;
+			sourceTree = "<group>";
+		};
+		AC93866E1C589D52008687E6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AC93866F1C589D52008687E6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AC9386871C589D52008687E6 /* SendBirdSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC9386881C589D52008687E6 /* SendBirdSDKTests.m */,
+				AC93868A1C589D52008687E6 /* Info.plist */,
+			);
+			path = SendBirdSDKTests;
+			sourceTree = "<group>";
+		};
+		AC9386921C589D52008687E6 /* SendBirdSDKUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC9386931C589D52008687E6 /* SendBirdSDKUITests.m */,
+				AC9386951C589D52008687E6 /* Info.plist */,
+			);
+			path = SendBirdSDKUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC93866A1C589D52008687E6 /* SendBirdSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC9386981C589D52008687E6 /* Build configuration list for PBXNativeTarget "SendBirdSDK" */;
+			buildPhases = (
+				AC9386671C589D52008687E6 /* Sources */,
+				AC9386681C589D52008687E6 /* Frameworks */,
+				AC9386691C589D52008687E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SendBirdSDK;
+			productName = SendBirdSDK;
+			productReference = AC93866B1C589D52008687E6 /* SendBirdSDK.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC9386831C589D52008687E6 /* SendBirdSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC93869B1C589D52008687E6 /* Build configuration list for PBXNativeTarget "SendBirdSDKTests" */;
+			buildPhases = (
+				AC9386801C589D52008687E6 /* Sources */,
+				AC9386811C589D52008687E6 /* Frameworks */,
+				AC9386821C589D52008687E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC9386861C589D52008687E6 /* PBXTargetDependency */,
+			);
+			name = SendBirdSDKTests;
+			productName = SendBirdSDKTests;
+			productReference = AC9386841C589D52008687E6 /* SendBirdSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC93868E1C589D52008687E6 /* SendBirdSDKUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC93869E1C589D52008687E6 /* Build configuration list for PBXNativeTarget "SendBirdSDKUITests" */;
+			buildPhases = (
+				AC93868B1C589D52008687E6 /* Sources */,
+				AC93868C1C589D52008687E6 /* Frameworks */,
+				AC93868D1C589D52008687E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC9386911C589D52008687E6 /* PBXTargetDependency */,
+			);
+			name = SendBirdSDKUITests;
+			productName = SendBirdSDKUITests;
+			productReference = AC93868F1C589D52008687E6 /* SendBirdSDKUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC9386631C589D52008687E6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = doozerstage;
+				TargetAttributes = {
+					AC93866A1C589D52008687E6 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					AC9386831C589D52008687E6 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = AC93866A1C589D52008687E6;
+					};
+					AC93868E1C589D52008687E6 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = AC93866A1C589D52008687E6;
+					};
+				};
+			};
+			buildConfigurationList = AC9386661C589D52008687E6 /* Build configuration list for PBXProject "SendBirdSDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC9386621C589D52008687E6;
+			productRefGroup = AC93866C1C589D52008687E6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC93866A1C589D52008687E6 /* SendBirdSDK */,
+				AC9386831C589D52008687E6 /* SendBirdSDKTests */,
+				AC93868E1C589D52008687E6 /* SendBirdSDKUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC9386691C589D52008687E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC93867E1C589D52008687E6 /* LaunchScreen.storyboard in Resources */,
+				AC93867B1C589D52008687E6 /* Assets.xcassets in Resources */,
+				AC9386791C589D52008687E6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC9386821C589D52008687E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC93868D1C589D52008687E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC9386671C589D52008687E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC9386761C589D52008687E6 /* ViewController.m in Sources */,
+				AC9386731C589D52008687E6 /* AppDelegate.m in Sources */,
+				AC9386701C589D52008687E6 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC9386801C589D52008687E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC9386891C589D52008687E6 /* SendBirdSDKTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC93868B1C589D52008687E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC9386941C589D52008687E6 /* SendBirdSDKUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC9386861C589D52008687E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC93866A1C589D52008687E6 /* SendBirdSDK */;
+			targetProxy = AC9386851C589D52008687E6 /* PBXContainerItemProxy */;
+		};
+		AC9386911C589D52008687E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC93866A1C589D52008687E6 /* SendBirdSDK */;
+			targetProxy = AC9386901C589D52008687E6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC9386771C589D52008687E6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC9386781C589D52008687E6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC93867C1C589D52008687E6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC93867D1C589D52008687E6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC9386961C589D52008687E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AC9386971C589D52008687E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC9386991C589D52008687E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SendBirdSDK/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.doozerstage.SendBirdSDK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AC93869A1C589D52008687E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SendBirdSDK/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.doozerstage.SendBirdSDK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AC93869C1C589D52008687E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SendBirdSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.doozerstage.SendBirdSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SendBirdSDK.app/SendBirdSDK";
+			};
+			name = Debug;
+		};
+		AC93869D1C589D52008687E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SendBirdSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.doozerstage.SendBirdSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SendBirdSDK.app/SendBirdSDK";
+			};
+			name = Release;
+		};
+		AC93869F1C589D52008687E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SendBirdSDKUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.doozerstage.SendBirdSDKUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SendBirdSDK;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		AC9386A01C589D52008687E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SendBirdSDKUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.doozerstage.SendBirdSDKUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SendBirdSDK;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC9386661C589D52008687E6 /* Build configuration list for PBXProject "SendBirdSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC9386961C589D52008687E6 /* Debug */,
+				AC9386971C589D52008687E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC9386981C589D52008687E6 /* Build configuration list for PBXNativeTarget "SendBirdSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC9386991C589D52008687E6 /* Debug */,
+				AC93869A1C589D52008687E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AC93869B1C589D52008687E6 /* Build configuration list for PBXNativeTarget "SendBirdSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC93869C1C589D52008687E6 /* Debug */,
+				AC93869D1C589D52008687E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AC93869E1C589D52008687E6 /* Build configuration list for PBXNativeTarget "SendBirdSDKUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC93869F1C589D52008687E6 /* Debug */,
+				AC9386A01C589D52008687E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC9386631C589D52008687E6 /* Project object */;
+}
