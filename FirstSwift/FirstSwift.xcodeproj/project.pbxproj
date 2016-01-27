@@ -16,6 +16,7 @@
 		AC0533961C19764C00FB5A88 /* FirstSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0533951C19764C00FB5A88 /* FirstSwiftUITests.swift */; };
 		AC5547131C3B6FDC004E6C60 /* STDProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5547121C3B6FDC004E6C60 /* STDProtocol.swift */; };
 		ACBCF0361C43446500720E02 /* STDAccessControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBCF0351C43446500720E02 /* STDAccessControl.swift */; };
+		ACBCF0381C4349BA00720E02 /* STDAdvancedOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBCF0371C4349BA00720E02 /* STDAdvancedOperators.swift */; };
 		ACC2E8CB1C3E0B990060BC5C /* STDGenerics.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC2E8CA1C3E0B990060BC5C /* STDGenerics.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		AC0533971C19764C00FB5A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC5547121C3B6FDC004E6C60 /* STDProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STDProtocol.swift; sourceTree = "<group>"; };
 		ACBCF0351C43446500720E02 /* STDAccessControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STDAccessControl.swift; sourceTree = "<group>"; };
+		ACBCF0371C4349BA00720E02 /* STDAdvancedOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STDAdvancedOperators.swift; sourceTree = "<group>"; };
 		ACC2E8CA1C3E0B990060BC5C /* STDGenerics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STDGenerics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 			children = (
 				AC0533751C19764C00FB5A88 /* AppDelegate.swift */,
 				AC0533771C19764C00FB5A88 /* ViewController.swift */,
+				ACBCF0371C4349BA00720E02 /* STDAdvancedOperators.swift */,
 				ACBCF0351C43446500720E02 /* STDAccessControl.swift */,
 				ACC2E8CA1C3E0B990060BC5C /* STDGenerics.swift */,
 				AC5547121C3B6FDC004E6C60 /* STDProtocol.swift */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC0533781C19764C00FB5A88 /* ViewController.swift in Sources */,
+				ACBCF0381C4349BA00720E02 /* STDAdvancedOperators.swift in Sources */,
 				AC0533761C19764C00FB5A88 /* AppDelegate.swift in Sources */,
 				ACBCF0361C43446500720E02 /* STDAccessControl.swift in Sources */,
 				AC5547131C3B6FDC004E6C60 /* STDProtocol.swift in Sources */,
