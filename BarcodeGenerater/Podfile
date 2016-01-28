@@ -1,0 +1,26 @@
+platform :ios, "7.1"
+
+pod 'AFNetworking', '~> 2.6.3'
+#pod 'GoogleAnalytics-iOS-SDK', '~> 3.12'
+pod 'googleplus-ios-sdk', '~> 1.7.1'
+pod 'Google/Analytics'
+pod 'Parse'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'
+pod 'Fabric'
+pod 'TwitterKit'
+pod 'TwitterCore'
+pod 'SDWebImage'
+pod 'PureLayout'
+pod 'ZXingObjC'
+
+#pod 'MarqueeLabel'
+#pod 'CHTCollectionViewWaterfallLayout'
+#pod 'RACollectionViewReorderableTripletLayout'
+#pod 'FBLikeLayout', '~> 1.2'
+#pod 'AWSAPIGateway'
+
+target :BarcodeGeneraterTests, :exclusive => true do
+  # pod 'Kiwi'
+end

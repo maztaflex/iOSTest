@@ -1,0 +1,14 @@
+//
+//  PrefixHeader.pch
+//  AsyncImageList
+//
+//  Created by DEV_TEAM1_IOS on 2015. 11. 17..
+//  Copyright © 2015년 DEV_TEAM1_IOS. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "YHGlobal.h"
+
+#endif /* PrefixHeader_pch */
