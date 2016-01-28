@@ -1,0 +1,35 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, '7.1'
+
+target 'GoogleMapAPI' do
+
+pod 'AFNetworking', '~> 2.6.3'
+pod 'googleplus-ios-sdk'
+pod 'Google/Analytics'
+pod 'Parse'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'
+pod 'Fabric'
+pod 'TwitterKit'
+pod 'TwitterCore'
+pod 'SDWebImage'
+pod 'PureLayout'
+pod 'ZXingObjC'
+
+#pod 'MarqueeLabel'
+#pod 'CHTCollectionViewWaterfallLayout'
+#pod 'RACollectionViewReorderableTripletLayout'
+#pod 'FBLikeLayout', '~> 1.2'
+#pod 'AWSAPIGateway'
+
+end
+
+target 'GoogleMapAPITests' do
+
+end
+
+target 'GoogleMapAPIUITests' do
+
+end
+
